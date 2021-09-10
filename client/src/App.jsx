@@ -5,6 +5,8 @@ class App extends React.Component {
     super(props)
   }
 
+  // state
+
   render() {
     return (
       <div>
