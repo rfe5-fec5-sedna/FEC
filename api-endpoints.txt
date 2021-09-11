@@ -1,0 +1,18 @@
+<type-request> || <api-endpoint> || <request-query>
+
+Products:
+
+GET || /products
+GET || /products/:product_id
+GET || /products/:product_id/styles || '/products/1/styles'
+GET || /products/:product_id/related
+
+Reviews:
+
+
+
+GET || /reviews/ || '/reviews/?product_id=1&sort=newest' Example: `/reviews/?product_id=${number_id}&sort=${relevance}`
+GET || /reviews/meta || '/reviews/meta/?product_id=1'
+POST || /reviews ||
+PUT || /reviews/:review_id/helpful ||
+PUT || /reviews/:review_id/report ||
