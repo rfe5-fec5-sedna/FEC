@@ -7,7 +7,7 @@ class App extends React.Component {
   }
 
   ComponentDidMount() {
-    axios.get('/sedna/products')
+    axios.get('/products/1/styles')
     .then((res) => {
       console.log(res);
     })
