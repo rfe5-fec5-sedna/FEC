@@ -2,13 +2,12 @@ import React from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar.jsx';
+import RelatedItems from './related_items/App.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentProduct: ''
-    }
+    this.state = { currentProduct: '' }
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -20,9 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/sedna/products')
       .then((response) => {
-        this.setState({
-          currentProduct: response.data[0].id
-        })
+        this.setState({ currentProduct: response.data[0].id })
       })
       .catch((error) => {
         console.error(error);
@@ -34,6 +31,7 @@ class App extends React.Component {
       <div>
         <h1>Hello Sedna</h1>
         <SearchBar handleClick={this.handleClick} />
+        <RelatedItems currentProduct={this.state.currentProduct} />
       </div>
     )
   }
