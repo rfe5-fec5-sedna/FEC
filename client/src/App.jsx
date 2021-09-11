@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar.jsx';
+import Overview from './product_overview/App.jsx';
 import RatingsReviews from './ratings_reviews/RatingsReviews.jsx';
 
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
       <div>
         <h1>Hello Sedna</h1>
         <SearchBar handleClick={this.handleClick} />
+        <Overview id={this.state.currentProduct} />
         <RatingsReviews currentProduct={this.state.currentProduct} />
       </div>
     )
