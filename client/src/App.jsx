@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import SearchBar from './SearchBar.jsx';
 import Overview from './product_overview/App.jsx';
 import RelatedItems from './related_items/App.jsx';
 import RatingsReviews from './ratings_reviews/RatingsReviews.jsx';
+import SearchBar from './SearchBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
