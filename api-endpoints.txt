@@ -1,3 +1,13 @@
+Example: http://example.com/page?parameter=value&also=another
+
+Data in common throughout API endpoints:
+
+products needs: product_id
+ratings needs: product_id
+cart needs: sku_id
+
+////////////////////////////////////////////////////////////////////////////////////
+
 <type-request> || <api-endpoint> || <request-query>
 
 Products:
