@@ -1,0 +1,6 @@
+.Card-Component {
+  display: flex;
+  border: 1px solid black;
+  width: 195px;
+  height: 290px;
+}
