@@ -1,18 +1,21 @@
 import React from 'react';
+import Review from './review.jsx';
+
 
 class Overview extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      placeholder: this.props.id || ''
+      placeholder: ''
     }
   }
 
   render() {
     return(
       <div>
-         <h3>placeholder for Product Overview</h3>
+         <h2>-----------------Product Overview---------------------{this.props.id}</h2>
+         <Review id={this.props.id} />
       </div>
     )
   }
