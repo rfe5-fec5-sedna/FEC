@@ -1,20 +1,16 @@
 import React from 'react';
+// import Rating from 'react-rating'; --> This is for later
+import ReviewTile from './ReviewTile.jsx';
 
-class ReviewsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      default: 'state here'
-    }
-  }
+const ReviewsList = (props) => {
 
-  render() {
-    return (
-      <div>
-        <h1>Reviews List </h1>
-      </div>
-    )
-  }
+  return (
+    <div id="reviews-list">
+      <h1>Reviews List</h1>
+      <h5>{props.currentProduct}</h5>
+      <ReviewTile productId={props.currentProduct}/>
+    </div>
+  );
 }
 
 export default ReviewsList;
