@@ -2,7 +2,7 @@ import React from 'react';
 // import Rating from 'react-rating'; --> This is for later
 import ReviewTile from './ReviewTile.jsx';
 
-let ReviewsList = (props) => {
+const ReviewsList = (props) => {
 
   return (
     <div id="reviews-list">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-let ReviewTile = (props) => {
+const ReviewTile = (props) => {
   return (
     <div id="review-tile">
       <h3>Individual Review Tile</h3>
