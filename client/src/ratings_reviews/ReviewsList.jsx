@@ -1,20 +1,14 @@
 import React from 'react';
+import Rating from 'react-rating';
 
-class ReviewsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      default: 'state here'
-    }
-  }
+let ReviewsList = (props) => {
 
-  render() {
-    return (
-      <div>
-        <h1>Reviews List </h1>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h1>Reviews List</h1>
+      <h5>{props.currentProduct}</h5>
+    </div>
+  );
 }
 
 export default ReviewsList;
