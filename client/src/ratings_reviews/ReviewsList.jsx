@@ -3,12 +3,13 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 
 const ReviewsList = (props) => {
+  let productId = props.currentProduct;
 
   return (
     <div id="reviews-list">
       <h1>Reviews List</h1>
       <h5>{props.currentProduct}</h5>
-      <ReviewTile productId={props.currentProduct}/>
+      <ReviewTile productId={productId}/>
     </div>
   );
 }
