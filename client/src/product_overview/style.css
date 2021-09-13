@@ -1,0 +1,42 @@
+.overview-container {
+  display: flex;
+  border: 1px black solid;
+}
+
+.imageBox {
+  flex:2;
+  border: 1px black solid;
+}
+
+.styleCartBox {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  border: 1px black solid;
+}
+
+.ratings {
+  flex:1;
+  border: 1px black solid;
+
+}
+
+.productInfo1 {
+  flex:1;
+  border: 1px black solid;
+}
+
+.styleSelector {
+  flex:2;
+  border: 1px black solid;
+}
+
+.cart {
+  flex:2;
+  border: 1px black solid;
+}
+
+.productInfo2 {
+  flex:1;
+  border: 1px black solid;
+}
