@@ -2,8 +2,9 @@ import React from 'react';
 
 let ReviewTile = (props) => {
   return (
-    <div>
-      <h1>Individual Review Tile</h1>
+    <div id="review-tile">
+      <h3>Individual Review Tile</h3>
+      <h5>{props.productId}</h5>
     </div>
   );
 }

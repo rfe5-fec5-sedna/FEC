@@ -11,7 +11,7 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="ratings-reviews">
         <h1>|-----------Ratings and Reviews ----------|</h1>
         <ReviewsList currentProduct={this.props.currentProduct}/>
       </div>
