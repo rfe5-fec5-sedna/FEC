@@ -20,7 +20,7 @@ class Review extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.id !== prevProps.id) {
-      console.log(this.props)
+      // console.log(this.props)
       api.getReview(this.props.id, (error, result) => {
       if(error) {
         console.log(error);
