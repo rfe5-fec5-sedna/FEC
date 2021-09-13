@@ -2,9 +2,11 @@ import React from 'react';
 import axios from 'axios';
 
 import Overview from './product_overview/App.jsx';
-import RelatedItems from './related_items/App.jsx';
+import RelatedItems from './related_items/RelatedItem';
 import RatingsReviews from './ratings_reviews/RatingsReviews.jsx';
 import SearchBar from './SearchBar.jsx';
+
+import '../dist/App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,11 +32,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello Sedna</h1>
-        <SearchBar handleClick={this.handleClick} />
+      <div id="Sedna">
+        <header id="app-header">
+          <h1>Hello Sedna</h1>
+          <SearchBar handleClick={this.handleClick} />
+        </header>
         <Overview id={this.state.currentProduct} />
-        <RelatedItems currentProduct={this.state.currentProduct} />
+        <RelatedItems currentProductId={this.state.currentProduct} />
         <RatingsReviews currentProduct={this.state.currentProduct} />
       </div>
     )
