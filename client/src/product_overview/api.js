@@ -28,12 +28,25 @@ const api = {
     const url = `/sedna/reviews/?product_id=${id}`;
     axios.get(url)
       .then((res) => {
-        console.log('this is res', res)
+        // console.log('this is res', res)
         callback(null, res.data.count);
       })
       .catch((error) => {
         callback(error, null)
       })
+  },
+
+  getProduct: function(id, callback) {
+    const url = `/sedna/products/${id}`;
+    axios.get(url)
+      .then((res) => {
+        console.log('this is product res', res)
+        callback(null, res.data);
+      })
+      .catch((error) => {
+        callback(error, null)
+      })
+
   }
 }
 
