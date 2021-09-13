@@ -47,7 +47,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ratings">
         <Rating  emptySymbol={this.outline} fullSymbol={this.solid}  initialRating={this.state.rating} readonly/>
         <div>Read all {this.state.count} reviews</div>
       </div>

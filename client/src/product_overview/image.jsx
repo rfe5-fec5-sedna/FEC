@@ -11,7 +11,7 @@ class Image_Gallery extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="currentImage">
          <h3>Placeholder for Image</h3>
          <img src={this.state.currentPhoto}></img>
       </div>

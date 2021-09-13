@@ -11,7 +11,7 @@ class Style extends React.Component {
 
   render() {
     return (
-      <div>Placeholder for Style Selector</div>
+      <div className="styleSelector">Placeholder for Style Selector</div>
     )
   }
 }

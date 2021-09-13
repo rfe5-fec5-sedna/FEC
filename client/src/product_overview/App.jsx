@@ -1,9 +1,12 @@
 import React from 'react';
 import api from './api.js';
 import Review from './review.jsx';
-import Product_Info from './product_info.jsx';
+import {Product_info1, Product_info2} from './product_info.jsx';
 import Image_Gallery from './image.jsx';
 import Style from './style_selector.jsx';
+import Cart from './cart.jsx';
+
+import './style.css';
 
 
 class Overview extends React.Component {
@@ -44,13 +47,23 @@ class Overview extends React.Component {
   render() {
     return(
       <div>
-         <h2>-----------------Product Overview---------------------</h2>
-         <Image_Gallery photos={this.state.photos} />
-         <Review id={this.props.id} />
-         <Product_Info category={this.state.category} title={this.state.title}
-            slogan={this.state.slogan} description={this.state.description} />
-         <Style styles={this.state.styles} />
+        <h2>-----------------Product Overview---------------------</h2>
+        <div className="overview-container">
+          <div className="imageBox">
+          <Image_Gallery photos={this.state.photos} />
+          </div>
+          <div className="styleCartBox">
+            <Review id={this.props.id} />
+            <Product_info1 category={this.state.category} title={this.state.title} />
+            <Style styles={this.state.styles} />
+            <Cart />
+          </div>
+        </div>
+        <div className="descriptionSlogan">
+          <Product_info2 slogan={this.state.slogan} description={this.state.description} />
+        </div>
       </div>
+
     )
   }
 };
