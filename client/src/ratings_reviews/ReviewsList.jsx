@@ -17,6 +17,7 @@ class ReviewsList extends React.Component {
     getAllData.getAllReviews(this.props.currentProduct)
       .then((response) => {
         let allReviews = response.data.results;
+        console.log(allReviews);
         this.setState({
           reviewsList: allReviews
         })
@@ -31,7 +32,7 @@ class ReviewsList extends React.Component {
       <div id="reviews-list">
         <h1>Reviews List</h1>
         <h5>{this.props.currentProduct}</h5>
-        <ReviewTile productId={this.props.currentProduct}/>
+        <ReviewTile productId={this.props.currentProduct} reviewsList={this.state.reviewsList} />
       </div>
     );
   }
