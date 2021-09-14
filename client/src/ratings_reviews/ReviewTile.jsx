@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/ReviewTile.css';
 
 const ReviewTile = (props) => {
   let productId = props.productId;
@@ -11,7 +12,7 @@ const ReviewTile = (props) => {
         {props.reviewsList.map((singleReview) => {
           return (
             <div className="single-review" key={singleReview.review_id}>
-              <h5>Review #1</h5>
+              <h5>Review #{singleReview.review_id}</h5>
               {singleReview.rating}<br></br>
               {singleReview.date}<br></br>
               {singleReview.summary}<br></br>

@@ -2,6 +2,7 @@ import React from 'react';
 // import Rating from 'react-rating'; --> This is for later
 import ReviewTile from './ReviewTile.jsx';
 import getAllData from './helperFunction.js';
+import './styles/ReviewsList.css';
 
 
 class ReviewsList extends React.Component {
@@ -32,7 +33,7 @@ class ReviewsList extends React.Component {
   render() {
     return (
       <div id="reviews-list">
-        <h1>Reviews List</h1>
+        <h3>Reviews List</h3>
         <h5>{this.props.currentProductId}</h5>
         <ReviewTile productId={this.props.currentProductId} reviewsList={this.state.reviewsList} />
       </div>
