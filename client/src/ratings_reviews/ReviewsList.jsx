@@ -17,7 +17,9 @@ class ReviewsList extends React.Component {
     getAllData.getAllReviews(this.props.currentProduct)
       .then((response) => {
         let allReviews = response.data.results;
-        console.log(allReviews);
+        this.setState({
+          reviewsList: allReviews
+        })
       })
       .catch(err => {
         console.log(err);
