@@ -11,9 +11,17 @@ class Image_Gallery extends React.Component {
 
   render() {
     return (
-      <div className="currentImage">
-         <h3>Placeholder for Image</h3>
-         <img src={this.state.currentPhoto}></img>
+      <div className="currentImage-container">
+        <div className="image-box1">
+          {this.props.currentPhotos.map((currentPhoto, index) => {
+            return(
+              <img className="image-thumbnail" key={index} src={currentPhoto.thumbnail_url} />
+            )
+          })}
+        </div>
+        <div className="image-box2">
+         <img className="mainImage" src={this.props.currentPhoto}></img>
+        </div>
       </div>
     )
   }
