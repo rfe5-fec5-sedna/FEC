@@ -14,7 +14,7 @@ class ReviewsList extends React.Component {
   }
 
   componentDidMount() {
-    getAllData.getAllReviews(this.props.currentProduct)
+    getAllData.getAllReviews(this.props.currentProductId)
       .then((response) => {
         let allReviews = response.data.results;
         console.log(allReviews);
@@ -31,8 +31,8 @@ class ReviewsList extends React.Component {
     return (
       <div id="reviews-list">
         <h1>Reviews List</h1>
-        <h5>{this.props.currentProduct}</h5>
-        <ReviewTile productId={this.props.currentProduct} reviewsList={this.state.reviewsList} />
+        <h5>{this.props.currentProductId}</h5>
+        <ReviewTile productId={this.props.currentProductId} reviewsList={this.state.reviewsList} />
       </div>
     );
   }
