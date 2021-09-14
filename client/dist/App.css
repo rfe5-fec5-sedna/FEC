@@ -1,0 +1,12 @@
+/* #Sedna {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+*/
+
+#app-header{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+}

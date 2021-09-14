@@ -18,20 +18,14 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.css$/,
         use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+          'style-loader',
+          'css-loader'
+        ]
       },
     ]
   },
-  // Resolve sass extension? @import "bootstrap";
-  // Do we need bootstrap?
   resolve: {
     extensions: ['.js', '.jsx']
   },
