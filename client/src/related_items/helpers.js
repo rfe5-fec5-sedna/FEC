@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const helpers = {
-  getProductInfo: (id) => {
-    const url = `/sedna/products/${id}`;
-    return axios.get(url)
+  getRelated: (id) => {
+    const url = `sedna/products/${id}/related`;
+    return axios.get(url);
   }
 }
 
