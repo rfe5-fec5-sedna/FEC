@@ -47,6 +47,19 @@ const api = {
         callback(error, null)
       })
 
+  },
+
+  getStyles: function(id, callback) {
+    const url = `/sedna/products/${id}/styles`;
+    axios.get(url)
+      .then((res) => {
+        console.log('this is style res', res)
+        callback(null, res.data.results);
+      })
+      .catch((error) => {
+        callback(error, null)
+      })
+
   }
 }
 
