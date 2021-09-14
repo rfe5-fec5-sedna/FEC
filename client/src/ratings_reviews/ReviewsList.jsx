@@ -13,18 +13,20 @@ class ReviewsList extends React.Component {
 
   }
 
-  componentDidMount() {
-    getAllData.getAllReviews(this.props.currentProductId)
-      .then((response) => {
-        let allReviews = response.data.results;
-        console.log(allReviews);
-        this.setState({
-          reviewsList: allReviews
+  componentDidUpdate(prevProps) {
+    if (this.props.currentProductId !== prevProps.currentProductId) {
+      getAllData.getAllReviews(this.props.currentProductId)
+        .then((response) => {
+          let allReviews = response.data.results;
+          console.log(allReviews);
+          this.setState({
+            reviewsList: allReviews
+          })
         })
-      })
-      .catch(err => {
-        console.log(err);
-      })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
   render() {
