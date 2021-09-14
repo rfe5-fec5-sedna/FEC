@@ -20,7 +20,7 @@ class Review extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.id !== prevProps.id) {
-      console.log(this.props)
+      // console.log(this.props)
       api.getReview(this.props.id, (error, result) => {
       if(error) {
         console.log(error);
@@ -47,7 +47,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ratings">
         <Rating  emptySymbol={this.outline} fullSymbol={this.solid}  initialRating={this.state.rating} readonly/>
         <div>Read all {this.state.count} reviews</div>
       </div>

@@ -1,5 +1,12 @@
 import React from 'react';
+import api from './api.js';
 import Review from './review.jsx';
+import {Product_info1, Product_info2} from './product_info.jsx';
+import Image_Gallery from './image.jsx';
+import Style from './style_selector.jsx';
+import Cart from './cart.jsx';
+
+import './style.css';
 
 
 class Overview extends React.Component {
@@ -7,16 +14,94 @@ class Overview extends React.Component {
     super(props)
 
     this.state = {
-      placeholder: ''
+      category: '',
+      title: '',
+      slogan: '',
+      description: '',
+      styles: [],
+      stylesIn4: [],
+      currentStyle: '',
+      currentStyleSkus: [],
+      cart: {},
+      currentPhoto: '',
+      currentPhotos:[]
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.id !== prevProps.id) {
+      api.getProduct(this.props.id, (error, result) => {
+      if(error) {
+        console.log(error);
+      } else {
+        this.setState({
+          category: result.category,
+          title: result.name,
+          slogan: result.slogan,
+          description: result.description
+        })
+      }
+    })
+
+    api.getStyles(this.props.id, (error, result) => {
+      if(error) {
+        console.log(error);
+      } else {
+        var styles = [];
+        var group = [];
+        for(var i = 0; i < result.length; i++) {
+          group.push(result[i]);
+          if (group.length === 4) {
+            styles.push(group);
+            group = [];
+          }
+        };
+        styles.push(group);
+        this.setState({
+         stylesIn4:styles,
+         styles:result,
+         currentStyle: result[0].style_id,
+         currentPhoto: result[0].photos[0].url,
+         currentPhotos: result[0].photos
+        })
+      }
+    })
+    };
+  }
+
+  handleClick(id, currentPhoto, currentPhotos, e) {
+    e.preventDefault();
+    this.setState({
+      currentStyle: id,
+      currentPhoto: currentPhoto,
+      currentPhotos: currentPhotos
+
+    })
+  }
+
 
   render() {
     return(
       <div>
-         <h2>-----------------Product Overview---------------------{this.props.id}</h2>
-         <Review id={this.props.id} />
+        <h2>-----------------Product Overview---------------------</h2>
+        <div className="overview-container">
+          <div className="imageBox">
+          <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />
+          </div>
+          <div className="styleCartBox">
+            <Review id={this.props.id} />
+            <Product_info1 category={this.state.category} title={this.state.title} />
+            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} handleClick={this.handleClick}/>
+            <Cart />
+          </div>
+        </div>
+        <div className="descriptionSlogan">
+          <Product_info2 slogan={this.state.slogan} description={this.state.description} />
+        </div>
       </div>
+
     )
   }
 };
