@@ -19,11 +19,15 @@ class Overview extends React.Component {
       slogan: '',
       description: '',
       styles: [],
+      stylesIn4: [],
       currentStyle: '',
       currentStyleSkus: [],
       cart: {},
-      photos: []
+      currentPhoto: '',
+      currentPhotos:[]
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -40,7 +44,41 @@ class Overview extends React.Component {
         })
       }
     })
+
+    api.getStyles(this.props.id, (error, result) => {
+      if(error) {
+        console.log(error);
+      } else {
+        var styles = [];
+        var group = [];
+        for(var i = 0; i < result.length; i++) {
+          group.push(result[i]);
+          if (group.length === 4) {
+            styles.push(group);
+            group = [];
+          }
+        };
+        styles.push(group);
+        this.setState({
+         stylesIn4:styles,
+         styles:result,
+         currentStyle: result[0].style_id,
+         currentPhoto: result[0].photos[0].url,
+         currentPhotos: result[0].photos
+        })
+      }
+    })
     };
+  }
+
+  handleClick(id, currentPhoto, currentPhotos, e) {
+    e.preventDefault();
+    this.setState({
+      currentStyle: id,
+      currentPhoto: currentPhoto,
+      currentPhotos: currentPhotos
+
+    })
   }
 
 
@@ -50,12 +88,12 @@ class Overview extends React.Component {
         <h2>-----------------Product Overview---------------------</h2>
         <div className="overview-container">
           <div className="imageBox">
-          <Image_Gallery photos={this.state.photos} />
+          <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />
           </div>
           <div className="styleCartBox">
             <Review id={this.props.id} />
             <Product_info1 category={this.state.category} title={this.state.title} />
-            <Style styles={this.state.styles} />
+            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} handleClick={this.handleClick}/>
             <Cart />
           </div>
         </div>
