@@ -9,19 +9,25 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      category: '',
+      relatedProducts: [],
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.currentProductId !== prevProps.currentProductId) {
-      helpers.getProductInfo(this.props.currentProductId)
+      helpers.getRelated(this.props.currentProductId)
         .then((res) => {
-          this.setState({
-            name: res.data.name,
-            category: res.data.category
-          })
+          const relatedProducts = res.data;
+          return relatedProducts
+        })
+        .then((products) => {
+          helpers.getProductsData(products)
+            .then((res) => {
+              this.setState({ relatedProducts: res })
+            })
+        })
+        .catch((error) => {
+          console.error(error)
         })
     }
   }
@@ -30,10 +36,15 @@ class RelatedProducts extends React.Component {
     return (
       <div id="Related-Products" >
         <h1 id="related-product-header">Related Products</h1>
-        <Card
-          productName={this.state.name}
-          productCategory={this.state.category}
-        />
+        <div>
+          {this.state.relatedProducts.map((product, index) => {
+            return (<Card
+              productName={product.name}
+              productCategory={product.category}
+              productPrice={product.default_price}
+            />)
+          })}
+        </div>
       </div>
     )
   }
