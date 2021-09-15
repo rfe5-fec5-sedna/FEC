@@ -1,9 +1,7 @@
 import React from 'react';
-// import Rating from 'react-rating'; --> This is for later
 import ReviewTile from './ReviewTile.jsx';
 import getAllData from './helperFunction.js';
 import './styles/ReviewsList.css';
-
 
 class ReviewsList extends React.Component {
   constructor(props) {

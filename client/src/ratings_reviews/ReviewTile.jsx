@@ -1,8 +1,15 @@
 import React from 'react';
 import './styles/ReviewTile.css';
+import Rating from 'react-rating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 
 const ReviewTile = (props) => {
   let productId = props.productId;
+
+  let starOutline = <FontAwesomeIcon icon={emptyStar} />;
+  let starSolid = <FontAwesomeIcon icon={fullStar} />;
 
   return (
     <div id="review-tile">
@@ -13,7 +20,7 @@ const ReviewTile = (props) => {
           return (
             <div className="single-review" key={singleReview.review_id}>
               <h5>Review #{singleReview.review_id}</h5>
-              {singleReview.rating}<br></br>
+              <Rating emptySymbol={starOutline} fullSymbol={starSolid} initialRating={singleReview.rating} readonly/><br></br>
               {singleReview.date}<br></br>
               {singleReview.summary}<br></br>
               {singleReview.body}<br></br>
