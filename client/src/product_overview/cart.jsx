@@ -8,11 +8,21 @@ class Cart extends React.Component {
 
     this.state = {
       size: '',
-      maxQuantity: 2,
+      maxQuantity: '',
       quantity: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.skus !== prevProps.skus) {
+      this.setState ({
+        size: '',
+        maxQuantity: '',
+        quantity: ''
+      })
+    }
   }
 
   handleChange(e) {
@@ -36,11 +46,12 @@ class Cart extends React.Component {
   render() {
     const quantity = [...Array(this.state.maxQuantity >= 15 ? 15 : this.state.maxQuantity).keys()]
     quantity.splice(0,1);
-    console.log('q',quantity)
+    // console.log('q',quantity)
     return (
       <div>
         <div className="cart-container">
         <select className="selectSize" value={this.state.size} onChange={this.handleChange}>
+          <option value="Select Size">Select Size</option>
           {Object.keys(this.props.skus).map((key) => {
             return(
               <option key={key} value={this.props.skus[key].size}>{this.props.skus[key].size}</option>
@@ -48,6 +59,7 @@ class Cart extends React.Component {
           })}
         </select>
         <select className="selectQuantity">
+          <option>Select a Size to Start</option>
           {quantity.map((num) => (
             <option key={num} value={num}>{num}</option>
           ))}
