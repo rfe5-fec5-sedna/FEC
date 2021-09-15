@@ -5,3 +5,7 @@
   border-radius: 10px;
   padding: 5px;
 }
+
+.single-review-summary {
+  font-weight: bold;
+}
