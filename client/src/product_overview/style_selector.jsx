@@ -1,42 +1,71 @@
 import React from 'react';
 
-class Style extends React.Component {
-  constructor(props) {
-    super(props);
+const Style = (props) => (
 
-    this.state = {
-      currentStyle: 'placeholder'
-    }
-  }
-
-  // handleClick(value, e) {
-  //   console.log('this is value', value);
-  //   console.log(e.target)
-  // }
-
-  render() {
-    return (
-      <div className="styleSelector">
-        <div>STYLE > {this.state.currentStyle}</div>
-        <div className="thumbnail-container">
-        {this.props.stylesIn4.map((group, index) => {
+  <div className="styleSelector">
+    <div>STYLE > {props.styleName}</div>
+      <div className="thumbnail-container">
+        {props.stylesIn4.map((group, index) => {
           return (
             <div key={index} className="thumbnailRow">
               {group.map((style,index) => {
-                const id = style.style_id;
-                const currentPhoto = style.photos[0].url;
-                const currentPhotos = style.photos;
+                const product = {
+                  style_id:style.style_id,
+                  name: style.name,
+                  currentPhoto: style.photos[0].url,
+                  currentPhotos: style.photos,
+                  price: [style.original_price, style.sale_price],
+                  currentSkus: style.skus
+                }
                 return (
-                  <img className="thumbnailCircle" key={style.style_id} src={style.photos[0].thumbnail_url} onClick={(e)=> this.props.handleClick(id, currentPhoto, currentPhotos, e)}/>
+                  <img className="thumbnailCircle" key={style.style_id} src={style.photos[0].thumbnail_url} onClick={(e)=> props.handleClick(product, e)}/>
                 )
               })}
             </div>
           )
         })}
-        </div>
       </div>
-    )
-  }
-}
+   </div>
+)
 
 export default Style;
+
+// class Style extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       currentStyle: 'placeholder'
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <div className="styleSelector">
+//         <div>STYLE > {this.props.styleName}</div>
+//         <div className="thumbnail-container">
+//         {this.props.stylesIn4.map((group, index) => {
+//           return (
+//             <div key={index} className="thumbnailRow">
+//               {group.map((style,index) => {
+//                 const product = {
+//                   style_id:style.style_id,
+//                   name: style.name,
+//                   currentPhoto: style.photos[0].url,
+//                   currentPhotos: style.photos,
+//                   price: [style.original_price, style.sale_price],
+//                   currentSkus: style.skus
+//                 }
+//                 return (
+//                   <img className="thumbnailCircle" key={style.style_id} src={style.photos[0].thumbnail_url} onClick={(e)=> this.props.handleClick(product, e)}/>
+//                 )
+//               })}
+//             </div>
+//           )
+//         })}
+//         </div>
+//       </div>
+//     )
+//   }
+// }
+
