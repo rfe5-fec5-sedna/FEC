@@ -1,4 +1,5 @@
 import React from 'react';
+import helperFunction from './helperFunction.js';
 import './styles/ReviewTile.css';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,7 +22,7 @@ const ReviewTile = (props) => {
             <div className="single-review" key={singleReview.review_id}>
               <h5>Review #{singleReview.review_id}</h5>
               <Rating emptySymbol={starOutline} fullSymbol={starSolid} initialRating={singleReview.rating} readonly/><br></br>
-              {singleReview.date}<br></br>
+              {helperFunction.dateFormat(singleReview.date)}<br></br>
               {singleReview.summary}<br></br>
               {singleReview.body}<br></br>
               {singleReview.recommend}<br></br>

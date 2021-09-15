@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
-import getAllData from './helperFunction.js';
+import helperFunction from './helperFunction.js';
 import './styles/ReviewsList.css';
 
 class ReviewsList extends React.Component {
@@ -14,7 +14,7 @@ class ReviewsList extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentProductId !== prevProps.currentProductId) {
-      getAllData.getAllReviews(this.props.currentProductId)
+      helperFunction.getAllReviews(this.props.currentProductId)
         .then((response) => {
           let allReviews = response.data.results;
           console.log(allReviews);
