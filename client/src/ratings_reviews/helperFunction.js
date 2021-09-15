@@ -33,6 +33,20 @@ const getAllData = {
     } else {
       return bodyText;
     }
+  },
+
+  reviewRecommend: (recommendBoolean) => {
+    return recommendBoolean ? 'I recommend this product' : '';
+  },
+
+  responseFormat: (responseText) => {
+    // TODO
+    if (responseText.length > 0) {
+      return `Response
+      ${responseText}`;
+    } else {
+      return '';
+    }
   }
 
 }
