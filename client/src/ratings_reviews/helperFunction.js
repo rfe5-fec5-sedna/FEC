@@ -20,6 +20,10 @@ const getAllData = {
     let currentYear = date.getFullYear();
     let finalDate = `${monthNames[currentMonth]} ${currentDay}, ${currentYear}`;
     return finalDate;
+  },
+
+  summaryFormat: (summaryString) => {
+    return summaryString.length > 60 ? summaryString.slice(0, 57) + '...' : summaryString;
   }
 
 }

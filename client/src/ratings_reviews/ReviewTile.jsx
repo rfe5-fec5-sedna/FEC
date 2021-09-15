@@ -18,12 +18,13 @@ const ReviewTile = (props) => {
       <h5>Current Product ID: {productId}</h5>
       <ul>
         {props.reviewsList.map((singleReview) => {
+          // console.log(helperFunction.summaryFormat(singleReview.summary));
           return (
             <div className="single-review" key={singleReview.review_id}>
               <h5>Review #{singleReview.review_id}</h5>
               <Rating emptySymbol={starOutline} fullSymbol={starSolid} initialRating={singleReview.rating} readonly/><br></br>
               {helperFunction.dateFormat(singleReview.date)}<br></br>
-              <div className="single-review-summary">{singleReview.summary}</div><br></br>
+              <div className="single-review-summary">{helperFunction.summaryFormat(singleReview.summary)}</div><br></br>
               {singleReview.body}<br></br>
               {singleReview.recommend}<br></br>
               {singleReview.reviewer_name}<br></br>
