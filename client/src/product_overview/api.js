@@ -15,13 +15,14 @@ const api = {
 
   starCalc: function(ratings) {
     var total = 0;
-    var length = Object.keys(ratings).length;
+    var count = 0;
 
     for(var key in ratings) {
-      total += key * ratings[key]
+      total += Number(key) * ratings[key];
+      count += Number(ratings[key]);
     }
 
-    return total/length;
+    return total/count;
   },
 
   getCount: function(id, callback) {
