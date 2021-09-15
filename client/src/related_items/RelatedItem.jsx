@@ -1,3 +1,5 @@
+import React from 'react';
+
 import RelatedProducts from './RelatedProducts';
 import Outfit from './Outfit';
 import './styles/RelatedItems.css';
