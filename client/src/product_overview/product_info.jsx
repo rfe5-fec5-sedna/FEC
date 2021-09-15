@@ -11,7 +11,13 @@ const Product_info1 = (props) => {
     <div className="productInfo1">
       <div>Category: {props.category}</div>
       <div>Product Name:{props.title}</div>
-      <div>Price: </div>
+      {props.price[1] &&
+      <div>
+      <div className="salePrice">Sale: {props.price[1]}</div>
+      <div className="regularSale">Regular Price: {props.price[0]}</div>
+      </div>
+      }
+      {props.price[1] === null && <div className="regularPrice">Price: {props.price[0]}</div>}
     </div>
   )
 }
