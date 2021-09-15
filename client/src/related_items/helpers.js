@@ -4,20 +4,17 @@ const helpers = {
   getRelated: async (id) => {
     const url = `/sedna/products/${id}/related`;
     const products = await axios.get(url);
-    return products;
+    return products.data;
   },
-  getProductsData: async (relatedProducts) => {
-    const relatedProductsData = [];
-    for await (let productId of relatedProducts) {
-      const url = `/sedna/products/${productId}`;
-      try {
-        const data = await axios.get(url);
-        relatedProductsData.push(data.data)
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    return relatedProductsData
+  getProductData: async (id) => {
+    const url = `/sedna/products/${id}`;
+    const productData = await axios.get(url);
+    return productData.data;
+  },
+  getProductImage: async (id) => {
+    const url = `/sedna/products/${id}/styles`;
+    const styles = await axios.get(url);
+    return styles.data
   }
 }
 
