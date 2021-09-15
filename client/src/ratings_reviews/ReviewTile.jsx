@@ -23,7 +23,7 @@ const ReviewTile = (props) => {
               <h5>Review #{singleReview.review_id}</h5>
               <Rating emptySymbol={starOutline} fullSymbol={starSolid} initialRating={singleReview.rating} readonly/><br></br>
               {helperFunction.dateFormat(singleReview.date)}<br></br>
-              {singleReview.summary}<br></br>
+              <div className="single-review-summary">{singleReview.summary}</div><br></br>
               {singleReview.body}<br></br>
               {singleReview.recommend}<br></br>
               {singleReview.reviewer_name}<br></br>
