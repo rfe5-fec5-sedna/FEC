@@ -85,3 +85,23 @@
   width: 150px;
   flex-basis: 10%;
 }
+
+.salePrice {
+  color:red;
+}
+
+.regularSale {
+  text-decoration: line-through;
+}
+
+.cart-container {
+  display: flex;
+}
+
+.selectQuantity {
+  flex-basis: 45%;
+}
+
+.selectSize {
+  flex-basis: 45%;
+}
