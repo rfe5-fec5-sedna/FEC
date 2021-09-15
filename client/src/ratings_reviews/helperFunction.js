@@ -24,6 +24,15 @@ const getAllData = {
 
   summaryFormat: (summaryString) => {
     return summaryString.length > 60 ? summaryString.slice(0, 57) + '...' : summaryString;
+  },
+
+  bodyFormat: (bodyText) => {
+    // TODO
+    if (bodyText.length > 250) {
+      bodyText.slice(0, 247) + '...';
+    } else {
+      return bodyText;
+    }
   }
 
 }
