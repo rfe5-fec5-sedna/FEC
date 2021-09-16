@@ -7,7 +7,7 @@ const getAllData = {
   },
 
   // Sorting Data
-  getallSortOptions: (id, sortOption) => {
+  getAllSortOptions: (id, sortOption) => {
     return axios.get(`/sedna/reviews/?product_id=${id}&sort=${sortOption}`)
   },
 
@@ -16,12 +16,12 @@ const getAllData = {
     return axios.get(`/sedna/reviews/meta/?product_id=${id}`);
   },
 
-  // Logic
-  reviewListLength: (list, /*sortingOption*/) => {
+  // Review Tile Logic
+  reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {
-      return `${list.length} review, sorted by`
+      return `${list.length} review, sorted by ${sortingOption}`
     } else if (list.length > 1) {
-      return `${list.length} reviews, sorted by`
+      return `${list.length} reviews, sorted by ${sortingOption}`
     } else if (list.length === 0) {
       return `Sorry, there are no reviews for this product.`
     }
@@ -42,7 +42,7 @@ const getAllData = {
   },
 
   bodyFormat: (bodyText) => {
-    // TODO
+    // TODO "Show More"
     if (bodyText.length > 250) {
       bodyText.slice(0, 247) + '...';
     } else {
