@@ -1,15 +1,15 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.collections = Object.values(props.skus);
-
     this.state = {
       size: '',
       maxQuantity: '',
-      quantity: ''
+      quantity: 'Select a Size to Start'
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,30 +27,39 @@ class Cart extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    const size = e.target.value;
-    const collections = Object.values(this.props.skus);
-    var maxQuantity;
-    for(var combo of collections) {
-      if(combo.size === size) {
-        maxQuantity = combo.quantity;
-        break;
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    const size = name === 'size' ? value : null;
+
+    if(size !== null) {
+      const collections = Object.values(this.props.skus);
+      var maxQuantity;
+      for(var combo of collections) {
+        if(combo.size === size) {
+          maxQuantity = combo.quantity;
+          break;
+        }
       }
+      this.setState({
+        [name]: value,
+        maxQuantity: maxQuantity
+      })
+    } else {
+      this.setState({
+        [name]: value
+      })
     }
-    console.log('line 29', size, maxQuantity);
-    this.setState({
-      size: size,
-      maxQuantity: maxQuantity
-    })
   }
 
   render() {
-    const quantity = [...Array(this.state.maxQuantity >= 15 ? 15 : this.state.maxQuantity).keys()]
+    const quantity = [...Array(this.state.maxQuantity >= 15 ? 16 : this.state.maxQuantity + 1).keys()]
     quantity.splice(0,1);
-    // console.log('q',quantity)
+
     return (
       <div>
         <div className="cart-container">
-        <select className="selectSize" value={this.state.size} onChange={this.handleChange}>
+        <select className="selectSize" type="text" name="size" value={this.state.size} onChange={this.handleChange}>
           <option value="Select Size">Select Size</option>
           {Object.keys(this.props.skus).map((key) => {
             return(
@@ -58,15 +67,16 @@ class Cart extends React.Component {
             )
           })}
         </select>
-        <select className="selectQuantity">
-          <option>Select a Size to Start</option>
+        <select className="selectQuantity" type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} >
+          {this.state.size === '' && <option value="Select a Size to Start">Select a Size to Start</option>}
           {quantity.map((num) => (
             <option key={num} value={num}>{num}</option>
           ))}
         </select>
         </div>
-        <div>
-          <button className="addCart">ADD TO BAG +</button>
+        <div className="addCart">
+          <button className="addCartbtn">ADD TO BAG <FontAwesomeIcon icon={faShoppingCart} className="shoppingCart"/>
+          </button>
         </div>
       </div>
 
