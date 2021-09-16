@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import helpers from './helpers';
 
-const ModalWindow = (currentId, productClickedId) => {
+import './styles/ModalWindow.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
+
+const ModalWindow = ({ open, onClose, currentId, productClickedId }) => {
+
+  const outlineStar = <FontAwesomeIcon icon={emptyStar} />
+  if (!open) return null;
 
   const [currFeatures, setCurrFeatures] = useState(null);
   const [clickedFeatures, setClickedFeatures] = useState(null);
@@ -21,12 +28,11 @@ const ModalWindow = (currentId, productClickedId) => {
       })
   }, [productClickedId])
 
-  // Render common features
-  // Display checkmark for that product having that feature
-
   return (
     <div id="modal-window">
-    </div>
+      Modal
+      <div onClick={onClose}>{outlineStar}</div >
+    </div >
   )
 }
 
