@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+const calculateRatings = (ratingsObj) => {
+  let ratingAverage = 0;
+  let totalReviews = 0;
+  for (let num in ratingsObj) {
+    ratingAverage += num * ratingsObj[num];
+    totalReviews += ratingsObj[num]
+  }
+  return ratingAverage / totalReviews;
+}
+
 const helpers = {
   getRelated: async (id) => {
     const url = `/sedna/products/${id}/related`;
@@ -15,6 +25,12 @@ const helpers = {
     const url = `/sedna/products/${id}/styles`;
     const styles = await axios.get(url);
     return styles.data
+  },
+  getProductReview: async (id) => {
+    const url = `/sedna/reviews/meta/?product_id=${id}`;
+    const ratings = await axios.get(url);
+    const stars = calculateRatings(ratings.data.ratings);
+    return stars;
   }
 }
 
