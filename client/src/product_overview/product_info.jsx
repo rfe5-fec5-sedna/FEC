@@ -9,7 +9,7 @@ import {faFacebook} from '@fortawesome/free-brands-svg-icons';
 const Product_info1 = (props) => {
   return(
     <div className="productInfo1">
-      <div className="category">CATEGORY: {props.category}</div>
+      <div className="category">{props.category}</div>
       <div className="name">{props.title}</div>
       {props.price[1] &&
       <div>
