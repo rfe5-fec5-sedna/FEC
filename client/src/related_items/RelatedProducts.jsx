@@ -38,17 +38,14 @@ const RelatedProducts = (props) => {
 
   const displayProducts = (productsAmount > 3) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
 
-  console.log('related products => ', relatedProducts)
-  console.log('products displayed => ', displayProducts)
-
   return (
     <div id="related-products" >
       <h1 id="related-product-header">Related Products</h1>
       <div id="related-cards">
-        {firstDisplayed !== 0 && <a onClick={handleBackward}>&#10094;</a>}
-        {lastDisplayed !== productsAmount && <a onClick={handleForward}>&#10095;</a>}
+        {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
+        {lastDisplayed !== productsAmount && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.map(productId => (
-          <Card key={productId} productId={productId} />
+          <Card currentId={currentId} key={productId} productId={productId} />
         ))}
       </div>
     </div>
