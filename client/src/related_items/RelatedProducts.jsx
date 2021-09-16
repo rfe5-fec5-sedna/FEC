@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Card from './Card';
 import helpers from './helpers';
-import './styles/RelatedProducts.css'
+import './styles/RelatedCarousel.css'
 
 const RelatedProducts = (props) => {
   const currentId = props.currentProductId;
@@ -23,9 +23,9 @@ const RelatedProducts = (props) => {
   }, [productId])
 
   return (
-    <div id="Related-Products" >
+    <div id="related-products" >
       <h1 id="related-product-header">Related Products</h1>
-      <div className="related-card">
+      <div id="related-cards">
         {relatedProducts.map(productId => (
           <Card key={productId} productId={productId} />
         ))}
