@@ -7,7 +7,7 @@ const RatingsReviews = (props) => {
 
   return (
     <div id="ratings-reviews">
-      <h3>|-----------Ratings and Reviews ----------|</h3>
+      <h3>--------Ratings and Reviews--------</h3>
       <ReviewsList currentProductId={productId}/>
     </div>
   )

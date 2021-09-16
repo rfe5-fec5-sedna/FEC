@@ -31,8 +31,6 @@ class ReviewsList extends React.Component {
   render() {
     return (
       <div id="reviews-list">
-        <h3>Reviews List</h3>
-        <h5>{this.props.currentProductId}</h5>
         <ReviewTile productId={this.props.currentProductId} reviewsList={this.state.reviewsList} />
       </div>
     );
