@@ -25,6 +25,7 @@ class Review extends React.Component {
       if(error) {
         console.log(error);
       } else {
+        console.log('this is star', result)
         this.setState({
           rating: api.starCalc(result)
         })
@@ -49,7 +50,7 @@ class Review extends React.Component {
     return (
       <div className="ratings">
         <Rating  emptySymbol={this.outline} fullSymbol={this.solid}  initialRating={this.state.rating} readonly/>
-        <div>Read all {this.state.count} reviews</div>
+        <span className="reviewCount">Read all {this.state.count} reviews</span>
       </div>
     )
   }

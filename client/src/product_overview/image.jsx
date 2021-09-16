@@ -20,6 +20,8 @@ class Image_Gallery extends React.Component {
           })}
         </div>
         <div className="image-box2">
+          <a className="back">&#10094;</a>
+          <a className="forward">&#10095;</a>
          <img className="mainImage" src={this.props.currentPhoto}></img>
         </div>
       </div>

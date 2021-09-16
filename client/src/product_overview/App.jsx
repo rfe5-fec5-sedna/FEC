@@ -16,12 +16,14 @@ class Overview extends React.Component {
     this.state = {
       category: '',
       title: '',
+      price: '',
       slogan: '',
       description: '',
       styles: [],
       stylesIn4: [],
-      currentStyle: '',
-      currentStyleSkus: [],
+      currentStyleId: '',
+      currentStyleName: '',
+      currentSkus: [],
       cart: {},
       currentPhoto: '',
       currentPhotos:[]
@@ -59,42 +61,49 @@ class Overview extends React.Component {
           }
         };
         styles.push(group);
+
         this.setState({
          stylesIn4:styles,
          styles:result,
-         currentStyle: result[0].style_id,
+         currentStyleId: result[0].style_id,
+         currentStyleName: result[0].name,
          currentPhoto: result[0].photos[0].url,
-         currentPhotos: result[0].photos
+         currentPhotos: result[0].photos,
+         price: [result[0].original_price, result[0].sale_price],
+         currentSkus: result[0].skus
         })
       }
     })
     };
   }
 
-  handleClick(id, currentPhoto, currentPhotos, e) {
+  handleClick(product, e) {
     e.preventDefault();
+    console.log('this is product', product);
     this.setState({
-      currentStyle: id,
-      currentPhoto: currentPhoto,
-      currentPhotos: currentPhotos
-
+      currentStyleId: product.style_id,
+      currentPhoto: product.currentPhoto,
+      currentPhotos: product.currentPhotos,
+      price: product.price,
+      currentSkus: product.currentSkus,
+      currentStyleName: product.name
     })
   }
+
 
 
   render() {
     return(
       <div>
-        <h2>-----------------Product Overview---------------------</h2>
         <div className="overview-container">
           <div className="imageBox">
           <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />
           </div>
           <div className="styleCartBox">
             <Review id={this.props.id} />
-            <Product_info1 category={this.state.category} title={this.state.title} />
-            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} handleClick={this.handleClick}/>
-            <Cart />
+            <Product_info1 category={this.state.category} title={this.state.title} price={this.state.price} />
+            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick}/>
+            <Cart skus={this.state.currentSkus}/>
           </div>
         </div>
         <div className="descriptionSlogan">

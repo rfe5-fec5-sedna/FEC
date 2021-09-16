@@ -15,12 +15,12 @@ const RelatedProducts = (props) => {
     setProductId(currentId)
   }, [currentId]);
 
-  useEffect(() => {
-    helpers.getRelated(productId)
-      .then((res) => {
-        setRelatedProducts(res);
-      })
-  }, [productId])
+  // useEffect(() => {
+  //   helpers.getRelated(productId)
+  //     .then((res) => {
+  //       setRelatedProducts(res);
+  //     })
+  // }, [productId])
 
   return (
     <div id="Related-Products" >
