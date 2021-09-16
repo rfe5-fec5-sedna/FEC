@@ -1,3 +1,7 @@
+/* .single-review-tile {
+  font-weight: bold;
+} */
+
 .single-review {
   display: flex;
   flex-direction: column;
