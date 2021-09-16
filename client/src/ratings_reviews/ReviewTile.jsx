@@ -1,5 +1,6 @@
 import React from 'react';
 import helperFunction from './helperFunction.js';
+import RatingHelpfulness from './RatingHelpfulness.jsx'
 import './styles/ReviewTile.css';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,7 +21,6 @@ const ReviewTile = (props) => {
       <h5>Current Product ID: {productId}</h5>
       <ul>
         {props.reviewsList.map((singleReview) => {
-          // console.log(helperFunction.summaryFormat(singleReview.summary));
           return (
             <div className="single-review" key={singleReview.review_id}>
               <h5>Review #{singleReview.review_id}</h5>
@@ -37,7 +37,9 @@ const ReviewTile = (props) => {
               <div className="single-review-response">
                 {helperFunction.responseFormat(singleReview.response)}
               </div><br></br>
-              {singleReview.helpfulness}<br></br>
+              <div className="single-review-helpfulness">
+                <RatingHelpfulness yesCount={singleReview.helpfulness} />
+              </div><br></br>
             </div>
           )
         })}

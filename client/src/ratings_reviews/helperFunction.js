@@ -41,11 +41,11 @@ const getAllData = {
 
   responseFormat: (responseText) => {
     // TODO
-    if (responseText.length > 0) {
+    if (responseText === null) {
+      return '';
+    } else {
       return `Response
       ${responseText}`;
-    } else {
-      return '';
     }
   }
 
