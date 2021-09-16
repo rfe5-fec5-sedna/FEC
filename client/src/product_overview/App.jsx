@@ -95,7 +95,6 @@ class Overview extends React.Component {
   render() {
     return(
       <div>
-        <h2>-----------------Product Overview---------------------</h2>
         <div className="overview-container">
           <div className="imageBox">
           <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />

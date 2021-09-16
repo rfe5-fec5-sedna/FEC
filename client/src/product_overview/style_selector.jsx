@@ -3,7 +3,7 @@ import React from 'react';
 const Style = (props) => (
 
   <div className="styleSelector">
-    <div>STYLE > {props.styleName}</div>
+    <div className="styleName">STYLE > {props.styleName}</div>
       <div className="thumbnail-container">
         {props.stylesIn4.map((group, index) => {
           return (
