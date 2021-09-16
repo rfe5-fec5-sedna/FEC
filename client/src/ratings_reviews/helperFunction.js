@@ -12,6 +12,16 @@ const getAllData = {
   },
 
   // Logic
+  reviewListLength: (list, /*sortingOption*/) => {
+    if (list.length === 1) {
+      return `${list.length} review, sorted by`
+    } else if (list.length > 1) {
+      return `${list.length} reviews, sorted by`
+    } else if (list.length === 0) {
+      return `Sorry, there are no reviews for this product.`
+    }
+  },
+
   dateFormat: () => {
     let monthNames = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     let date = new Date();

@@ -16,9 +16,8 @@ const ReviewTile = (props) => {
   let recommendCheck = <FontAwesomeIcon icon={faCheckCircle} />;
 
   return (
-    <div id="review-tile">
-      <h3>Individual Review Tile</h3>
-      <h5>Current Product ID: {productId}</h5>
+    <div id="single-review-tile">
+      <h3>{helperFunction.reviewListLength(props.reviewsList, {/*Sorting Option Here*/})} </h3>
       <ul>
         {props.reviewsList.map((singleReview) => {
           return (
