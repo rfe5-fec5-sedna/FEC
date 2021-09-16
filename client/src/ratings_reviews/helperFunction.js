@@ -6,6 +6,11 @@ const getAllData = {
     return axios.get(`/sedna/reviews/?product_id=${id}`)
   },
 
+  // Sorting Data
+  getallSortOptions: (id, sortOption) => {
+    return axios.get(`/sedna/reviews/?product_id=${id}&sort=${sortOption}`)
+  },
+
   // Rating Breakdown Data
   getAllMetaReviews: (id) => {
     return axios.get(`/sedna/reviews/meta/?product_id=${id}`);
