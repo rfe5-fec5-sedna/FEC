@@ -32,7 +32,7 @@ class Cart extends React.Component {
     const name = target.name;
     const size = name === 'size' ? value : null;
 
-    if(size !== null) {
+    if(size !== null && value !== 'Select Size') {
       const collections = Object.values(this.props.skus);
       var maxQuantity;
       for(var combo of collections) {
