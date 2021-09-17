@@ -1,6 +1,12 @@
 #related-cards{
   display: flex;
 }
+
+#right-arrow{
+  display: flex;
+  justify-content: center;
+}
+
 .card-component{
   display: flex;
   border: 1px solid black;
