@@ -23,9 +23,9 @@ class ReviewsList extends React.Component {
               reviewsList: allReviews
             })
           })
-          .catch(err => {
-            console.log(err);
-          })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 
