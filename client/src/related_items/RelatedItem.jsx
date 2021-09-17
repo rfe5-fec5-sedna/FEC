@@ -9,8 +9,12 @@ const RelatedItems = (props) => {
 
   return (
     <div id="Related-Items">
-      <RelatedProducts currentProductId={currentProductId} />
-      <Outfit />
+      <div id="related-carousel">
+        <RelatedProducts currentProductId={currentProductId} />
+      </div>
+      <div id="outfit-carousel">
+        <Outfit />
+      </div>
     </div>
   )
 }
