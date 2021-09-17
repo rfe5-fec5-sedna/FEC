@@ -7,7 +7,7 @@ const getAllData = {
   },
 
   // Sorting Data
-  getAllSortOptions: (id, sortOption) => {
+  getAllReviewsWithSort: (id, sortOption) => {
     return axios.get(`/sedna/reviews/?product_id=${id}&sort=${sortOption}`)
   },
 
@@ -34,11 +34,7 @@ const getAllData = {
     let trueRecommend = recommendObject.true;
     let falseRecommend = recommendObject.false;
     let total = Number(trueRecommend) + Number(falseRecommend);
-    let difference = Number(trueRecommend) - Number(falseRecommend);
-    if (difference <= 0) {
-      return '';
-    }
-    let percentage = Math.round((difference / total) * 100) + '%';
+    let percentage = Math.round((trueRecommend / total) * 100) + '%';
     return Number.isNaN(percentage) ? '' : `${percentage} of reviews recommend this product`;
   },
 
