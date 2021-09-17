@@ -1,11 +1,10 @@
 import React from 'react';
 
 import RelatedProducts from './RelatedProducts';
-import Outfit from './Outfit';
-import './styles/RelatedItems.css';
+import OutfitProducts from './Outfit';
+import '../styles/RelatedItems.css';
 
-const RelatedItems = (props) => {
-  const currentProductId = props.currentProductId;
+const RelatedItems = ({ currentProductId }) => {
 
   return (
     <div id="Related-Items">
@@ -13,7 +12,7 @@ const RelatedItems = (props) => {
         <RelatedProducts currentProductId={currentProductId} />
       </div>
       <div id="outfit-carousel">
-        <Outfit />
+        <OutfitProducts currentProductId={currentProductId} />
       </div>
     </div>
   )
