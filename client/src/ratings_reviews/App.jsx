@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewsList from './ReviewsList.jsx';
+import RatingsBreakdown from './RatingsBreakdown.jsx';
 import './styles/App.css';
 
 const RatingsReviews = (props) => {
@@ -7,7 +8,9 @@ const RatingsReviews = (props) => {
 
   return (
     <div id="ratings-reviews">
-      <h3>--------Ratings and Reviews--------</h3>
+      <div id="ratings-breakdown">
+        <RatingsBreakdown currentProductId={productId} />
+      </div>
       <ReviewsList currentProductId={productId}/>
     </div>
   )

@@ -18,7 +18,6 @@ const ReviewTile = (props) => {
   return (
     <div id="single-review-tile">
       {/* <h3>{helperFunction.reviewListLength(props.reviewsList, props.sortOption)} </h3> */}
-      <ul>
         {props.reviewsList.map((singleReview) => {
           return (
             <div className="single-review" key={singleReview.review_id}>
@@ -42,7 +41,6 @@ const ReviewTile = (props) => {
             </div>
           )
         })}
-      </ul>
     </div>
   );
 }
