@@ -10,7 +10,8 @@ class RatingsBreakdown extends React.Component {
     super(props);
     this.state = {
       averageRating: '',
-      averageStarRating: ''
+      averageStarRating: '',
+      recommendPercentage: ''
     }
   }
 
@@ -20,8 +21,11 @@ class RatingsBreakdown extends React.Component {
         .then((response) => {
           console.log(response.data);
            let ratingsObject = response.data.ratings;
+           let recommendObject = response.data.recommended;
             this.setState({
-              averageRating: helperFunction.averageRating(ratingsObject)
+              averageRating: helperFunction.averageRating(ratingsObject),
+              averageStarRating: helperFunction.averageRating(ratingsObject),
+              recommendPercentage: helperFunction.recommendPercentage(recommendObject)
             })
           })
           .catch(err => {
@@ -39,7 +43,10 @@ class RatingsBreakdown extends React.Component {
         <div id="rating-summary">
           <div className="rating-average">{this.state.averageRating}</div>
           <div className="rating-star-average">
-            <h5><Rating emptySymbol={starOutline} fullSymbol={starSolid} fractions={2} initialRating={this.state.averageRating} readonly/></h5>
+            <h5><Rating emptySymbol={starOutline} fullSymbol={starSolid} fractions={2} initialRating={this.state.averageStarRating} readonly/></h5>
+          </div>
+          <div className="rating-recommend-percentage">
+            {this.state.recommendPercentage}
           </div>
         </div>
       </div>

@@ -30,6 +30,18 @@ const getAllData = {
     return finalTotal.toFixed(1);
   },
 
+  recommendPercentage: (recommendObject) => {
+    let trueRecommend = recommendObject.true;
+    let falseRecommend = recommendObject.false;
+    let total = Number(trueRecommend) + Number(falseRecommend);
+    let difference = Number(trueRecommend) - Number(falseRecommend);
+    if (difference <= 0) {
+      return '';
+    }
+    let percentage = Math.round((difference / total) * 100) + '%';
+    return Number.isNaN(percentage) ? '' : `${percentage} of reviews recommend this product`;
+  },
+
   // Review Tile Logic
   reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {
