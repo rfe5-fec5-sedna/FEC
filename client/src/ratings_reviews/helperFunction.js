@@ -16,6 +16,20 @@ const getAllData = {
     return axios.get(`/sedna/reviews/meta/?product_id=${id}`);
   },
 
+  // Ratings Breakdown Logic
+  averageRating: (ratingsObject) => {
+    let totalRatings = 0;
+    let totalCount = 0;
+
+    for (let value in ratingsObject) {
+      totalRatings += (parseInt(value) * parseInt(ratingsObject[value]));
+      totalCount += parseInt(ratingsObject[value]);
+    }
+    let finalTotal = totalRatings / totalCount;
+
+    return finalTotal.toFixed(1);
+  },
+
   // Review Tile Logic
   reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {

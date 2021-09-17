@@ -19,12 +19,12 @@ class SortOptions extends React.Component {
   render() {
     const { listTitle } = this.state;
     return (
-      <div className="sorting-dropdown-list">
+      <div>
         <h3>{helperFunction.reviewListLength(this.props.listLength, listTitle)} </h3>
-        <select value={listTitle} onChange={this.handleChange}>
-          <option value="Relevant">Relevant</option>
-          <option value="Newest">Newest</option>
-          <option value="Helpful">Helpful</option>
+        <select value={listTitle} onChange={(e) => this.handleChange(e)}>
+          <option value="relevant">Relevant</option>
+          <option value="newest">Newest</option>
+          <option value="helpful">Helpful</option>
         </select>
       </div>
     );
