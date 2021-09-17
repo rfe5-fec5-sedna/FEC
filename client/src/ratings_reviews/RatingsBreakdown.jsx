@@ -19,7 +19,7 @@ class RatingsBreakdown extends React.Component {
     if (this.props.currentProductId !== prevProps.currentProductId) {
       helperFunction.getAllMetaReviews(this.props.currentProductId)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           let ratingsObject = response.data.ratings;
           let recommendObject = response.data.recommended;
           this.setState({
