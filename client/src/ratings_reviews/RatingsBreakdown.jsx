@@ -20,17 +20,17 @@ class RatingsBreakdown extends React.Component {
       helperFunction.getAllMetaReviews(this.props.currentProductId)
         .then((response) => {
           console.log(response.data);
-           let ratingsObject = response.data.ratings;
-           let recommendObject = response.data.recommended;
-            this.setState({
-              averageRating: helperFunction.averageRating(ratingsObject),
-              averageStarRating: helperFunction.averageRating(ratingsObject),
-              recommendPercentage: helperFunction.recommendPercentage(recommendObject)
-            })
+          let ratingsObject = response.data.ratings;
+          let recommendObject = response.data.recommended;
+          this.setState({
+            averageRating: helperFunction.averageRating(ratingsObject),
+            averageStarRating: helperFunction.averageRating(ratingsObject),
+            recommendPercentage: helperFunction.recommendPercentage(recommendObject)
           })
-          .catch(err => {
-            console.log(err);
-          })
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 
