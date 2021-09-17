@@ -5,10 +5,7 @@ import Card from './Card';
 import helpers from '../helpers';
 import '../styles/RelatedCarousel.css'
 
-const RelatedProducts = (props) => {
-  const currentId = props.currentProductId;
-
-  const [productId, setProductId] = useState(currentId);
+const RelatedProducts = ({ currentProductId }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
   const [lastDisplayed, setLastDisplayed] = useState(3);
@@ -26,15 +23,11 @@ const RelatedProducts = (props) => {
   }
 
   useEffect(() => {
-    setProductId(currentId)
-  }, [currentId]);
-
-  useEffect(() => {
-    helpers.getRelated(productId)
+    helpers.getRelated(currentProductId)
       .then((res) => {
         setRelatedProducts(res);
       })
-  }, [productId])
+  }, [currentProductId])
 
   const displayProducts = (productsAmount > 3) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
 
@@ -45,7 +38,11 @@ const RelatedProducts = (props) => {
         {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
         {lastDisplayed !== productsAmount && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.map(productId => (
-          <Card currentId={currentId} key={productId} productId={productId} />
+          <Card
+            key={productId}
+            cardProductId={productId}
+            currentProductId={currentProductId}
+          />
         ))}
       </div>
     </div>

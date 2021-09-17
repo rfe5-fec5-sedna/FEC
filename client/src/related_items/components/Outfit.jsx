@@ -34,7 +34,10 @@ const OutfitProducts = ({ currentProductId }) => {
         {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
         {outfits.length > 3 && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.reverse().map(productId => (
-          <Card key={productId} productId={productId} />
+          <Card
+            key={productId}
+            cardProductId={productId}
+          />
         ))}
       </div>
     </div>
