@@ -78,7 +78,7 @@ class Overview extends React.Component {
   }
 
   handleClick(product, e) {
-    e.preventDefault();
+    // e.preventDefault();
     console.log('this is product', product);
     this.setState({
       currentStyleId: product.style_id,
