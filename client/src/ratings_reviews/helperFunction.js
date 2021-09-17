@@ -25,7 +25,7 @@ const getAllData = {
       totalRatings += (parseInt(value) * parseInt(ratingsObject[value]));
       totalCount += parseInt(ratingsObject[value]);
     }
-    let finalTotal = totalRatings / totalCount;
+    let finalTotal = Math.round(totalRatings / totalCount);
 
     return finalTotal.toFixed(1);
   },
