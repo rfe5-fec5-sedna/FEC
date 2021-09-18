@@ -48,7 +48,7 @@ class App extends React.Component {
           <SearchBar handleClick={this.handleClick} />
         </header>
         <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
-        <RelatedItems currentProductId={this.state.currentProduct} />
+        <RelatedItems currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
         <RatingsReviews currentProductId={this.state.currentProduct} />
       </div>
     )
