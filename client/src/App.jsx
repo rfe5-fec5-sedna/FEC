@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Overview from './product_overview/App.jsx';
-import RelatedItems from './related_items/RelatedItem';
+import RelatedItems from './related_items/components/RelatedItem';
 import RatingsReviews from './ratings_reviews/App.jsx';
 import SearchBar from './SearchBar.jsx';
 

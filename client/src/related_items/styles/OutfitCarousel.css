@@ -1,0 +1,29 @@
+#outfit-carousel{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 15px;
+  margin-left: 15px;
+}
+#your-outfit-header{
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  font-size: 15px;
+}
+#empty-outfit-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 315px;
+  width: 195px;
+}
+#outfit-products{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 15px;
+}

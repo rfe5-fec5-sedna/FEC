@@ -1,6 +1,6 @@
-#Related-Items {
+#Related-Items{
   display: flex;
-  border: 1px solid black;
-  padding: 10px;
-  margin: 15px;
+  flex-wrap: wrap;
+  border: 1px solid red;
+  margin: 25px 5px 25px 5px;
 }

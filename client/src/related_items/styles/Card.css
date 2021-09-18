@@ -1,6 +1,22 @@
-.Card-Component {
+#related-cards{
+  display: flex;
+}
+
+#right-arrow{
+  display: flex;
+  justify-content: center;
+}
+
+.card-component{
   display: flex;
   border: 1px solid black;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 315px;
   width: 195px;
-  height: 290px;
+  margin: 10px 15px 10px 0px;
+}
+.product-image{
+  height: 50px;
+  width: 50px;
 }
