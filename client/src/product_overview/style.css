@@ -77,10 +77,10 @@ dialog {
   left: 20%;
 }
 
-.svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-20 {
+/* .svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-20 {
   width: 3em;
   height: 3em;
-}
+} */
 
 .image-thumbnail {
   display: none;
