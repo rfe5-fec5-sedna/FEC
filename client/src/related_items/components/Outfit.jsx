@@ -10,19 +10,34 @@ const OutfitProducts = ({ currentProductId }) => {
   const [lastDisplayed, setLastDisplayed] = useState(3);
 
   const handleBackward = () => {
-    // TODO: FIX LOGIC FOR OUTFIT CAROUSEL
+    setFirstDisplayed(firstDisplayed - 1);
+    setLastDisplayed(lastDisplayed - 1);
   }
 
   const handleForward = () => {
-    // TODO: FIX LOGIC FOR OUTFIT CAROUSEL
+    setLastDisplayed(lastDisplayed + 1);
+    setFirstDisplayed(firstDisplayed + 1);
+  }
+
+  const removeOutfit = (id) => {
+    const temp = outfits.slice()
+    const index = temp.indexOf(id);
+    temp.splice(index, 1);
+    setOutfits(temp);
+    if (firstDisplayed > 0) {
+      setFirstDisplayed(firstDisplayed - 1);
+      setLastDisplayed(lastDisplayed - 1);
+    }
   }
 
   const handleClick = () => {
     if (outfits.includes(currentProductId)) return
-    setOutfits(outfits => [...outfits, currentProductId])
+    setOutfits(outfits => [currentProductId, ...outfits])
   }
 
   const displayProducts = (outfits.length > 3) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
+  const lastDisplayedIndex = outfits.length - 1;
+  const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 3;
 
   return (
     <div id="Outfit">
@@ -32,11 +47,12 @@ const OutfitProducts = ({ currentProductId }) => {
       </div>
       <div id="outfit-products">
         {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
-        {outfits.length > 3 && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
-        {displayProducts.reverse().map(productId => (
+        {carouselDisplay && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
+        {displayProducts.map(productId => (
           <Card
             key={productId}
             cardProductId={productId}
+            removeOutfit={removeOutfit}
           />
         ))}
       </div>

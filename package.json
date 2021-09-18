@@ -37,12 +37,14 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "@africasokoni/react-image-magnifiers": "^1.0.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "react-rating": "^2.0.5",
     "styled-components": "^5.3.1"
+    "react-image-magnifiers": "^1.4.0",
+    "react-rating": "^2.0.5"
   }
 }

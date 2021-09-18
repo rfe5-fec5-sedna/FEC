@@ -1,9 +1,9 @@
 import React from 'react';
 import api from './api.js';
 import Rating from 'react-rating';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons'
-import { faStar as starOutline } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as starOutline } from '@fortawesome/free-regular-svg-icons';
 
 class Review extends React.Component {
   constructor(props) {
