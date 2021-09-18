@@ -44,8 +44,8 @@ const getAllData = {
     for (let value in ratingsObject) {
       total += Number(ratingsObject[value]);
     }
-    let percent = Math.round((count / total) * 100);
-    return Number.isNaN(percent) ? 0 + '%' : percent + '%';
+    let percentage = Math.round((count / total) * 100);
+    return Number.isNaN(percentage) ? 0 + '%' : percentage;
   },
 
   // Review Tile Logic

@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
         <div className="single-review-tile">
           {this.state.reviewsList.map((singleReview) => {
             return (
-              <ReviewTile productId={this.props.currentProductId} singleReview={singleReview} />
+              <ReviewTile key={singleReview.review_id} productId={this.props.currentProductId} singleReview={singleReview} />
             );
           })}
         </div>
