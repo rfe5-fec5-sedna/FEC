@@ -17,7 +17,7 @@ const ReviewTile = (props) => {
 
   return (
     <div id="single-review-tile">
-      <div className="single-review" >
+      <div className="single-review">
         <h5>Review #{singleReview.review_id}</h5>
         <Rating emptySymbol={starOutline} fullSymbol={starSolid} initialRating={singleReview.rating} readonly/><br></br>
         {helperFunction.dateFormat(singleReview.date)}<br></br>
