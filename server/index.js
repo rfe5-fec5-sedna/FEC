@@ -4,7 +4,7 @@ const { API_TOKEN } = require('./config.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use('/sedna',express.static(__dirname + '/../client/dist'));
+app.use('/sedna', express.static(__dirname + '/../client/dist'));
 
 
 const API_SERVICE_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe'
