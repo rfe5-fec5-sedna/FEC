@@ -55,7 +55,10 @@ class Style extends React.Component {
                       />
                       <label
                         htmlFor={style.style_id}
-                        onClick={(e) => this.props.handleClick(product, e)}
+                        onClick={(e) => {
+                          this.props.handleClick(product, e);
+                          this.props.handleStyle(style.style_id)
+                        }}
                       >
                         <img
                           className="thumbnailCircle"
