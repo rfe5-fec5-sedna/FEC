@@ -38,6 +38,16 @@ const getAllData = {
     return Number.isNaN(percentage) ? '' : `${percentage} of reviews recommend this product`;
   },
 
+  ratingDistCount: (ratingsObject, starCount) => {
+    let total = 0;
+    let count = ratingsObject[starCount];
+    for (let value in ratingsObject) {
+      total += Number(ratingsObject[value]);
+    }
+    let percent = Math.round((count / total) * 100);
+    return Number.isNaN(percent) ? 0 + '%' : percent + '%';
+  },
+
   // Review Tile Logic
   reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {
