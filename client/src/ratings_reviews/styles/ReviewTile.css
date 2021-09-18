@@ -11,6 +11,16 @@
   padding: 5px;
 }
 
+/* .single-review-recommend {
+  width: 1em;
+  height: 1em;
+} */
+
+/* .svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-20 {
+  width: 1em;
+  height: 1em;
+} */
+
 .single-review-summary {
   font-weight: bold;
 }
