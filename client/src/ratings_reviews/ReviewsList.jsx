@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import helperFunction from './helperFunction.js';
-// import SortOptions from './SortOptions.jsx';
 import './styles/ReviewsList.css';
 
 class ReviewsList extends React.Component {
