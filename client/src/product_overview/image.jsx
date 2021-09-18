@@ -1,7 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-import { GlassMagnifier } from "react-image-magnifiers";
+// import { GlassMagnifier } from "react-image-magnifiers";
+import Magnifier from "react-magnifier";
 
 class Image_Gallery extends React.Component {
   constructor(props) {
@@ -145,7 +146,7 @@ class Image_Gallery extends React.Component {
                 />
               );
             })}
-            <a className="down" onClick={this.handleDown}>
+          <a className="down" onClick={this.handleDown}>
             &#711;
           </a>
         </div>
@@ -169,27 +170,35 @@ class Image_Gallery extends React.Component {
           )}
           {this.state.expanded && (
             <dialog open>
-              <FontAwesomeIcon icon={faSearchPlus} onClick={() =>
-                  this.setState({ expanded: !this.state.expanded })
-                } />
-              {this.state.mainIndex !== 0 && (
-                <a className="zoomBack" onClick={this.handleBack}>
-                  &#10094;
-                </a>
-              )}
-               {this.state.mainIndex !== this.state.currentPhotos.length - 1 && (
-                <a className="zoomForward" onClick={this.handleForward}>
-                  &#10095;
-                </a>
-              )}
-              {/* <div className="zoomExpanded"> */}
-              {/* <img
-                className="expanded"
-                src={this.state.currentPhotos[this.state.mainIndex].url}
-              ></img> */}
-              <GlassMagnifier className="zoomed" imageSrc={this.state.currentPhotos[this.state.mainIndex].url} square={true}/>
-              {/* </div> */}
-
+              <div className="zoomContainer">
+                <FontAwesomeIcon
+                  className="searchPlus"
+                  icon={faSearchPlus}
+                  onClick={() =>
+                    this.setState({ expanded: !this.state.expanded })
+                  }
+                />
+                {this.state.mainUrl !== this.state.firstUrl && (
+                  <a className="zoomBack" onClick={this.handleBack}>
+                    &#10094;
+                  </a>
+                )}
+                {this.state.mainUrl !== this.state.lastUrl && (
+                  <a className="zoomForward" onClick={this.handleForward}>
+                    &#10095;
+                  </a>
+                )}
+                <Magnifier
+                  zoomImgSrc={
+                    this.state.currentPhotos[this.state.mainIndex].thumbnail_url
+                  }
+                  src={this.state.currentPhotos[this.state.mainIndex].url}
+                  height="1000px"
+                  width="auto"
+                  zoomFactor="2"
+                  mgShape="square"
+                />
+              </div>
             </dialog>
           )}
         </div>
