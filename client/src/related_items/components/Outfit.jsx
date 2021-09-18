@@ -36,7 +36,7 @@ const OutfitProducts = ({ currentProductId }) => {
   }
 
   const displayProducts = (outfits.length > 3) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
-  const lastDisplayedIndex = outfits.indexOf(outfits[outfits.length - 1]);
+  const lastDisplayedIndex = outfits.length - 1;
   const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 3;
 
   return (
