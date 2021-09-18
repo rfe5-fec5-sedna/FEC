@@ -9,7 +9,7 @@ import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
 import '../styles/Card.css';
 
-const Card = ({ currentProductId, cardProductId, inRelatedProducts, removeOutfit }) => {
+const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inOutfitCarousel, removeOutfit }) => {
 
   const outlineStar = <FontAwesomeIcon icon={emptyStar} />
   const innerStar = <FontAwesomeIcon icon={solidStar} />
@@ -22,36 +22,54 @@ const Card = ({ currentProductId, cardProductId, inRelatedProducts, removeOutfit
   const [image, setImage] = useState(null);
   const [rating, setRating] = useState(null);
 
-  useEffect(() => {
-    helpers.getProductData(cardProductId)
-      .then(res => {
-        setName(res.name);
-        setCategory(res.category);
-        setPrice(res.default_price);
-      })
-  }, [cardProductId])
+  if (inRelatedCarousel) {
+    useEffect(() => {
+      helpers.getProductData(cardProductId)
+        .then(res => {
+          setName(res.name);
+          setCategory(res.category);
+          setPrice(res.default_price);
+        })
+    }, [currentProductId])
+    useEffect(() => {
+      helpers.getProductImage(cardProductId)
+        .then(res => {
+          setImage(res.results[0].photos[0].thumbnail_url)
+        })
+    }, [cardProductId])
+    useEffect(() => {
+      helpers.getProductReview(cardProductId)
+        .then(res => {
+          setRating(res)
+        })
+    }, [cardProductId])
+  } else {
+    const price = styleId.sale_price ? styleId.sale_price : styleId.original_price;
 
-  useEffect(() => {
-    helpers.getProductImage(cardProductId)
-      .then(res => {
-        setImage(res.results[0].photos[0].thumbnail_url)
-      })
-  }, [cardProductId])
-
-  useEffect(() => {
-    helpers.getProductReview(cardProductId)
-      .then(res => {
-        setRating(res)
-      })
-  }, [cardProductId])
+    useEffect(() => {
+      helpers.getProductData(cardProductId)
+        .then(res => {
+          setCategory(res.category)
+          setName(`${styleId.name}, ${res.name}`);
+          setPrice(price)
+          setImage(styleId.photos[0].thumbnail_url);
+        })
+    }, [styleId])
+    useEffect(() => {
+      helpers.getProductReview(cardProductId)
+        .then(res => {
+          setRating(res)
+        })
+    }, [cardProductId])
+  }
 
   // This checks if the Card component is inside of the Related Products carousel
-  const renderModal = (inRelatedProducts === true)
+  const renderModal = (inRelatedCarousel === true)
     ? <ModalWindow currentOverviewId={currentProductId} cardProductId={cardProductId} open={isOpen} onClose={() => setIsOpen(false)} />
     : null
 
   // If the card is in RP carousel, render star as action button, else, render X
-  const actionButton = (inRelatedProducts === true)
+  const actionButton = (inRelatedCarousel === true)
     ? <div id="related-action-button" onClick={() => setIsOpen(true)}>{outlineStar}</div>
     : <div id="outfit-action-button" onClick={() => removeOutfit(cardProductId)}>{closeIcon}</div>
 

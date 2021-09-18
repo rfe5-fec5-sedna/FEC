@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import helpers from '../helpers';
 import Card from './Card';
 import '../styles/OutfitCarousel.css'
 
-const OutfitProducts = ({ currentProductId }) => {
+const OutfitProducts = ({ currentProductId, currentStyleId }) => {
+
+  const inOutfitCarousel = true;
 
   const [outfits, setOutfits] = useState([])
+  const [styleId, setStyleId] = useState(currentStyleId);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
   const [lastDisplayed, setLastDisplayed] = useState(3);
+
+  useEffect(() => {
+    setStyleId("")
+  }, [currentProductId])
+
+  useEffect(() => {
+    setStyleId(currentStyleId)
+  }, [currentStyleId])
 
   const handleBackward = () => {
     setFirstDisplayed(firstDisplayed - 1);
@@ -31,8 +43,13 @@ const OutfitProducts = ({ currentProductId }) => {
   }
 
   const handleClick = () => {
-    if (outfits.includes(currentProductId)) return
-    setOutfits(outfits => [currentProductId, ...outfits])
+    helpers.getOutfitData(currentProductId, currentStyleId)
+      .then(res => {
+        for (let outfit of outfits) {
+          if (JSON.stringify(outfit) === JSON.stringify(res)) return;
+        }
+        setOutfits(outfits => [res, ...outfits])
+      })
   }
 
   const displayProducts = (outfits.length > 3) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
@@ -49,10 +66,12 @@ const OutfitProducts = ({ currentProductId }) => {
         {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
         {carouselDisplay && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.map(productId => (
-          <Card
-            key={productId}
-            cardProductId={productId}
+          < Card
+            key={productId[1].style_id}
+            cardProductId={productId[0]}
+            styleId={productId[1]}
             removeOutfit={removeOutfit}
+            inOutfitCarousel={inOutfitCarousel}
           />
         ))}
       </div>
