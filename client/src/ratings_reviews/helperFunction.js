@@ -6,17 +6,44 @@ const getAllData = {
     return axios.get(`/sedna/reviews/?product_id=${id}`)
   },
 
+  // Sorting Data
+  getAllReviewsWithSort: (id, sortOption) => {
+    return axios.get(`/sedna/reviews/?product_id=${id}&sort=${sortOption}`)
+  },
+
   // Rating Breakdown Data
   getAllMetaReviews: (id) => {
     return axios.get(`/sedna/reviews/meta/?product_id=${id}`);
   },
 
-  // Logic
-  reviewListLength: (list, /*sortingOption*/) => {
+  // Ratings Breakdown Logic
+  averageRating: (ratingsObject) => {
+    let totalRatings = 0;
+    let totalCount = 0;
+
+    for (let value in ratingsObject) {
+      totalRatings += (parseInt(value) * parseInt(ratingsObject[value]));
+      totalCount += parseInt(ratingsObject[value]);
+    }
+    let finalTotal = Math.round(totalRatings / totalCount);
+
+    return finalTotal.toFixed(1);
+  },
+
+  recommendPercentage: (recommendObject) => {
+    let trueRecommend = recommendObject.true;
+    let falseRecommend = recommendObject.false;
+    let total = Number(trueRecommend) + Number(falseRecommend);
+    let percentage = Math.round((trueRecommend / total) * 100) + '%';
+    return Number.isNaN(percentage) ? '' : `${percentage} of reviews recommend this product`;
+  },
+
+  // Review Tile Logic
+  reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {
-      return `${list.length} review, sorted by`
+      return `${list.length} review, sorted by ${sortingOption}`
     } else if (list.length > 1) {
-      return `${list.length} reviews, sorted by`
+      return `${list.length} reviews, sorted by ${sortingOption}`
     } else if (list.length === 0) {
       return `Sorry, there are no reviews for this product.`
     }
@@ -37,7 +64,7 @@ const getAllData = {
   },
 
   bodyFormat: (bodyText) => {
-    // TODO
+    // TODO "Show More"
     if (bodyText.length > 250) {
       bodyText.slice(0, 247) + '...';
     } else {

@@ -2,3 +2,9 @@
   display: flex;
   border: 1px solid black;
 }
+
+#ratings-breakdown {
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid black;
+}

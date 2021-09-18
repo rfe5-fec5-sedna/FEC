@@ -25,7 +25,7 @@ class Review extends React.Component {
       if(error) {
         console.log(error);
       } else {
-        console.log('this is star', result)
+        // console.log('this is star', result)
         this.setState({
           rating: api.starCalc(result)
         })
