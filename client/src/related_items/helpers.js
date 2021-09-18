@@ -32,10 +32,14 @@ const helpers = {
     const stars = calculateRatings(ratings.data.ratings);
     return stars;
   },
-  getOutfitData: async (style_id) => {
-    const url = `/sedna/products/${id}/styles`;
+  getOutfitData: async (productId, styleId) => {
+    const url = `/sedna/products/${productId}/styles`;
     const outfitStyle = await axios.get(url);
-    return outfitStyle.data;
+
+    if (styleId === '') return [productId, outfitStyle.data.results[0]]
+    for (let style of outfitStyle.data.results) {
+      if (style.style_id === styleId) return [productId, style]
+    }
   }
 }
 
