@@ -36,9 +36,9 @@ const helpers = {
     const url = `/sedna/products/${productId}/styles`;
     const outfitStyle = await axios.get(url);
 
-    if (styleId === '') return [productId, outfitStyle.data.results[0]]
+    if (styleId === '') return [productId, outfitStyle.data.results[0]];
     for (let style of outfitStyle.data.results) {
-      if (style.style_id === styleId) return [productId, style]
+      if (style.style_id === styleId) return [productId, style];
     }
   }
 }
