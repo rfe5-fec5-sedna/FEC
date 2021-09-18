@@ -61,6 +61,20 @@ const api = {
         callback(error, null)
       })
 
+  },
+
+  addCart: function(id, callback) {
+    const url = '/sedna/cart';
+    const product = {
+      sku_id: Number(id)
+    }
+    axios.post(url, product)
+      .then((res) => {
+        callback(null, res);
+      })
+      .then((error) => {
+        callback(error, null);
+      })
   }
 }
 

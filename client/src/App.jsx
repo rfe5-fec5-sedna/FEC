@@ -11,13 +11,23 @@ import '../dist/App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentProduct: '' }
+    this.state = {
+      currentProduct: '',
+      currentStyleId: ''
+    }
     this.handleClick = this.handleClick.bind(this);
+    this.handleStyle = this.handleStyle.bind(this);
   }
 
   handleClick(e, id) {
     e.preventDefault();
     this.setState({ currentProduct: Number(id) })
+  }
+
+  handleStyle(id) {
+    this.setState({
+      currentStyleId: id
+    })
   }
 
   componentDidMount() {
@@ -37,7 +47,7 @@ class App extends React.Component {
           <h1>Hello Sedna</h1>
           <SearchBar handleClick={this.handleClick} />
         </header>
-        <Overview id={this.state.currentProduct} />
+        <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
         <RelatedItems currentProductId={this.state.currentProduct} />
         <RatingsReviews currentProductId={this.state.currentProduct} />
       </div>
