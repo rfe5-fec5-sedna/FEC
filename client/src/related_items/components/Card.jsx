@@ -9,7 +9,7 @@ import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
 import '../styles/Card.css';
 
-const Card = ({ currentProductId, cardProductId, inRelatedProducts, removeOutfit }) => {
+const Card = ({ currentProductId, cardProductId, inRelatedCarousel, inOutfitCarousel, removeOutfit }) => {
 
   const outlineStar = <FontAwesomeIcon icon={emptyStar} />
   const innerStar = <FontAwesomeIcon icon={solidStar} />
@@ -46,12 +46,12 @@ const Card = ({ currentProductId, cardProductId, inRelatedProducts, removeOutfit
   }, [cardProductId])
 
   // This checks if the Card component is inside of the Related Products carousel
-  const renderModal = (inRelatedProducts === true)
+  const renderModal = (inRelatedCarousel === true)
     ? <ModalWindow currentOverviewId={currentProductId} cardProductId={cardProductId} open={isOpen} onClose={() => setIsOpen(false)} />
     : null
 
   // If the card is in RP carousel, render star as action button, else, render X
-  const actionButton = (inRelatedProducts === true)
+  const actionButton = (inRelatedCarousel === true)
     ? <div id="related-action-button" onClick={() => setIsOpen(true)}>{outlineStar}</div>
     : <div id="outfit-action-button" onClick={() => removeOutfit(cardProductId)}>{closeIcon}</div>
 

@@ -7,7 +7,7 @@ import '../styles/RelatedCarousel.css'
 
 const RelatedProducts = ({ currentProductId }) => {
 
-  const inRelatedProducts = true;
+  const inRelatedCarousel = true;
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
@@ -45,7 +45,7 @@ const RelatedProducts = ({ currentProductId }) => {
             key={productId}
             cardProductId={productId}
             currentProductId={currentProductId}
-            inRelatedProducts={inRelatedProducts}
+            inRelatedCarousel={inRelatedCarousel}
           />
         ))}
       </div>

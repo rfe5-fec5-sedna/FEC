@@ -31,6 +31,11 @@ const helpers = {
     const ratings = await axios.get(url);
     const stars = calculateRatings(ratings.data.ratings);
     return stars;
+  },
+  getOutfitData: async (style_id) => {
+    const url = `/sedna/products/${id}/styles`;
+    const outfitStyle = await axios.get(url);
+    return outfitStyle.data;
   }
 }
 

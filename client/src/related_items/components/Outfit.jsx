@@ -5,6 +5,8 @@ import '../styles/OutfitCarousel.css'
 
 const OutfitProducts = ({ currentProductId }) => {
 
+  const inOutfitCarousel = true;
+
   const [outfits, setOutfits] = useState([])
   const [firstDisplayed, setFirstDisplayed] = useState(0);
   const [lastDisplayed, setLastDisplayed] = useState(3);
@@ -53,6 +55,7 @@ const OutfitProducts = ({ currentProductId }) => {
             key={productId}
             cardProductId={productId}
             removeOutfit={removeOutfit}
+            inOutfitCarousel={inOutfitCarousel}
           />
         ))}
       </div>
