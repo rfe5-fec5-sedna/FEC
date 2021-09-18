@@ -1,5 +1,6 @@
 import React from 'react';
 import helperFunction from './helperFunction.js';
+import ProductBreakdown from './ProductBreakdown.jsx';
 import Rating from 'react-rating';
 import './styles/RatingsBreakdown.css';
 import styled from 'styled-components';
@@ -61,44 +62,49 @@ class RatingsBreakdown extends React.Component {
             {this.state.recommendPercentage}
           </div>
           <br></br>
-          <div id="rating-distribution">
-            <div className="rating-distribution-stars">5 Stars</div>
-            <div className="rating-distribution-bars">
-              <BarGraphStyling>
-                <StarShading shade={this.state.fiveStars}>.</StarShading>
-                <StarDarkShading darkShade={this.state.fiveStars}>.</StarDarkShading>
-              </BarGraphStyling>
-            </div><br></br>
-            <div className="rating-distribution-stars">4 Stars</div>
-            <div className="rating-distribution-bars">
-              <BarGraphStyling>
-                <StarShading shade={this.state.fourStars}>.</StarShading>
-                <StarDarkShading darkShade={this.state.fourStars}>.</StarDarkShading>
-              </BarGraphStyling></div><br></br>
-            <div className="rating-distribution-stars">3 Stars</div>
-            <div className="rating-distribution-bars">
-              <BarGraphStyling>
-                <StarShading shade={this.state.threeStars}>.</StarShading>
-                <StarDarkShading darkShade={this.state.threeStars}>.</StarDarkShading>
-              </BarGraphStyling></div><br></br>
-            <div className="rating-distribution-stars">2 Stars</div>
-            <div className="rating-distribution-bars">
-              <BarGraphStyling>
-                <StarShading shade={this.state.twoStars}>.</StarShading>
-                <StarDarkShading darkShade={this.state.twoStars}>.</StarDarkShading>
-              </BarGraphStyling></div><br></br>
-            <div className="rating-distribution-stars">1 Star</div>
-            <div className="rating-distribution-bars">
-              <BarGraphStyling>
-                <StarShading shade={this.state.oneStar}>.</StarShading>
-                <StarDarkShading darkShade={this.state.oneStar}>.</StarDarkShading>
-              </BarGraphStyling></div><br></br>
-          </div>
+        </div>
+        <div id="rating-distribution">
+          <div className="rating-distribution-stars">5 Stars</div>
+          <div className="rating-distribution-bars">
+            <BarGraphStyling>
+              <StarShading shade={this.state.fiveStars}>.</StarShading>
+              <StarDarkShading darkShade={this.state.fiveStars}>.</StarDarkShading>
+            </BarGraphStyling>
+          </div><br></br>
+          <div className="rating-distribution-stars">4 Stars</div>
+          <div className="rating-distribution-bars">
+            <BarGraphStyling>
+              <StarShading shade={this.state.fourStars}>.</StarShading>
+              <StarDarkShading darkShade={this.state.fourStars}>.</StarDarkShading>
+            </BarGraphStyling></div><br></br>
+          <div className="rating-distribution-stars">3 Stars</div>
+          <div className="rating-distribution-bars">
+            <BarGraphStyling>
+              <StarShading shade={this.state.threeStars}>.</StarShading>
+              <StarDarkShading darkShade={this.state.threeStars}>.</StarDarkShading>
+            </BarGraphStyling></div><br></br>
+          <div className="rating-distribution-stars">2 Stars</div>
+          <div className="rating-distribution-bars">
+            <BarGraphStyling>
+              <StarShading shade={this.state.twoStars}>.</StarShading>
+              <StarDarkShading darkShade={this.state.twoStars}>.</StarDarkShading>
+            </BarGraphStyling></div><br></br>
+          <div className="rating-distribution-stars">1 Star</div>
+          <div className="rating-distribution-bars">
+            <BarGraphStyling>
+              <StarShading shade={this.state.oneStar}>.</StarShading>
+              <StarDarkShading darkShade={this.state.oneStar}>.</StarDarkShading>
+            </BarGraphStyling></div><br></br>
+        </div>
+        <div id="product-breakdown">
+          <ProductBreakdown productId={this.props.currentProductId} />
         </div>
       </div>
     );
   }
 }
+
+// Bar Graph Styled Components
 
 const BarGraphStyling = styled.div`
   width: 200px;
