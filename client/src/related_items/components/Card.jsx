@@ -3,15 +3,17 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
+import { faTimesCircle as closeX } from '@fortawesome/free-regular-svg-icons'
 
 import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
 import '../styles/Card.css';
 
-const Card = ({ currentProductId, cardProductId }) => {
+const Card = ({ currentProductId, cardProductId, inRelatedProducts, removeOutfit }) => {
 
   const outlineStar = <FontAwesomeIcon icon={emptyStar} />
   const innerStar = <FontAwesomeIcon icon={solidStar} />
+  const closeIcon = <FontAwesomeIcon icon={closeX} />
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState(null);
@@ -43,10 +45,20 @@ const Card = ({ currentProductId, cardProductId }) => {
       })
   }, [cardProductId])
 
+  // This checks if the Card component is inside of the Related Products carousel
+  const renderModal = (inRelatedProducts === true)
+    ? <ModalWindow currentOverviewId={currentProductId} cardProductId={cardProductId} open={isOpen} onClose={() => setIsOpen(false)} />
+    : null
+
+  // If the card is in RP carousel, render star as action button, else, render X
+  const actionButton = (inRelatedProducts === true)
+    ? <div id="related-action-button" onClick={() => setIsOpen(true)}>{outlineStar}</div>
+    : <div id="outfit-action-button" onClick={() => removeOutfit(cardProductId)}>{closeIcon}</div>
+
   return (
     <div className="card-component">
       <img className="product-image" src={image} />
-      <div className="card-action-button" onClick={() => setIsOpen(true)}>{outlineStar}</div>
+      {actionButton}
       <h5 className="product-category">{category}</h5>
       <h5 className="product-name">{name}</h5>
       <h5 className="product-price">{price}</h5>
@@ -58,7 +70,7 @@ const Card = ({ currentProductId, cardProductId }) => {
           readonly
         />
       </div>
-      <ModalWindow currentOverviewId={currentProductId} cardProductId={cardProductId} open={isOpen} onClose={() => setIsOpen(false)} />
+      {renderModal}
     </div>
   )
 }
