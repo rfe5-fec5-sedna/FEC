@@ -102,7 +102,7 @@ class Overview extends React.Component {
           <div className="styleCartBox">
             <Review id={this.props.id} />
             <Product_info1 category={this.state.category} title={this.state.title} price={this.state.price} />
-            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick}/>
+            <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick} handleStyle={this.props.handleStyle}/>
             <Cart skus={this.state.currentSkus}/>
           </div>
         </div>
