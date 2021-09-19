@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearchDollar } from '@fortawesome/free-solid-svg-icons'
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -20,8 +23,10 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form>
+      <form id="search-bar">
         <input
+          placeholder="Search Item"
+          id="search-input-bar"
           name="searchProduct"
           value={this.state.searchProduct}
           onChange={this.handleInputChange}
@@ -29,7 +34,7 @@ class SearchBar extends React.Component {
         <button onClick={(e) => {
           this.props.handleClick(e, this.state.searchProduct);
           this.state.searchProduct = ''
-        }}>+</button>
+        }}>{<FontAwesomeIcon icon={faSearchDollar} />}</button>
       </form >
     );
   }
