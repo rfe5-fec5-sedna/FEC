@@ -1,7 +1,6 @@
 .overview-container {
   height: 700px;
   display: flex;
-  border: 1px black solid;
   justify-content: flex-start;
 
 }
@@ -21,10 +20,8 @@
 }
 
 .productInfo2 {
-  border: 1px black solid;
+  padding-bottom: 20px;
 }
-
-
 
 
 /*----------------------------------Image Gallery-----------------------*/
