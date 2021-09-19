@@ -1,12 +1,93 @@
-/* #Sedna {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
-*/
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+  background-color: #faf9f8;
+  font-family: 'Source Code Pro', monospace;
+}
 
 #app-header{
-  display: flex;
-  flex-wrap: wrap;
-  height: auto;
+  height: 75px;
+  background-color: #faf9f8;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+#footer{
+  background-color: #faf9f8;
+  height: 200px;
+  border-top: 2px solid black;
+}
+#title{
+  position: absolute;
+  margin-top: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  color:#d00000;
+  font-family: 'Pacifico', cursive;
+}
+#search-bar{
+  position:absolute;
+  margin-top: 40px;
+  right: 200px;
+}
+#search-input-bar{
+  background-color: #faf9f8;
+  border-radius: 5px;
+}
+#widgets{
+  margin: 30px 200px 100px 200px;
+}
+#product-overview{
+  margin-bottom: 25px;
+  border-bottom: 4px solid black;
+}
+#related-items{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-bottom: 4px solid black;
+}
+#ratings-reviews{
+  margin-top: 25px;
+  margin-bottom: 25px;
 }

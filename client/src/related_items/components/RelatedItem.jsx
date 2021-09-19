@@ -7,7 +7,7 @@ import '../styles/RelatedItems.css';
 const RelatedItems = ({ currentProductId, currentStyleId }) => {
 
   return (
-    <div id="Related-Items">
+    <div id="related-items">
       <div id="related-carousel">
         <RelatedProducts currentProductId={currentProductId} />
       </div>
