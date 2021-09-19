@@ -48,19 +48,20 @@ class ReviewsList extends React.Component {
   render() {
     return (
       <div id="reviews-list">
-        <div id="sorting-option-header">
-          <h3>{helperFunction.reviewListLength(this.state.reviewsList, this.state.sortOption)}</h3>
+        <div className="single-review-tile">
+          <div id="sorting-option-header">
+            <h3>{helperFunction.reviewListLength(this.state.reviewsList, this.state.sortOption)}
             <select value={this.state.sortOption} onChange={this.handleChange}>
               <option value={"none"}>None</option>
               <option value="relevant">Relevant</option>
               <option value="newest">Newest</option>
               <option value="helpful">Helpful</option>
             </select>
-        </div>
-        <div className="single-review-tile">
+            </h3>
+          </div>
           {this.state.reviewsList.map((singleReview) => {
             return (
-              <ReviewTile productId={this.props.currentProductId} singleReview={singleReview} />
+              <ReviewTile key={singleReview.review_id} productId={this.props.currentProductId} singleReview={singleReview} />
             );
           })}
         </div>

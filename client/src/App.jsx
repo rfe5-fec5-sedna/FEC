@@ -42,15 +42,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="Sedna">
+      <>
         <header id="app-header">
-          <h1>Hello Sedna</h1>
+          <h1 id="title">Project Cat-walk</h1>
           <SearchBar handleClick={this.handleClick} />
         </header>
-        <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
-        <RelatedItems currentProductId={this.state.currentProduct} />
-        <RatingsReviews currentProductId={this.state.currentProduct} />
-      </div>
+        <div id="widgets">
+          <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
+          <RelatedItems currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
+          <RatingsReviews currentProductId={this.state.currentProduct} />
+        </div>
+        <footer id="footer">
+          <p>luna-moon-1216 jordanvillacorta SebasCC99</p>
+        </footer>
+      </>
     )
   }
 }
