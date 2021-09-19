@@ -7,7 +7,8 @@ This repo is the first senior project in Hack Reactor's Bootcamp, consists of bu
 1. Start by cloning the repo into your computer in the terminal. We recommend doing it in a new folder. <br> `git clone https://github.com/rfe5-fec5-sedna/FEC.git`
 2. Install all of the npm modules and dependencies used in the project. <br> `npm i` or `npm install`
 
-This project requires a GitHub token to fetch data from the api, to do that, create a file in the server folder `touch server/config.js` and name it `config.js`. The file should look like this: `module.exports = { API_TOKEN: <YOUR_TOKEN> }` <br>
+This project requires a GitHub token to fetch data from the api, to do that, create a file in the server folder and name it `config.js`. <br>`touch server/config.js` <br>
+The file should look like this: `module.exports = { API_TOKEN: <YOUR_TOKEN> }` <br>
 
 Logged to your GitHub account, generate your new access [token](https://github.com/settings/tokens) with the following permissions:
 ![token permissions](https://user-images.githubusercontent.com/65096739/133938156-6afc9d37-c768-400a-b8e0-2bf8f3d538c4.png)
