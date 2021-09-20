@@ -31,7 +31,7 @@ class Cart extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    console.log('this is quantity target', e.target)
+    // console.log('this is quantity target', e.target)
     const target = e.target;
     const value = target.value;
     const name = target.name;

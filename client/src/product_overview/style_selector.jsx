@@ -12,7 +12,6 @@ class Style extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('prev', prevProps)
     if(this.props.styles !== prevProps.styles) {
       this.setState ({
         selected: this.props.styles[0].style_id

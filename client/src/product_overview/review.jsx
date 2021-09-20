@@ -18,7 +18,7 @@ const Review = (props) => {
           initialRating={props.rating}
           readonly
         />
-        <span className="reviewCount" data-testid="reviewCount">Read all {props.count} reviews</span>
+        <a href="#rating_link" className="reviewCount" data-testid="reviewCount">Read all {props.count} reviews</a>
       </div>
     );
   } else {

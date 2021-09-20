@@ -8,9 +8,11 @@ const RatingsReviews = (props) => {
 
   return (
     <div id="ratings-reviews">
+      <a id="rating_link">
       <div id="ratings-breakdown">
         <RatingsBreakdown currentProductId={productId} />
       </div>
+      </a>
       <ReviewsList currentProductId={productId}/>
     </div>
   )

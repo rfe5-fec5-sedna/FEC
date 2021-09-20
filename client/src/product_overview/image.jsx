@@ -174,6 +174,7 @@ class Image_Gallery extends React.Component {
                 <FontAwesomeIcon
                   className="searchPlus"
                   icon={faSearchPlus}
+                  size="2x"
                   onClick={() =>
                     this.setState({ expanded: !this.state.expanded })
                   }

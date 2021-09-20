@@ -19,6 +19,8 @@ class Overview extends React.Component {
       price: '',
       slogan: '',
       description: '',
+      rating: '',
+      count: '',
       styles: [],
       stylesIn4: [],
       currentStyleId: '',
@@ -45,7 +47,7 @@ class Overview extends React.Component {
             description: result.description
           })
         }
-      })
+      });
 
       api.getStyles(this.props.id, (error, result) => {
         if (error) {
@@ -73,7 +75,28 @@ class Overview extends React.Component {
             currentSkus: result[0].skus
           })
         }
-      })
+      });
+
+      api.getReview(this.props.id, (error, result) => {
+        if(error) {
+          console.log(error);
+        } else {
+          this.setState({
+            rating: api.starCalc(result)
+          })
+        }
+      });
+
+      api.getCount(this.props.id, (error, result) => {
+        if(error) {
+          console.log(error);
+        } else {
+          this.setState({
+            count: result
+          })
+        }
+      });
+
     };
   }
 
@@ -100,7 +123,7 @@ class Overview extends React.Component {
             <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />
           </div>
           <div className="styleCartBox">
-            <Review id={this.props.id} />
+            <Review rating={this.state.rating} count={this.state.count} />
             <Product_info1 category={this.state.category} title={this.state.title} price={this.state.price} />
             <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick} handleStyle={this.props.handleStyle} />
             <Cart skus={this.state.currentSkus} />
