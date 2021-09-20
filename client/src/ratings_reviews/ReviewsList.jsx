@@ -11,6 +11,7 @@ class ReviewsList extends React.Component {
       sortOption: 'relevant'
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -45,6 +46,11 @@ class ReviewsList extends React.Component {
       })
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log('Clicked');
+  }
+
   render() {
     return (
       <div id="reviews-list">
@@ -64,6 +70,18 @@ class ReviewsList extends React.Component {
               <ReviewTile key={singleReview.review_id} productId={this.props.currentProductId} singleReview={singleReview} />
             );
           })}
+          <div id="ratings-button-container">
+            <div id="ratings-more-reviews">
+              <form onClick={this.handleClick}>
+                <button type="submit">MORE REVIEWS</button>
+              </form>
+            </div>
+            <div id="ratings-new-review">
+              <form onClick={this.handleClick}>
+                <button type="submit">ADD A REVIEW +</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     );
