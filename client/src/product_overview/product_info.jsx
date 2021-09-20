@@ -43,8 +43,8 @@ const Product_info2 = (props) => {
         <div className="description">{props.description}</div>
       </div>
       <div className="features">
-        {props.features.map((feature) => (
-          <div className="individual-feature">&#10003; {feature.feature} : {feature.value}</div>
+        {props.features.map((feature, index) => (
+          <div key={index} className="individual-feature">&#10003; {feature.feature} : {feature.value}</div>
         ))}
 
       </div>
