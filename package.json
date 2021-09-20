@@ -44,9 +44,11 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "styled-components": "^5.3.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "babel-jest": "^27.2.0",
     "react-image-magnifiers": "^1.4.0",
     "react-magnifier": "^3.0.4",
-    "react-rating": "^2.0.5"
+    "react-rating": "^2.0.5",
+    "styled-components": "^5.3.1"
   }
 }
