@@ -1,4 +1,4 @@
-# FEC
+# Front-End Capstone
 ### Project Catwalk - Sedna
 ---
 This repo is the first senior project in Hack Reactor's Bootcamp, consists of building a client side application that resembles a really basic clothing e-commerce website. The project was developed by 3 students, focusing mainly in the project overview, the related products, outfits for the user and finally, a ratings and reviews section.
