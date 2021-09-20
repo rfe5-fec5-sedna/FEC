@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import helpers from '../helpers';
 import Card from './Card';
-import '../styles/OutfitCarousel.css'
+import '../styles.css'
 
 const OutfitProducts = ({ currentProductId, currentStyleId }) => {
 
@@ -57,14 +57,14 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
   const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 3;
 
   return (
-    <div id="Outfit">
+    <>
+      {firstDisplayed !== 0 && <a id="left-arrow-outfit" onClick={handleBackward}>&#10094;</a>}
+      {carouselDisplay && <a id="right-arrow-outfit" onClick={handleForward}>&#10095;</a>}
       <h1 id="your-outfit-header">Your Outfit</h1>
-      <div id="empty-outfit-card" onClick={handleClick}>
-        <p>Add this to your Outfit!</p>
+      <div id="empty-outfit-btn" onClick={handleClick}>
+        <button>Add this to your Outfit!</button>
       </div>
       <div id="outfit-products">
-        {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
-        {carouselDisplay && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.map(productId => (
           < Card
             key={productId[1].style_id}
@@ -75,7 +75,7 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
           />
         ))}
       </div>
-    </div>
+    </>
   )
 }
 

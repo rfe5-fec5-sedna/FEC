@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Card from './Card';
 import helpers from '../helpers';
-import '../styles/RelatedCarousel.css'
+import '../styles.css';
 
 const RelatedProducts = ({ currentProductId }) => {
 
@@ -35,11 +35,11 @@ const RelatedProducts = ({ currentProductId }) => {
   const displayProducts = (productsAmount > 3) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
 
   return (
-    <div id="related-products" >
+    <>
       <h1 id="related-product-header">Related Products</h1>
+      {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
+      {lastDisplayed !== productsAmount && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
       <div id="related-cards">
-        {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
-        {lastDisplayed !== productsAmount && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
         {displayProducts.map(productId => (
           <Card
             key={productId}
@@ -49,7 +49,7 @@ const RelatedProducts = ({ currentProductId }) => {
           />
         ))}
       </div>
-    </div>
+    </>
   )
 }
 

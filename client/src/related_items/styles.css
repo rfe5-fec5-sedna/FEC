@@ -1,0 +1,80 @@
+/* Related Products */
+#related-carousel{
+  display: grid;
+  grid-template-rows: 10% 90%;
+  grid-template-columns: 5% 90% 5%;
+  height: auto;
+}
+#related-product-header{
+  grid-area: 1/1/1/3;
+}
+#left-arrow{
+  grid-column: 1;
+  grid-row: 2;
+  justify-content: center;
+  align-self: center;
+}
+#right-arrow{
+  grid-column: 3;
+  grid-row: 2;
+  align-self: center;
+}
+#related-cards{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-column: 2/3;
+  grid-row: 2;
+}
+.card-component{
+  display: grid;
+  place-self: center;
+  height: 300px;
+  width: 200px;
+  border: 1px solid black;
+  align-self:flex-start;
+}
+.upper-part{
+  display: grid;
+  height: 180px;
+  width: 200px;
+  border-bottom: 1px solid black;
+}
+.product-image{
+  max-height: 100%;
+  max-width: 100%;
+  overflow:auto;
+}
+.lower-part{
+  display: grid;
+  height: 120px;
+}
+
+/* Outift Products */
+#outfit-carousel{
+  display: grid;
+  grid-template-rows: 10% 90%;
+  grid-template-columns: 5% 90% 5%;
+  height: auto;
+}
+#your-outfit-header{
+  grid-area: 1/1/1/3;
+}
+#empty-outfit-btn{
+  justify-content: center;
+}
+#outfit-products{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-area: 2/2/2/3;
+}
+#left-arrow-outfit{
+  grid-column: 1;
+  grid-row: 2;
+  justify-content: center;
+  align-self: center;
+}
+#right-arrow-outfit{
+  grid-column: 3;
+  grid-row: 2;
+  align-self: center;
+}
