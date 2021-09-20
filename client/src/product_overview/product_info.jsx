@@ -43,14 +43,31 @@ const Product_info2 = (props) => {
         <div className="description">{props.description}</div>
       </div>
       <div className="share">
-      <FontAwesomeIcon icon={faDiscord} className="icon d" size="lg"/>
-      <FontAwesomeIcon icon={faTwitter} className="icon t" size="lg" />
-      <FontAwesomeIcon icon={faPinterest} className="icon p" size="lg" />
-      <FontAwesomeIcon icon={faFacebook} className="icon f" size="lg"/>
+      <FontAwesomeIcon icon={faDiscord} className="icon d" size="lg" onClick={() => handleClick("discord")}/>
+      <FontAwesomeIcon icon={faTwitter} className="icon t" size="lg" onClick={() => handleClick("twitter")} />
+      <FontAwesomeIcon icon={faPinterest} className="icon p" size="lg" onClick={() => handleClick("pinterest")}/>
+      <FontAwesomeIcon icon={faFacebook} className="icon f" size="lg" onClick={() => handleClick("facebook")}/>
       </div>
     </div>
 
   )
+}
+
+var url = "http://localhost:3000/sedna/"
+
+const handleClick = (name) => {
+  var shareUrl;
+  if (name === "facebook") {
+    shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+  } else if (name === "twitter") {
+    shareUrl = 'https://twitter.com/intent/tweet';
+  } else if (name === "discord") {
+    shareUrl = 'https://discord.com/login';
+  } else if (name === "pinterest") {
+    shareUrl = "https://www.pinterest.com/";
+  }
+
+  window.open(shareUrl, "NewWindow", 'Please check out this great product');
 }
 
 export {
