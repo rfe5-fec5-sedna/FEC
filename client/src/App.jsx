@@ -33,7 +33,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/sedna/products')
       .then((response) => {
-        this.setState({ currentProduct: response.data[3].id })
+        this.setState({ currentProduct: response.data[0].id })
       })
       .catch((error) => {
         console.error(error);
