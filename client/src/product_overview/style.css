@@ -74,10 +74,10 @@ dialog {
   left: 20%;
 }
 
-/* .svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-20 {
+.icon {
   width: 3em;
   height: 3em;
-} */
+}
 
 .image-thumbnail {
   display: none;
@@ -157,6 +157,10 @@ dialog {
 }
 .reviewCount {
   padding-left: 15px;
+}
+.noRatings {
+  font-size: 12px;
+  font-style: italic;
 }
 /*------------------------------------Product Info 1------------------------------*/
 .productInfo1 {
@@ -257,6 +261,8 @@ dialog {
   width: 65px;
   height: 65px;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 input[type="radio"]{
