@@ -1,7 +1,6 @@
 import React from 'react';
 import helperFunction from './helperFunction.js';
 import './styles/ProductBreakdown.css';
-import Rating from 'react-rating';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +21,6 @@ class ProductBreakdown extends React.Component {
       helperFunction.getAllMetaReviews(this.props.productId)
         .then((response) => {
           let charObject = response.data.characteristics;
-          console.log(charObject);
           this.setState({
             comfort: helperFunction.productValueRound(charObject.Comfort.value),
             fit: helperFunction.productValueRound(charObject.Fit.value),
