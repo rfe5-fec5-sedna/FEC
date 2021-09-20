@@ -8,6 +8,8 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
+      shortList: [],
+      allReviewsDisplayed: false,
       sortOption: 'relevant'
     }
     this.handleChange = this.handleChange.bind(this);
@@ -20,7 +22,7 @@ class ReviewsList extends React.Component {
         .then((response) => {
             let allReviews = response.data.results;
             this.setState({
-              reviewsList: allReviews
+              reviewsList: allReviews.slice(0, 2)
             })
           })
         .catch(err => {
@@ -37,9 +39,15 @@ class ReviewsList extends React.Component {
     helperFunction.getAllReviewsWithSort(this.props.currentProductId, newSort)
       .then((response) => {
         let allReviewsWithSort = response.data.results;
-        this.setState({
-          reviewsList: allReviewsWithSort
-        })
+        if (this.state.allReviewsDisplayed) {
+          this.setState({
+            reviewsList: allReviewsWithSort
+          })
+        } else {
+          this.setState({
+            reviewsList: allReviewsWithSort.slice(0, 2)
+          })
+        }
       })
       .catch(err => {
         console.log(err);
@@ -48,7 +56,17 @@ class ReviewsList extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log('Clicked');
+    helperFunction.getAllReviews(this.props.currentProductId)
+        .then((response) => {
+            let allReviews = response.data.results;
+            this.setState({
+              reviewsList: allReviews,
+              allReviewsDisplayed: true
+            })
+          })
+        .catch(err => {
+          console.log(err);
+        })
   }
 
   render() {
@@ -77,7 +95,7 @@ class ReviewsList extends React.Component {
               </form>
             </div>
             <div id="ratings-new-review">
-              <form onClick={this.handleClick}>
+              <form>
                 <button type="submit" id="new-review-button">ADD A REVIEW +</button>
               </form>
             </div>
