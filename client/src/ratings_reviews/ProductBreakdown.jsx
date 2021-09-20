@@ -85,7 +85,7 @@ class ProductBreakdown extends React.Component {
 
 // Bar Styled Components
 const BarGraphStyling = styled.div`
-  width: 200px;
+  width: 300px;
   display: flex;
   height: 8px;
 `;

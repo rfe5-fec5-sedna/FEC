@@ -107,7 +107,7 @@ class RatingsBreakdown extends React.Component {
 // Bar Graph Styled Components
 
 const BarGraphStyling = styled.div`
-  width: 200px;
+  width: 300px;
   display: flex;
   height: 10px;
 `;

@@ -19,6 +19,5 @@
 
 .characteristics-right {
   display: flex;
-  /* justify-content: flex-end; */
   font-size: 10px;
 }
