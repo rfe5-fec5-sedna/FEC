@@ -63,12 +63,21 @@ class ProductBreakdown extends React.Component {
         <BarGraphStyling>
           <BarShading shade={this.state.length}></BarShading>{caretUp}
           <BarDarkShading darkShade={this.state.length}></BarDarkShading>
-        </BarGraphStyling><br></br>
+        </BarGraphStyling>
+        <div className="characteristics-container">
+          <div className="characteristics-left">Too Small</div>
+          <div className="characteristics-middle">Perfect</div>
+          <div className="characteristics-right">Too Big</div>
+        </div><br></br>
         Quality
         <BarGraphStyling>
           <BarShading shade={this.state.quality}></BarShading>{caretUp}
           <BarDarkShading darkShade={this.state.quality}></BarDarkShading>
         </BarGraphStyling>
+        <div className="characteristics-container">
+          <div className="characteristics-left">Poor</div>
+          <div className="characteristics-right">Great</div>
+        </div>
       </div>
     );
   }
