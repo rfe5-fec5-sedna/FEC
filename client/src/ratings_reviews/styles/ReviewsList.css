@@ -4,8 +4,94 @@
   /* border: 1px solid black; */
 }
 
-/* .sorting-option {
-  display: flex;
-  justify-content: flex-end;
-  border: 1px solid black;
-} */
+/* SORTING OPTION HEADER STYLING */
+#sorting-option-header {
+  margin-bottom: 10px;
+}
+
+/* SORTING OPTION BUTTON STYLING */
+#sort-option-button {
+	display: inline-block;
+  text-transform: uppercase;
+	text-decoration: none;
+	background: lightgray;
+	padding: 6px;
+  margin-left: 10px;
+	border-radius: 10px;
+	border: 1px solid black;
+  cursor: pointer;
+  font-family: 'Source Code Pro', monospace;
+}
+
+#sort-option-button:hover {
+  background: lightgray;
+  border-color: lightgray;
+  transition: all 0.4s ease 0s;
+}
+
+/* MORE REVIEWS & ADD A REVIEW BUTTONS STYLING */
+
+#ratings-button-container {
+  display: block;
+  align-items: center;
+  padding-top: 20px;
+}
+
+#ratings-more-reviews {
+  text-transform: uppercase;
+	text-decoration: none;
+	background: #faf9f8;
+	padding: 10px;
+  margin-right: 10px;
+	border-radius: 10px;
+	display: inline-block;
+	border: none;
+  cursor: pointer;
+}
+
+#ratings-more-reviews:hover {
+  background: lightgray;
+  border-color: lightgray;
+  transition: all 0.4s ease 0s;
+}
+
+#more-reviews-button {
+  padding: 10px;
+  background: #faf9f8;
+  cursor: pointer;
+  font-family: 'Source Code Pro', monospace;
+}
+
+#more-reviews-button:hover {
+  background: #faf9f8;
+  cursor: pointer;
+}
+
+#ratings-new-review {
+  text-transform: uppercase;
+	text-decoration: none;
+	background: #faf9f8;
+	padding: 10px;
+	border-radius: 10px;
+	display: inline-block;
+	border: none;
+  cursor: pointer;
+}
+
+#ratings-new-review:hover {
+  background: lightgray;
+  border-color: lightgray;
+  transition: all 0.4s ease 0s;
+}
+
+
+#new-review-button {
+  padding: 10px;
+  background: #faf9f8;
+  cursor: pointer;
+  font-family: 'Source Code Pro', monospace;
+}
+
+#new-review-button:hover {
+  cursor: pointer;
+}
