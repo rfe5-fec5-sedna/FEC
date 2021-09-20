@@ -1,3 +1,18 @@
+#rating-distribution {
+  margin-bottom: 20px;
+}
+
+.rating-average {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.rating-recommend-percentage {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .rating-distribution-stars {
+  margin-bottom: 5px;
   text-decoration: underline;
 }
