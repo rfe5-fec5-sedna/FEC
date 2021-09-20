@@ -1,7 +1,7 @@
 import React from 'react';
 import api from './api.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -104,8 +104,11 @@ class Cart extends React.Component {
         </select>
         </div>
         <div className="addCart">
-          <button className="addCartbtn" onClick={this.handleSubmit}>ADD TO BAG <FontAwesomeIcon icon={faShoppingCart} className="shoppingCart" />
+          <button className="addCartbtn" onClick={this.handleSubmit}>ADD TO BAG
           </button>
+          <span className="bookMark">
+          <FontAwesomeIcon icon={faBookmark} className="bookMarkIcon" />
+          </span>
         </div>
       </div>
 
@@ -117,3 +120,5 @@ class Cart extends React.Component {
 
 
 export default Cart;
+
+{/* <FontAwesomeIcon icon={faShoppingCart} className="shoppingCart" /> */}
