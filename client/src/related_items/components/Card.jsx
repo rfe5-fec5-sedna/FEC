@@ -7,7 +7,7 @@ import { faTimesCircle as closeX } from '@fortawesome/free-regular-svg-icons'
 
 import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
-import '../styles/Card.css';
+import '../styles.css';
 
 const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inOutfitCarousel, removeOutfit }) => {
 
@@ -75,18 +75,22 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
 
   return (
     <div className="card-component">
-      <img className="product-image" src={image} />
-      {actionButton}
-      <h5 className="product-category">{category}</h5>
-      <h5 className="product-name">{name}</h5>
-      <h5 className="product-price">{price}</h5>
-      <div className="product-rating">
-        <Rating
-          initialRating={rating}
-          emptySymbol={outlineStar}
-          fullSymbol={innerStar}
-          readonly
-        />
+      <div className="upper-part">
+        <img className="product-image" src={image} />
+        {actionButton}
+      </div>
+      <div className="lower-part">
+        <h5 className="product-category">{category}</h5>
+        <h5 className="product-name">{name}</h5>
+        <h5 className="product-price">{price}</h5>
+        <div className="product-rating">
+          <Rating
+            initialRating={rating}
+            emptySymbol={outlineStar}
+            fullSymbol={innerStar}
+            readonly
+          />
+        </div>
       </div>
       {renderModal}
     </div>

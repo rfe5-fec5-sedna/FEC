@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import helpers from '../helpers';
 
-import '../styles/ModalWindow.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
+import '../styles.css';
 
 const ModalWindow = ({ open, onClose, currentId, productClickedId }) => {
 
