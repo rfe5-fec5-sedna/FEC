@@ -1,0 +1,24 @@
+.characteristics-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  padding: 8px;
+}
+
+.characteristics-left {
+  display: flex;
+  /* justify-content: flex-start; */
+  font-size: 10px;
+}
+
+.characteristics-middle {
+  display: flex;
+  /* justify-content: flex-start; */
+  font-size: 10px;
+}
+
+.characteristics-right {
+  display: flex;
+  /* justify-content: flex-end; */
+  font-size: 10px;
+}

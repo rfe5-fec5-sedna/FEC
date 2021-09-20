@@ -48,6 +48,12 @@ const getAllData = {
     return Number.isNaN(percentage) ? 0 + '%' : percentage;
   },
 
+  // Products Breakdown Logic
+  productValueRound: (charValue) => {
+    let roundedValue = charValue * 20;
+    return (Math.round(roundedValue * 10) / 10);
+  },
+
   // Review Tile Logic
   reviewListLength: (list, sortingOption) => {
     if (list.length === 1) {
