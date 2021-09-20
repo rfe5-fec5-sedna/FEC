@@ -71,7 +71,7 @@ dialog {
 
 .magnifier {
   cursor: crosshair;
-  left: 20%;
+  left: 15%;
 }
 
 .icon {
@@ -126,7 +126,7 @@ dialog {
 .zoomForward, .zoomBack {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 45%;
   width: 10px;
   margin-top: -23px;
   padding: 20px;
@@ -139,7 +139,7 @@ dialog {
 }
 
 .zoomForward {
-  left: 3%;
+  left: 9%;
 }
 
 .up, .down {
@@ -148,6 +148,16 @@ dialog {
   font-size: 19px;
   padding-left: 53px;
   cursor: pointer;
+}
+
+.image-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.iconRow {
+  margin-block: auto;
 }
 
 
@@ -321,16 +331,31 @@ label:before {
 
 .addCart {
   padding-top: 15px;
+  display: flex;
 }
 
 .addCartbtn {
-  width: 300px;
+  width: 250px;
   height: 25px;
   color: white;
   background-color: black;
   border-radius: 5px;
 }
+.bookMark {
+  width: 40px;
+  height: 25px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  margin-left: 2px;
+  text-align: center;
+}
 
+.bookMarkIcon {
+  padding-top: 5px ;
+  display: inline-block;
+
+}
 .shoppingCart {
   color: white;
 }
