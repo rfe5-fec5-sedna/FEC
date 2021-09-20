@@ -19,6 +19,7 @@ class Overview extends React.Component {
       price: '',
       slogan: '',
       description: '',
+      features: [],
       rating: '',
       count: '',
       styles: [],
@@ -44,7 +45,8 @@ class Overview extends React.Component {
             category: result.category,
             title: result.name,
             slogan: result.slogan,
-            description: result.description
+            description: result.description,
+            features: result.features
           })
         }
       });
@@ -130,7 +132,7 @@ class Overview extends React.Component {
           </div>
         </div>
         <div className="descriptionSlogan">
-          <Product_info2 slogan={this.state.slogan} description={this.state.description} />
+          <Product_info2 slogan={this.state.slogan} description={this.state.description} features={this.state.features} />
         </div>
       </div>
 

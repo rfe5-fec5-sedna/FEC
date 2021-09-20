@@ -36,22 +36,35 @@ const Product_info1 = (props) => {
 
 
 const Product_info2 = (props) => {
-  return(
+  return (
     <div className="productInfo2">
       <div className="textDescription" data-testid="sloganDescription">
         <span className="slogan">{props.slogan}</span>
         <div className="description">{props.description}</div>
       </div>
-      <div className="share">
-      <FontAwesomeIcon icon={faDiscord} className="icon d" size="lg" onClick={() => handleClick("discord")}/>
-      <FontAwesomeIcon icon={faTwitter} className="icon t" size="lg" onClick={() => handleClick("twitter")} />
-      <FontAwesomeIcon icon={faPinterest} className="icon p" size="lg" onClick={() => handleClick("pinterest")}/>
-      <FontAwesomeIcon icon={faFacebook} className="icon f" size="lg" onClick={() => handleClick("facebook")}/>
+      <div className="features">
+        {props.features.map((feature) => (
+          <div className="individual-feature">&#10003; {feature.feature} : {feature.value}</div>
+        ))}
+
       </div>
     </div>
+  );
+};
 
-  )
+
+export {
+  Product_info1,
+  Product_info2
 }
+
+
+{/* <div className="share">
+<FontAwesomeIcon icon={faDiscord} className="icon d" size="lg" onClick={() => handleClick("discord")}/>
+<FontAwesomeIcon icon={faTwitter} className="icon t" size="lg" onClick={() => handleClick("twitter")} />
+<FontAwesomeIcon icon={faPinterest} className="icon p" size="lg" onClick={() => handleClick("pinterest")}/>
+<FontAwesomeIcon icon={faFacebook} className="icon f" size="lg" onClick={() => handleClick("facebook")}/>
+</div>
 
 var url = "http://localhost:3000/sedna/"
 
@@ -68,9 +81,4 @@ const handleClick = (name) => {
   }
 
   window.open(shareUrl, "NewWindow", 'Please check out this great product');
-}
-
-export {
-  Product_info1,
-  Product_info2
-}
+} */}

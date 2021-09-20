@@ -213,6 +213,7 @@ dialog {
 
 .textDescription {
   flex: 2;
+  border-right: 2px solid grey;
 }
 
 .slogan {
@@ -222,6 +223,11 @@ dialog {
 
 .description {
   padding-top: 2px;
+}
+
+.features {
+  flex: 1;
+  padding-left: 5px;
 }
 
 .share {
@@ -258,6 +264,7 @@ dialog {
 }
 
 .thumbnail-container {
+  height: 300px;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -265,6 +272,7 @@ dialog {
 
 .thumbnailRow {
   display: flex;
+  margin-bottom: 15px;
 }
 
 .thumbnailCircle {
@@ -323,10 +331,14 @@ label:before {
 }
 
 .selectQuantity {
-  width: 180x;
+  width: 145px;
   height: 40px;
   text-align: center;
   border-radius: 5px;
+}
+
+.selectQuantity option {
+  width: 180px;
 }
 
 .addCart {
