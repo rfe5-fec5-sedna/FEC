@@ -174,10 +174,29 @@ class Image_Gallery extends React.Component {
                 <FontAwesomeIcon
                   className="searchPlus"
                   icon={faSearchPlus}
+                  size="2x"
                   onClick={() =>
                     this.setState({ expanded: !this.state.expanded })
                   }
                 />
+                <div className="iconRow">
+                {this.state.currentPhotos.length !== 0 &&
+                  this.state.currentPhotos.map((currentPhoto, index) => {
+                    return (
+                      <img
+                        className="image-icon"
+                        id={
+                          index === this.state.mainIndex
+                            ? "selectedPic"
+                            : "notSelected"
+                        }
+                        key={index}
+                        src={currentPhoto.thumbnail_url}
+                        onClick={(e) => this.handleClick(e, index)}
+                      />
+                    );
+                  })}
+                  </div>
                 {this.state.mainUrl !== this.state.firstUrl && (
                   <a className="zoomBack" onClick={this.handleBack}>
                     &#10094;

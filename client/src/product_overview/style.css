@@ -1,7 +1,6 @@
 .overview-container {
   height: 700px;
   display: flex;
-  border: 1px black solid;
   justify-content: flex-start;
 
 }
@@ -21,10 +20,8 @@
 }
 
 .productInfo2 {
-  border: 1px black solid;
+  padding-bottom: 20px;
 }
-
-
 
 
 /*----------------------------------Image Gallery-----------------------*/
@@ -74,13 +71,13 @@ dialog {
 
 .magnifier {
   cursor: crosshair;
-  left: 20%;
+  left: 15%;
 }
 
-/* .svg-inline--fa.fa-w-16, .svg-inline--fa.fa-w-20 {
+.icon {
   width: 3em;
   height: 3em;
-} */
+}
 
 .image-thumbnail {
   display: none;
@@ -129,7 +126,7 @@ dialog {
 .zoomForward, .zoomBack {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 45%;
   width: 10px;
   margin-top: -23px;
   padding: 20px;
@@ -142,7 +139,7 @@ dialog {
 }
 
 .zoomForward {
-  left: 3%;
+  left: 9%;
 }
 
 .up, .down {
@@ -153,6 +150,16 @@ dialog {
   cursor: pointer;
 }
 
+.image-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.iconRow {
+  margin-block: auto;
+}
+
 
 /*------------------------------------Review------------------------------*/
 .ratings {
@@ -160,6 +167,10 @@ dialog {
 }
 .reviewCount {
   padding-left: 15px;
+}
+.noRatings {
+  font-size: 12px;
+  font-style: italic;
 }
 /*------------------------------------Product Info 1------------------------------*/
 .productInfo1 {
@@ -202,6 +213,7 @@ dialog {
 
 .textDescription {
   flex: 2;
+  border-right: 2px solid grey;
 }
 
 .slogan {
@@ -211,6 +223,11 @@ dialog {
 
 .description {
   padding-top: 2px;
+}
+
+.features {
+  flex: 1;
+  padding-left: 5px;
 }
 
 .share {
@@ -247,6 +264,7 @@ dialog {
 }
 
 .thumbnail-container {
+  height: 300px;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -254,12 +272,15 @@ dialog {
 
 .thumbnailRow {
   display: flex;
+  margin-bottom: 15px;
 }
 
 .thumbnailCircle {
   width: 65px;
   height: 65px;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 input[type="radio"]{
@@ -310,24 +331,44 @@ label:before {
 }
 
 .selectQuantity {
-  width: 180x;
+  width: 145px;
   height: 40px;
   text-align: center;
   border-radius: 5px;
 }
 
+.selectQuantity option {
+  width: 180px;
+}
+
 .addCart {
   padding-top: 15px;
+  display: flex;
 }
 
 .addCartbtn {
-  width: 300px;
+  width: 250px;
   height: 25px;
   color: white;
   background-color: black;
   border-radius: 5px;
+  text-align: center;
+}
+.bookMark {
+  width: 40px;
+  height: 25px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  margin-left: 6px;
+  text-align: center;
 }
 
+.bookMarkIcon {
+  padding-top: 5px ;
+  display: inline-block;
+
+}
 .shoppingCart {
   color: white;
 }
