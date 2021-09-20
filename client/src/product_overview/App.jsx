@@ -120,6 +120,9 @@ class Overview extends React.Component {
   render() {
     return (
       <div id="product-overview">
+        <div className="policy">Free shipping and free return on all orders, all the time.
+        <span className="details">Details.</span>
+        </div>
         <div className="overview-container">
           <div className="imageBox">
             <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />

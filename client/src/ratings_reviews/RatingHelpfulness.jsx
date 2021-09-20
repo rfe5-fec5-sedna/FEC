@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/RatingHelpfulness.css';
 
 class RatingHelpfulness extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class RatingHelpfulness extends React.Component {
   render() {
     return (
       <div>
-        Was this review helpful? <button onClick={this.handleYesClick}> Yes {this.state.totalYesCount}</button> <button onClick={this.handleNoClick}> No {this.state.totalNoCount}</button>
+        Was this review helpful? <button id="yes-button" onClick={this.handleYesClick}> Yes {this.state.totalYesCount}</button> <button id="no-button" onClick={this.handleNoClick}> No {this.state.totalNoCount}</button>
       </div>
     )
   }

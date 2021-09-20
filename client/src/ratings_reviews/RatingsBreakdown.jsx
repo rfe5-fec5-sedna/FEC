@@ -27,7 +27,6 @@ class RatingsBreakdown extends React.Component {
     if (this.props.currentProductId !== prevProps.currentProductId) {
       helperFunction.getAllMetaReviews(this.props.currentProductId)
         .then((response) => {
-          console.log('characteristics:', response.data.characteristics);
           let ratingsObject = response.data.ratings;
           let recommendObject = response.data.recommended;
           this.setState({
@@ -107,9 +106,9 @@ class RatingsBreakdown extends React.Component {
 // Bar Graph Styled Components
 
 const BarGraphStyling = styled.div`
-  width: 200px;
+  width: 300px;
   display: flex;
-  height: 12px;
+  height: 10px;
 `;
 
 const StarShading = styled.div`
@@ -119,6 +118,7 @@ const StarShading = styled.div`
   margin-left: 10px;
   &:hover {
     opacity: 0.8;
+    cursor: pointer;
   }
   font-size: 1px;
 `;
@@ -130,6 +130,7 @@ const StarDarkShading = styled.div`
   margin-right: 25px;
   &:hover {
     opacity: 0.8;
+    cursor: pointer;
   }
   font-size: 1px;
 `;

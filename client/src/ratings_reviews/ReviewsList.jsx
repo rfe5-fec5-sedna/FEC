@@ -8,9 +8,12 @@ class ReviewsList extends React.Component {
     super(props);
     this.state = {
       reviewsList: [],
+      shortList: [],
+      allReviewsDisplayed: false,
       sortOption: 'relevant'
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,7 +22,7 @@ class ReviewsList extends React.Component {
         .then((response) => {
             let allReviews = response.data.results;
             this.setState({
-              reviewsList: allReviews
+              reviewsList: allReviews.slice(0, 2)
             })
           })
         .catch(err => {
@@ -36,13 +39,34 @@ class ReviewsList extends React.Component {
     helperFunction.getAllReviewsWithSort(this.props.currentProductId, newSort)
       .then((response) => {
         let allReviewsWithSort = response.data.results;
-        this.setState({
-          reviewsList: allReviewsWithSort
-        })
+        if (this.state.allReviewsDisplayed) {
+          this.setState({
+            reviewsList: allReviewsWithSort
+          })
+        } else {
+          this.setState({
+            reviewsList: allReviewsWithSort.slice(0, 2)
+          })
+        }
       })
       .catch(err => {
         console.log(err);
       })
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    helperFunction.getAllReviews(this.props.currentProductId)
+        .then((response) => {
+            let allReviews = response.data.results;
+            this.setState({
+              reviewsList: allReviews,
+              allReviewsDisplayed: true
+            })
+          })
+        .catch(err => {
+          console.log(err);
+        })
   }
 
   render() {
@@ -51,7 +75,7 @@ class ReviewsList extends React.Component {
         <div className="single-review-tile">
           <div id="sorting-option-header">
             <h3>{helperFunction.reviewListLength(this.state.reviewsList, this.state.sortOption)}
-            <select value={this.state.sortOption} onChange={this.handleChange}>
+            <select value={this.state.sortOption} onChange={this.handleChange} id="sort-option-button">
               <option value={"none"}>None</option>
               <option value="relevant">Relevant</option>
               <option value="newest">Newest</option>
@@ -64,6 +88,18 @@ class ReviewsList extends React.Component {
               <ReviewTile key={singleReview.review_id} productId={this.props.currentProductId} singleReview={singleReview} />
             );
           })}
+          <div id="ratings-button-container">
+            <div id="ratings-more-reviews">
+              <form onClick={this.handleClick}>
+                <button type="submit" id="more-reviews-button">MORE REVIEWS</button>
+              </form>
+            </div>
+            <div id="ratings-new-review">
+              <form>
+                <button type="submit" id="new-review-button">ADD A REVIEW +</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     );
