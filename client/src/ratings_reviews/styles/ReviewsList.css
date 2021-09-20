@@ -1,12 +1,13 @@
 #reviews-list {
   display: flex;
   justify-content: flex-end;
+  background-color: rgb(247, 247, 247);
   /* border: 1px solid black; */
 }
 
 /* SORTING OPTION HEADER STYLING */
 #sorting-option-header {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* SORTING OPTION BUTTON STYLING */

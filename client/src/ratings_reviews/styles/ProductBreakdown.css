@@ -1,23 +1,31 @@
 .characteristics-container {
   display: flex;
-  justify-content: space-between;
+  width: 350px;
+  justify-content: flex-start;
   font-size: 10px;
   padding: 8px;
 }
 
 .characteristics-left {
   display: flex;
-  /* justify-content: flex-start; */
+  width: 115px;
+  font-size: 10px;
+}
+
+.characteristics-left-short {
+  display: flex;
+  width: 250px;
   font-size: 10px;
 }
 
 .characteristics-middle {
   display: flex;
-  /* justify-content: flex-start; */
+  width: 110px;
   font-size: 10px;
 }
 
 .characteristics-right {
   display: flex;
+  width: 125px;
   font-size: 10px;
 }

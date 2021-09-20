@@ -46,7 +46,7 @@ class ProductBreakdown extends React.Component {
           <BarDarkShading darkShade={this.state.comfort}></BarDarkShading>
         </BarGraphStyling>
         <div className="characteristics-container">
-          <div className="characteristics-left">Poor</div>
+          <div className="characteristics-left-short">Poor</div>
           <div className="characteristics-right">Perfect</div>
         </div><br></br>
         Fit
@@ -75,7 +75,7 @@ class ProductBreakdown extends React.Component {
           <BarDarkShading darkShade={this.state.quality}></BarDarkShading>
         </BarGraphStyling>
         <div className="characteristics-container">
-          <div className="characteristics-left">Poor</div>
+          <div className="characteristics-left-short">Poor</div>
           <div className="characteristics-right">Great</div>
         </div>
       </div>
