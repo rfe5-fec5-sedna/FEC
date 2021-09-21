@@ -16,6 +16,11 @@ const getAllData = {
     return axios.get(`/sedna/reviews/meta/?product_id=${id}`);
   },
 
+  // New Review Data
+  postNewReview: (reviewObject) => {
+    return axios.post(`/sedna/reviews`, reviewObject);
+  },
+
   // Ratings Breakdown Logic
   averageRating: (ratingsObject) => {
     let totalRatings = 0;

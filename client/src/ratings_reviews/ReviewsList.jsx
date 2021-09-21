@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
+import NewReview from './NewReview.jsx';
 import helperFunction from './helperFunction.js';
 import './styles/ReviewsList.css';
 
@@ -10,10 +11,13 @@ class ReviewsList extends React.Component {
       reviewsList: [],
       shortList: [],
       allReviewsDisplayed: false,
-      sortOption: 'relevant'
+      sortOption: 'relevant',
+      openModal: false,
+      modalDisplayed: false
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleMoreReviewsClick = this.handleMoreReviewsClick.bind(this);
+    this.openNewReviewClick = this.openNewReviewClick.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -54,7 +58,7 @@ class ReviewsList extends React.Component {
       })
   }
 
-  handleClick(e) {
+  handleMoreReviewsClick(e) {
     e.preventDefault();
     helperFunction.getAllReviews(this.props.currentProductId)
         .then((response) => {
@@ -67,6 +71,22 @@ class ReviewsList extends React.Component {
         .catch(err => {
           console.log(err);
         })
+  }
+
+  openNewReviewClick(e) {
+    console.log('Open Modal clicked')
+    e.preventDefault();
+    this.setState({
+      openModal: true
+    })
+  }
+
+  closeNewReviewClick(e) {
+    console.log('Close Modal clicked')
+    e.preventDefault();
+    this.setState({
+      openModal: false
+    })
   }
 
   render() {
@@ -90,13 +110,14 @@ class ReviewsList extends React.Component {
           })}
           <div id="ratings-button-container">
             <div id="ratings-more-reviews">
-              <form onClick={this.handleClick}>
+              <form onClick={this.handleMoreReviewsClick}>
                 <button type="submit" id="more-reviews-button">MORE REVIEWS</button>
               </form>
             </div>
             <div id="ratings-new-review">
-              <form>
-                <button type="submit" id="new-review-button">ADD A REVIEW +</button>
+              <NewReview productId={this.props.currentProductId} modelDisplayed={this.state.modalDisplayed} closeNewReview={this.closeNewReviewClick} />
+              <form onClick={this.openNewReviewClick}>
+                <button type="submit" id="add-review-button">ADD A REVIEW +</button>
               </form>
             </div>
           </div>
@@ -107,18 +128,3 @@ class ReviewsList extends React.Component {
 }
 
 export default ReviewsList;
-// ReviewsList holds select dropdown
-// ex: numbers === sortedReviews
-// based on the sorting option, fetch reviews from api
-// sortedReviews.map(review => { <ReviewTile data={review} />
-
-// change sortoption state with handleChange
-
-// use your helper function to fetch sorted reviews
-// inside of return in ReviewsList
-
-// sortedReviews.map(review => {
-//   return (
-//     <ReviewTile username={review.username} date={review.data}/>
-//   )
-// })
