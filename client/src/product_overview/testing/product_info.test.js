@@ -32,10 +32,20 @@ it("renders product_info1 correctly with sales price", () => {
 it("renders product_info2 correctly", () => {
   const productInfo = {
     slogan: "GMO free",
-    description: "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings"
+    description: "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings",
+    "features": [
+      {
+              "feature": "Sole",
+              "value": "Rubber"
+          },
+      {
+              "feature": "Material",
+              "value": "FullControlSkin"
+          },
+      ]
   };
 
-  const { getByTestId } = render(<Product_info2 slogan={productInfo.slogan} description={productInfo.description}/>);
+  const { getByTestId } = render(<Product_info2 slogan={productInfo.slogan} description={productInfo.description} features={productInfo.features}/>);
 
   expect(getByTestId('sloganDescription')).toBeTruthy();
 

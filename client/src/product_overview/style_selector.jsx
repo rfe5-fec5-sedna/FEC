@@ -49,6 +49,7 @@ class Style extends React.Component {
                         name="checkbox"
                         key={style.style_id}
                         id={style.style_id}
+                        data-testid={style.style_id}
                         checked={style.style_id === this.state.selected}
                         onChange={this.handleChange}
                       />
