@@ -13,10 +13,18 @@ class NewReview extends React.Component {
       reviewBody: "",
       photos: [],
       nickname: "",
-      email: "",
-      submitReview: "",
+      email: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
+    this.setState({
+      [name]: value
+    })
   }
 
   handleSubmit(e) {
@@ -24,7 +32,7 @@ class NewReview extends React.Component {
     e.preventDefault();
     helperFunction.postNewReview(this.props.productId)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         // this.setState({
         //   reviewsList: allReviews,
         //   allReviewsDisplayed: true
@@ -40,22 +48,58 @@ class NewReview extends React.Component {
       <div id="new-review-modal">
         <div id="new-review-modal-header">
           <h1>Write Your Review</h1>
-          <span className="new-review-x-button" onClick={this.props.closeNewReview}>
+          <button className="new-review-x-button" onClick={this.props.closeNewReview}>
             x
-          </span>
+          </button>
         </div>
         <div id="new-review-modal-body">
           <h3>About the {this.props.productId}</h3>
+          <div id="new-review-modal-form">
+            <form>
+            {/*
+              overallRating: "",
+              productRecommend: "",
+              characteristics: {},
+              reviewSummary: "",
+              reviewBody: "",
+              photos: [],
+              nickname: "",
+              email: ""
+            */}
+              <div className="radio-product-recommend">
+                  Do you recommend this product?
+                <label>
+                  <input
+                    type="radio"
+                    name="productRecommend"
+                    value="Yes"
+                    checked={this.state.productRecommend === "yes"}
+                    onChange={this.handleInputChange}
+                  />
+                  Yes
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="productRecommend"
+                    value="No"
+                    checked={this.state.productRecommend === "no"}
+                    onChange={this.handleInputChange}
+                  />
+                  No
+                </label>
+                Selected option is {this.state.productRecommend}
+              </div>
+              <button
+                type="submit"
+                id="submit-review-button"
+                onClick={this.handleSubmit}
+              >
+                SUBMIT REVIEW
+              </button>
+            </form>
+          </div>
         </div>
-        <form>
-          <button
-            type="submit"
-            id="submit-review-button"
-            onClick={this.handleSubmit}
-          >
-            SUBMIT REVIEW
-          </button>
-        </form>
         <div id="new-review-modal-footer">
           <form>
             <button
