@@ -56,6 +56,8 @@
   justify-content: center;
   margin-right: auto;
   position: relative;
+  display: grid;
+  object-fit: contain;
 }
 
 .mainImage {
@@ -76,11 +78,44 @@ dialog {
   top: 0;
   width: 200%;
   z-index: 9999;
+  height: 900px;
+  border: hidden;
+  background-color: #faf9f8;
 }
 
-.magnifier {
+.beforeZoomContainer {
+  width: auto;
+  height: 700px;
+}
+
+.beforeZoomContainer img {
+  width: auto;
+  height: 700px;
+  padding-top: 50px;
+}
+
+.beforeZoomContainer img:hover {
   cursor: crosshair;
-  left: 15%;
+}
+
+
+.afterZoomContainer {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.afterZoomContainer img {
+  width: auto;
+  height: 1750px;
+  position: absolute;
+
+}
+
+#minus:hover {
+  cursor: zoom-out;
 }
 
 .icon {
@@ -111,10 +146,9 @@ dialog {
 .back, .forward {
   cursor: pointer;
   position: absolute;
-  top: 25%;
+  top: 35%;
   width: auto;
-  margin-top: -23px;
-  padding: 20px;
+  padding: 0;
   color: grey;
   font-weight: bold;
   font-size: 19px;
@@ -123,9 +157,14 @@ dialog {
 }
 
 .forward {
-  top: 25.5%;
-  right: 38%;
+  top: 35.5%;
+  margin-left: 700px;
+  right: 40%;
   border-radius: 4px 0 0 4px;
+}
+
+.back {
+  margin-left: 15px;
 }
 
 .zoomContainer {
@@ -135,9 +174,9 @@ dialog {
 .zoomForward, .zoomBack {
   cursor: pointer;
   position: absolute;
-  top: 45%;
+  top: 85%;
   width: 10px;
-  margin-top: -23px;
+  left: 32%;
   padding: 20px;
   color: grey;
   font-weight: bold;
@@ -148,25 +187,36 @@ dialog {
 }
 
 .zoomForward {
-  left: 9%;
+  left: 37%;
 }
 
 .up, .down {
   color: grey;
   font-weight: bold;
   font-size: 19px;
-  padding-left: 53px;
+  padding-left: 50px;
   cursor: pointer;
 }
 
 .image-icon {
   width: 35px;
   height: 35px;
-  margin-right: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  display: grid;
 }
 
 .iconRow {
-  margin-block: auto;
+  height: 45px;
+  padding-top: 50px;
+  margin-left: 150px;
+}
+
+.searchPlus {
+  display: inline;
+  height: 40px;
+  position: absolute;
+  left: 470px;
 }
 
 
@@ -184,6 +234,7 @@ dialog {
 /*------------------------------------Product Info 1------------------------------*/
 .productInfo1 {
   padding-top: 15px;
+  height: 130px;
 }
 .category {
   padding-bottom: 5px;
@@ -296,7 +347,11 @@ dialog {
   margin-bottom: 5px;
 }
 
-input[type="radio"]{
+/* input[type="radio"]{
+  display: none;
+} */
+
+.radio {
   display: none;
 }
 
