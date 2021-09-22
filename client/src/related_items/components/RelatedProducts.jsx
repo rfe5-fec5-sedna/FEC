@@ -5,13 +5,13 @@ import Card from './Card';
 import helpers from '../helpers';
 import '../styles.css';
 
-const RelatedProducts = ({ currentProductId }) => {
+const RelatedProducts = ({ currentProductId, handleCardClick }) => {
 
   const inRelatedCarousel = true;
 
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
-  const [lastDisplayed, setLastDisplayed] = useState(3);
+  const [lastDisplayed, setLastDisplayed] = useState(4);
 
   const productsAmount = relatedProducts.length;
 
@@ -32,7 +32,7 @@ const RelatedProducts = ({ currentProductId }) => {
       })
   }, [currentProductId])
 
-  const displayProducts = (productsAmount > 3) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
+  const displayProducts = (productsAmount > 4) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
 
   return (
     <>
@@ -45,6 +45,7 @@ const RelatedProducts = ({ currentProductId }) => {
             key={productId}
             cardProductId={productId}
             currentProductId={currentProductId}
+            handleCardClick={handleCardClick}
             inRelatedCarousel={inRelatedCarousel}
           />
         ))}
