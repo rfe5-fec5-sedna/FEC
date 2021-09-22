@@ -12,11 +12,14 @@ class NewReview extends React.Component {
       reviewSummary: "",
       reviewBody: "",
       photos: [],
+      currentPhoto: null,
       nickname: "",
       email: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCurrentPhoto = this.handleCurrentPhoto.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(e) {
@@ -27,15 +30,28 @@ class NewReview extends React.Component {
     })
   }
 
+  handleCurrentPhoto(e) {
+    this.setState({
+      currentPhoto: [e.target.value]
+    })
+  }
+
+  handleFileUpload(e) {
+    console.log(e.target.value)
+    e.preventDefault();
+    this.setState({
+      photos: this.state.photos.concat(this.state.currentPhoto)
+    })
+  }
+
   handleSubmit(e) {
-    console.log("Submit Review clicked");
+    // console.log("Submit Review clicked");
     e.preventDefault();
     helperFunction.postNewReview(this.props.productId)
       .then((response) => {
         // console.log(response);
         // this.setState({
-        //   reviewsList: allReviews,
-        //   allReviewsDisplayed: true
+
         // })
       })
       .catch((err) => {
@@ -56,15 +72,6 @@ class NewReview extends React.Component {
           <h3>About the {this.props.productId}</h3>
           <div id="new-review-modal-form">
             <form>
-            {/*
-              overallRating: "",
-              characteristics: {},
-              reviewSummary: "",
-              reviewBody: "",
-              photos: [],
-              nickname: "",
-              email: ""
-            */}
               Overall Rating:
               <div id="new-review-overall-rating">
                 {this.state.overallRating}
@@ -101,7 +108,8 @@ class NewReview extends React.Component {
               <div id="new-review-summary">
                 <textarea
                   type="text"
-                  maxlength="60"
+                  minLength="0"
+                  maxLength="60"
                   name="reviewSummary"
                   placeholder="Example: Best purchase ever!"
                   onChange={this.handleInputChange}
@@ -113,7 +121,7 @@ class NewReview extends React.Component {
                 <textarea
                   type="text"
                   minLength="50"
-                  maxlength="1000"
+                  maxLength="1000"
                   name="reviewBody"
                   placeholder="Why did you like the product or not?"
                   onChange={this.handleInputChange}
@@ -121,6 +129,23 @@ class NewReview extends React.Component {
                   required
                 />
                 {helperFunction.minCharacters(50 - this.state.reviewBody.length)}
+              </div>
+              Photo Upload:
+              <div id="new-review-photo-upload">
+                <input
+                  type="text"
+                  onChange={this.handleCurrentPhoto}
+                />
+                {helperFunction.photoUploadLimit(this.state.photos.length) && (
+                  <button
+                    type="submit"
+                    id="new-review-photo-submit"
+                    value={this.state.currentPhoto}
+                    onClick={this.handleFileUpload}
+                  >
+                    Upload
+                  </button>
+                )}
               </div>
               <button
                 type="submit"
