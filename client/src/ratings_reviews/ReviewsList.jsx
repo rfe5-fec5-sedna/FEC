@@ -75,7 +75,6 @@ class ReviewsList extends React.Component {
   }
 
   openNewReviewClick(e) {
-    console.log("Open Modal clicked");
     e.preventDefault();
     this.setState({
       openModal: true,
@@ -83,7 +82,6 @@ class ReviewsList extends React.Component {
   }
 
   closeNewReviewClick(e) {
-    console.log("Close Modal clicked");
     e.preventDefault();
     this.setState({
       openModal: false,
@@ -140,9 +138,7 @@ class ReviewsList extends React.Component {
           <div id="ratings-new-review-modal">
             {this.state.openModal && (
               <div
-                onClick={this.closeNewReviewClick}
                 className="modal-background">
-                  Hello World!
                 <NewReview
                   productId={this.props.currentProductId}
                   openModal={this.state.openModal}
