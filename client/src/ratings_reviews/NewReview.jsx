@@ -7,7 +7,7 @@ class NewReview extends React.Component {
     super(props);
     this.state = {
       overallRating: "",
-      productRecommend: "",
+      productRecommend: null,
       characteristics: {},
       reviewSummary: "",
       reviewBody: "",
@@ -58,7 +58,6 @@ class NewReview extends React.Component {
             <form>
             {/*
               overallRating: "",
-              productRecommend: "",
               characteristics: {},
               reviewSummary: "",
               reviewBody: "",
@@ -66,29 +65,48 @@ class NewReview extends React.Component {
               nickname: "",
               email: ""
             */}
+              Overall Rating:
+              <div id="new-review-overall-rating">
+                {this.state.overallRating}
+              </div>
               <div className="radio-product-recommend">
-                  Do you recommend this product?
-                <label>
-                  <input
-                    type="radio"
-                    name="productRecommend"
-                    value="Yes"
-                    checked={this.state.productRecommend === "yes"}
-                    onChange={this.handleInputChange}
-                  />
-                  Yes
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="productRecommend"
-                    value="No"
-                    checked={this.state.productRecommend === "no"}
-                    onChange={this.handleInputChange}
-                  />
-                  No
-                </label>
-                Selected option is {this.state.productRecommend}
+                  Do you recommend this product?<span style={{color: "red"}}>*</span>
+                  <label>
+                    <input
+                      type="radio"
+                      name="productRecommend"
+                      value="Yes"
+                      checked={this.state.productRecommend === "Yes"}
+                      onChange={this.handleInputChange}
+                      className="radio-product-recommend-input"
+                      required
+                    />
+                    Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="productRecommend"
+                      value="No"
+                      checked={this.state.productRecommend === "No"}
+                      onChange={this.handleInputChange}
+                      className="radio-product-recommend-input"
+                      required
+                    />
+                    No
+                  </label>
+                You selected: {this.state.productRecommend}
+              </div>
+              Review Summary:
+              <div id="new-review-summary">
+                <textarea
+                  type="text"
+                  maxlength="60"
+                  name="reviewSummary"
+                  placeholder="Example: Best purchase ever!"
+                  onChange={this.handleInputChange}
+                  value={this.state.reviewSummary}
+                />
               </div>
               <button
                 type="submit"
