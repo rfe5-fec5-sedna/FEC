@@ -14,8 +14,9 @@ class Image_Gallery extends React.Component {
       firstUrl: '',
       lastUrl: '',
       expanded: false,
-      zoom: true,
-      currentPhotos: []
+      zoom: false,
+      currentPhotos: [],
+      style: {}
     };
 
     this.handleForward = this.handleForward.bind(this);
@@ -23,6 +24,8 @@ class Image_Gallery extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDown = this.handleDown.bind(this);
     this.handleUp = this.handleUp.bind(this);
+    this.handleZoom = this.handleZoom.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -122,6 +125,27 @@ class Image_Gallery extends React.Component {
     })
   }
 
+  handleZoom(e) {
+    e.preventDefault();
+    this.setState({
+      zoom: !this.state.zoom
+    })
+  }
+
+  handleHover(e) {
+
+    const x = - (e.pageX - e.target.offsetLeft - e.target.clientLeft) * 2;
+    const y = - (e.pageY - e.target.offsetTop - e.target.clientTop) * 2;
+    this.setState({
+      style: {
+        left: x,
+        top: y
+      }
+    })
+  }
+
+
+
 
   render() {
     return (
@@ -152,14 +176,9 @@ class Image_Gallery extends React.Component {
         </div>
         <div className="image-box2">
           {this.state.mainUrl !== this.state.firstUrl && (
-            <a className="back" onClick={this.handleBack}>
+            <div className="back" onClick={this.handleBack}>
               &#10094;
-            </a>
-          )}
-          {this.state.mainUrl !== this.state.lastUrl && (
-            <a className="forward" onClick={this.handleForward}>
-              &#10095;
-            </a>
+            </div>
           )}
           {this.state.currentPhotos[0] !== undefined && (
             <img
@@ -168,55 +187,67 @@ class Image_Gallery extends React.Component {
               onClick={() => this.setState({ expanded: !this.state.expanded })}
             ></img>
           )}
+          {this.state.mainUrl !== this.state.lastUrl && (
+            <div className="forward" onClick={this.handleForward}>
+              &#10095;
+            </div>
+          )}
           {this.state.expanded && (
             <dialog open>
               <div className="zoomContainer">
-                <FontAwesomeIcon
-                  className="searchPlus"
-                  icon={faSearchPlus}
-                  size="2x"
-                  onClick={() =>
-                    this.setState({ expanded: !this.state.expanded })
-                  }
-                />
+                <div className="searchPlus">
+                  <FontAwesomeIcon
+                    icon={faSearchPlus}
+                    size="2x"
+                    onClick={() =>
+                      this.setState({ expanded: !this.state.expanded })
+                    }
+                  />
+                </div>
+                <div className="afterZoomContainer">
+                  {this.state.zoom && (
+                    <img
+                      id="afterZoom"
+                      src={this.state.currentPhotos[this.state.mainIndex].url}
+                      style={this.state.style}
+                    />
+                  )}
+                </div>
                 <div className="iconRow">
-                {this.state.currentPhotos.length !== 0 &&
-                  this.state.currentPhotos.map((currentPhoto, index) => {
-                    return (
-                      <img
-                        className="image-icon"
-                        id={
-                          index === this.state.mainIndex
-                            ? "selectedPic"
-                            : "notSelected"
-                        }
-                        key={index}
-                        src={currentPhoto.thumbnail_url}
-                        onClick={(e) => this.handleClick(e, index)}
-                      />
-                    );
-                  })}
-                  </div>
-                {this.state.mainUrl !== this.state.firstUrl && (
+                  {this.state.currentPhotos.length !== 0 &&
+                    this.state.currentPhotos.map((currentPhoto, index) => {
+                      return (
+                        <img
+                          className="image-icon"
+                          id={
+                            index === this.state.mainIndex
+                              ? "selectedPic"
+                              : "notSelected"
+                          }
+                          key={index}
+                          src={currentPhoto.thumbnail_url}
+                          onClick={(e) => this.handleClick(e, index)}
+                        />
+                      );
+                    })}
+                </div>
+                <div
+                  className="beforeZoomContainer"
+                  onMouseMove={this.handleHover}
+                >
+                  <img id={this.state.zoom ? "minus" : ""}
+                    src={this.state.currentPhotos[this.state.mainIndex].url}
+                    onClick={this.handleZoom}
+                  />
+                </div>
+                <div>
                   <a className="zoomBack" onClick={this.handleBack}>
                     &#10094;
                   </a>
-                )}
-                {this.state.mainUrl !== this.state.lastUrl && (
                   <a className="zoomForward" onClick={this.handleForward}>
                     &#10095;
                   </a>
-                )}
-                <Magnifier
-                  zoomImgSrc={
-                    this.state.currentPhotos[this.state.mainIndex].thumbnail_url
-                  }
-                  src={this.state.currentPhotos[this.state.mainIndex].url}
-                  height="1000px"
-                  width="auto"
-                  zoomFactor="2"
-                  mgShape="square"
-                />
+                </div>
               </div>
             </dialog>
           )}
