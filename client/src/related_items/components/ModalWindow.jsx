@@ -57,11 +57,10 @@ const ModalWindow = ({ open, onClose, currentOverviewId, cardProductId }) => {
         })}
       </div>
       <div id="common-features">
-        {features.map((feature, index) => {
-          const key = currentOverviewId + cardProductId;
+        {features.map((feature, index) =>
           return (
-            <h3 key={index}>{feature.feature}</h3>
-          )
+          <h3 key={index}>{feature.feature}</h3>
+        )
         })}
       </div>
       {/* <img id="right-image" src={clickedImage}></img> */}
