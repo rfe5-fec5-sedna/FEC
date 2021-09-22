@@ -4,34 +4,73 @@ import helpers from '../helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 import '../styles.css';
+import { faBriefcaseMedical } from '@fortawesome/free-solid-svg-icons';
 
-const ModalWindow = ({ open, onClose, currentId, productClickedId }) => {
-
-  const outlineStar = <FontAwesomeIcon icon={emptyStar} />
+const ModalWindow = ({ open, onClose, currentOverviewId, cardProductId }) => {
   if (!open) return null;
 
-  const [currFeatures, setCurrFeatures] = useState(null);
-  const [clickedFeatures, setClickedFeatures] = useState(null);
-  const commonFeatures = [];
+  const outlineStar = <FontAwesomeIcon icon={emptyStar} />
+
+  const [features, setFeatures] = useState([]);
+  const [currentFeatures, setCurrentFeatures] = useState([]);
+  const [clickedFeatures, setClickedFeatures] = useState([]);
+
+  const [currImage, setCurrImage] = useState('');
+  const [clickedImage, setClickedImage] = useState('');
+  const [currName, setCurrName] = useState('');
+  const [clickedName, setClickedName] = useState('');
 
   useEffect(() => {
-    helpers.getProductData(currentId)
-      .then((res) => {
-        setCurrFeatures(res.features);
-      })
-  }, [currentId])
+    (async () => {
+      const current = await helpers.getProductData(currentOverviewId);
+      const clicked = await helpers.getProductData(cardProductId);
+      const leftImage = await helpers.getProductImage(currentOverviewId)
+      const rightImage = await helpers.getProductImage(cardProductId)
 
-  useEffect(() => {
-    helpers.getProductData(productClickedId)
-      .then((res) => {
-        setClickedFeatures(res.features)
+      setCurrName(current.name)
+      setClickedName(clicked.name)
+      setCurrImage(leftImage.results[0].photos[0].thumbnail_url)
+      setClickedImage(rightImage.results[0].photos[0].thumbnail_url)
+
+      current.features.forEach(feature => {
+        setFeatures(features => [...features, feature])
+        const value = (feature.value === null) ? 'Not Available' : feature.value
+        setCurrentFeatures(currentFeatures => [...currentFeatures, value]);
       })
-  }, [productClickedId])
+      clicked.features.forEach(feature => {
+        setFeatures(features => [...features, feature])
+        const value = (feature.value === null) ? 'Not Available' : feature.value
+        setClickedFeatures(clickedFeatures => [...clickedFeatures, value]);
+      })
+
+    })();
+
+  }, [open])
 
   return (
     <div id="modal-window">
-      Modal
-      <div onClick={onClose}>{outlineStar}</div >
+      {/* <img id="left-image" src={currImage}></img> */}
+      <h1 id="left-name">{currName}</h1>
+      <div id="left-values">
+        {currentFeatures.map(value => {
+          return (<h3 key={value}>{value}</h3>)
+        })}
+      </div>
+      <div id="common-features">
+        {features.map((feature, index) =>
+          return (
+          <h3 key={index}>{feature.feature}</h3>
+        )
+        })}
+      </div>
+      {/* <img id="right-image" src={clickedImage}></img> */}
+      <h1 id="right-name">{clickedName}</h1>
+      <div id="right-values">
+        {clickedFeatures.map(value => {
+          return (<h3 key={value}>{value}</h3>)
+        })}
+      </div>
+      <div id="close-btn" onClick={onClose}>{outlineStar}</div >
     </div >
   )
 }
