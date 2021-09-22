@@ -33,6 +33,14 @@ class Image_Gallery extends React.Component {
       const length = this.props.currentPhotos.length;
       this.setState ({
        currentPhotos: this.props.currentPhotos,
+       mainUrl: this.props.currentPhotos[0].url,
+       firstUrl: this.props.currentPhotos[0].url,
+       lastUrl: this.props.currentPhotos[length - 1].url
+      })
+    } else if(this.props.currentPhotos !== prevProps.currentPhotos) {
+      const length = this.props.currentPhotos.length;
+      this.setState ({
+       currentPhotos: this.props.currentPhotos,
        mainUrl: this.props.currentPhotos[this.state.mainIndex].url,
        firstUrl: this.props.currentPhotos[0].url,
        lastUrl: this.props.currentPhotos[length - 1].url
@@ -183,7 +191,7 @@ class Image_Gallery extends React.Component {
           {this.state.currentPhotos[0] !== undefined && (
             <img
               className="mainImage"
-              src={this.state.currentPhotos[this.state.mainIndex].url}
+              src={this.state.mainUrl}
               onClick={() => this.setState({ expanded: !this.state.expanded })}
             ></img>
           )}
