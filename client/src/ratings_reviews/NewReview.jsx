@@ -108,6 +108,20 @@ class NewReview extends React.Component {
                   value={this.state.reviewSummary}
                 />
               </div>
+              Review Body: <span style={{color: "red"}}>*</span>
+              <div id="new-review-body">
+                <textarea
+                  type="text"
+                  minLength="50"
+                  maxlength="1000"
+                  name="reviewBody"
+                  placeholder="Why did you like the product or not?"
+                  onChange={this.handleInputChange}
+                  value={this.state.reviewBody}
+                  required
+                />
+                {helperFunction.minCharacters(50 - this.state.reviewBody.length)}
+              </div>
               <button
                 type="submit"
                 id="submit-review-button"

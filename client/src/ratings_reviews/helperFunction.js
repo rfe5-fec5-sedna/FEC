@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getAllData = {
+const helperFunction = {
 // API Requests
   getAllReviews: (id) => {
     return axios.get(`/sedna/reviews/?product_id=${id}`)
@@ -105,8 +105,13 @@ const getAllData = {
       return `Response
       ${responseText}`;
     }
+  },
+
+  // New Review Logic
+  minCharacters: (charCount) => {
+    return charCount >= 0 ? `Minimum required characters left: ${charCount}` : `Minimum reached`
   }
 
 }
 
-export default getAllData;
+export default helperFunction;
