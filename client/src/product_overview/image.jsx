@@ -29,15 +29,7 @@ class Image_Gallery extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.currentPhoto !== prevProps.currentPhoto) {
-      const length = this.props.currentPhotos.length;
-      this.setState ({
-       currentPhotos: this.props.currentPhotos,
-       mainUrl: this.props.currentPhotos[0].url,
-       firstUrl: this.props.currentPhotos[0].url,
-       lastUrl: this.props.currentPhotos[length - 1].url
-      })
-    } else if(this.props.currentPhotos !== prevProps.currentPhotos) {
+    if(this.props.currentPhotos !== prevProps.currentPhotos) {
       const length = this.props.currentPhotos.length;
       this.setState ({
        currentPhotos: this.props.currentPhotos,
