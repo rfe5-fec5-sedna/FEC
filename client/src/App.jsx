@@ -8,6 +8,12 @@ import SearchBar from './SearchBar.jsx';
 
 import '../dist/App.css';
 
+// hold outfits state
+// declare function
+// pass it to the cart
+// on click change outfits state
+// pass down state to the outfit component
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +21,7 @@ class App extends React.Component {
       currentProduct: '',
       currentStyleId: ''
     }
+    this.handleCardClick = this.handleCardClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
   }
@@ -40,16 +47,24 @@ class App extends React.Component {
       })
   }
 
+  handleCardClick = (cardId) => {
+    this.setState({
+      currentProduct: cardId
+    })
+  }
+
   render() {
     return (
       <>
-        <header id="app-header">
-          <h1 id="title">Project Cat-walk</h1>
-          <SearchBar handleClick={this.handleClick} />
-        </header>
+        <div id="header">
+          <header id="app-header">
+            <h1 id="title">Project Cat-walk</h1>
+            <SearchBar handleClick={this.handleClick} />
+          </header>
+        </div>
         <div id="widgets">
           <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
-          <RelatedItems currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
+          <RelatedItems handleCardClick={this.handleCardClick} currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
           <RatingsReviews currentProductId={this.state.currentProduct} />
         </div>
         <footer id="footer">
