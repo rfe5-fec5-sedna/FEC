@@ -84,13 +84,13 @@
 }
 
 
-#new-review-button {
+#add-review-button {
   padding: 10px;
   background: #faf9f8;
   cursor: pointer;
   font-family: 'Source Code Pro', monospace;
 }
 
-#new-review-button:hover {
+#add-review-button:hover {
   cursor: pointer;
 }
