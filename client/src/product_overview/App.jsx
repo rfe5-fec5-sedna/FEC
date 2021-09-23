@@ -28,7 +28,6 @@ class Overview extends React.Component {
       currentStyleName: '',
       currentSkus: [],
       cart: {},
-      // currentPhoto: '',
       currentPhotos: []
     }
 
@@ -130,7 +129,7 @@ class Overview extends React.Component {
             <Review rating={this.state.rating} count={this.state.count} />
             <Product_info1 category={this.state.category} title={this.state.title} price={this.state.price} />
             <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick} handleStyle={this.props.handleStyle} />
-            <Cart skus={this.state.currentSkus} />
+            <Cart skus={this.state.currentSkus} product_id={this.props.id} style_id={this.state.currentStyleId} handleOutfit={this.props.handleOutfit} />
           </div>
         </div>
         <div className="descriptionSlogan">
