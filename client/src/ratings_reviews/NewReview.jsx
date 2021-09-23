@@ -1,4 +1,5 @@
 import React from "react";
+import OverallRating from "./OverallRating.jsx";
 import CharNewReview from "./CharNewReview.jsx";
 import helperFunction from "./helperFunction.js";
 import "./styles/NewReview.css";
@@ -83,7 +84,7 @@ class NewReview extends React.Component {
             <form>
               Overall Rating:
               <div id="new-review-overall-rating">
-                {this.state.overallRating}
+                <OverallRating starRating={this.state.overallRating} onChange={this.handleInputChange} />
               </div>
               <div className="radio-product-recommend">
                   Do you recommend this product?<span style={{color: "red"}}>*</span>
@@ -128,7 +129,7 @@ class NewReview extends React.Component {
                   value={this.state.reviewSummary}
                 />
               </div>
-              Review Body: <span style={{color: "red"}}>*</span>
+              Review Body:<span style={{color: "red"}}>*</span>
               <div id="new-review-body">
                 <textarea
                   type="text"
@@ -159,17 +160,34 @@ class NewReview extends React.Component {
                   </button>
                 )}
               </div>
-              Nickname: <span style={{color: "red"}}>*</span>
+              Nickname:<span style={{color: "red"}}>*</span>
               <div id="new-review-nickname">
                 <input
                   type="text"
+                  name="nickname"
                   placeholder="Example: jackson11!"
                   maxLength="60"
                   className="new-review-nickname-input"
+                  onChange={this.handleInputChange}
                   required
                 />
-                For privacy reasons, do not use your full name or email address.
               </div>
+              For privacy reasons, do not use your full name or email address.
+              <br></br>
+              Email:<span style={{color: "red"}}>*</span>
+              <div id="new-review-email">
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Example: jackson11@email.com"
+                  maxLength="60"
+                  className="new-review-email-input"
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
+              For authentication reasons, you will not be emailed.
+              <br></br>
               <button
                 type="submit"
                 id="submit-review-button"

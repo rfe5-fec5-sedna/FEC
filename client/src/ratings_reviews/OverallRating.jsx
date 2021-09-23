@@ -17,6 +17,17 @@ class OverallRating extends React.Component {
     };
   }
 
+  render() {
+    let starOutline = <FontAwesomeIcon icon={emptyStar} />;
+    let starSolid = <FontAwesomeIcon icon={fullStar} />;
+
+    return (
+      <div className="overall-rating-stars">
+        <Rating emptySymbol={starOutline} fullSymbol={starSolid} />
+      </div>
+    );
+  }
+
 }
 
 export default OverallRating;
