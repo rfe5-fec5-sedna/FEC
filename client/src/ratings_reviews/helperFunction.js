@@ -37,7 +37,7 @@ const helperFunction = {
     }
     let finalTotal = Math.round(totalRatings / totalCount);
 
-    return finalTotal.toFixed(1);
+    return isNaN(finalTotal.toFixed(1)) ? 0 : finalTotal.toFixed(1);
   },
 
   recommendPercentage: (recommendObject) => {
@@ -45,7 +45,7 @@ const helperFunction = {
     let falseRecommend = recommendObject.false;
     let total = Number(trueRecommend) + Number(falseRecommend);
     let percentage = Math.round((trueRecommend / total) * 100) + '%';
-    return Number.isNaN(percentage) ? '' : `${percentage} of reviews recommend this product`;
+    return isNaN(percentage) ? 0 : `${percentage} of reviews recommend this product`;
   },
 
   ratingDistCount: (ratingsObject, starCount) => {
@@ -55,7 +55,7 @@ const helperFunction = {
       total += Number(ratingsObject[value]);
     }
     let percentage = Math.round((count / total) * 100);
-    return Number.isNaN(percentage) ? 0 + '%' : percentage;
+    return isNaN(percentage) ? 0 + '%' : percentage;
   },
 
   // Products Breakdown Logic
