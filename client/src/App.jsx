@@ -72,7 +72,10 @@ class App extends React.Component {
           <RatingsReviews currentProductId={this.state.currentProduct} />
         </div>
         <footer id="footer">
-          <p>luna-moon-1216 jordanvillacorta SebasCC99</p>
+          <a className="github-button" id="luna" href="https://github.com/luna-moon-1216" data-size="large" aria-label="Follow @luna-moon-1216 on GitHub">Follow @luna-moon-1216</a>
+          <a className="github-button" id="jordan" href="https://github.com/jordanvillacorta" data-size="large" aria-label="Follow @jordanvillacorta on GitHub">Follow @jordanvillacorta</a>
+          <a className="github-button" id="sebastian" href="https://github.com/SebasCC99" data-size="large" aria-label="Follow @SebasCC99 on GitHub">Follow @SebasCC99</a>
+          <a className="github-button" href="https://github.com/rfe5-fec5-sedna/FEC" data-icon="octicon-star" data-size="large" aria-label="Star rfe5-fec5-sedna/FEC on GitHub">Star</a>
         </footer>
       </>
     )

@@ -1,10 +1,10 @@
 import React from 'react';
 import api from './api.js';
-import Review from './review.jsx';
-import { Product_info1, Product_info2 } from './product_info.jsx';
-import Image_Gallery from './image.jsx';
-import Style from './style_selector.jsx';
-import Cart from './cart.jsx';
+import Review from './Review.jsx';
+import { Product_info1, Product_info2 } from './Product_info.jsx';
+import Image_Gallery from './Image.jsx';
+import Style from './Style_selector.jsx';
+import Cart from './Cart.jsx';
 
 import './style.css';
 

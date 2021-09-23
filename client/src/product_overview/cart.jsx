@@ -20,6 +20,8 @@ class Cart extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleShare = this.handleShare.bind(this);
+    this.url = "http://localhost:3000/sedna/";
   }
 
   componentDidUpdate(prevProps) {
@@ -89,7 +91,7 @@ class Cart extends React.Component {
   handleShare = (name) => {
     var shareUrl;
     if (name === "facebook") {
-      shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${url}`;
+      shareUrl = `http://www.facebook.com/sharer/sharer.phpu=${this.url}`;
     } else if (name === "twitter") {
       shareUrl = "https://twitter.com/intent/tweet";
     } else if (name === "discord") {

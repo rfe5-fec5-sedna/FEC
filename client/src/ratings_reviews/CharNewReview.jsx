@@ -1,6 +1,6 @@
 import React from "react";
 import helperFunction from "./helperFunction.js";
-import "./styles/CharNewReview.css";
+// import "./styles/CharNewReview.css";
 
 class CharNewReview extends React.Component {
   constructor(props) {

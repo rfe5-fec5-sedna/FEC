@@ -2,10 +2,9 @@
  * @jest-environment jsdom
  */
  import React from 'react';
- import { dummyReview } from './dummyData.js';
  import { starCalc } from '../api.js';
  import {cleanup, render} from '@testing-library/react';
- import Review from '../review.jsx';
+ import Review from '../Review.jsx';
  import "@testing-library/jest-dom";
 
  afterEach(cleanup);

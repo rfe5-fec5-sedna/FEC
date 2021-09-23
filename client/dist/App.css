@@ -17,6 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+  scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -48,6 +49,7 @@ body{
 }
 
 #header{
+  background-color: #ede0d4;;
   position: sticky;
   top: 0;
   z-index: 11;
@@ -57,12 +59,33 @@ body{
   background-color: #faf9f8;
   margin-left: 200px;
   margin-right: 200px;
+  background-color: #ede0d4;;
 }
+
 #footer{
   background-color: #faf9f8;
-  height: 200px;
-  border-top: 2px solid black;
+  height: 75px;
+  /* border-top: 2px solid black; */
+  display: grid;
+  grid-template-columns: repeat(3, 30%)10%;
+  justify-content: center;
+  background-color: #ede0d4;
+
 }
+
+#footer span {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 25px;
+
+}
+
+#jordan {
+  grid-column: 3;
+}
+
+
+
 #title{
   position: absolute;
   margin-top: 40px;
@@ -76,9 +99,11 @@ body{
   margin-top: 40px;
   right: 200px;
 }
+
 #search-input-bar{
   background-color: #faf9f8;
   border-radius: 5px;
+  height: 18px;
 }
 #widgets{
   margin: 30px 200px 100px 200px;

@@ -4,9 +4,9 @@
  import React from 'react';
  import { dummyStyle } from './dummyData.js';
  import { cleanup, render, fireEvent } from '@testing-library/react';
- import Style from '../style_selector.jsx';
+ import Style from '../Style_selector.jsx';
  import "@testing-library/jest-dom";
- import userEvent from '@testing-library/user-event'
+ import userEvent from '@testing-library/user-event';
 
 
  afterEach(cleanup);
