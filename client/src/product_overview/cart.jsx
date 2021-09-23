@@ -155,7 +155,7 @@ class Cart extends React.Component {
             ADD TO BAG
           </button>
           <span className="bookMark">
-            <FontAwesomeIcon icon={faBookmark} className="bookMarkIcon" />
+            <FontAwesomeIcon icon={faBookmark} className="bookMarkIcon" onClick={() => {this.props.handleOutfit(this.props.product_id, this.props.style_id)}} />
           </span>
         </div>
         <div className="share">

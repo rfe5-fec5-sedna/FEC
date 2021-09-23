@@ -11,7 +11,7 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
   const [outfits, setOutfits] = useState([])
   const [styleId, setStyleId] = useState(currentStyleId);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
-  const [lastDisplayed, setLastDisplayed] = useState(3);
+  const [lastDisplayed, setLastDisplayed] = useState(4);
 
   useEffect(() => {
     setStyleId("")
@@ -52,9 +52,9 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
       })
   }
 
-  const displayProducts = (outfits.length > 3) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
+  const displayProducts = (outfits.length > 4) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
   const lastDisplayedIndex = outfits.length - 1;
-  const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 3;
+  const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 4;
 
   return (
     <>
@@ -62,7 +62,7 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
       {carouselDisplay && <a id="right-arrow-outfit" onClick={handleForward}>&#10095;</a>}
       <h1 id="your-outfit-header">Your Outfit</h1>
       <div id="empty-outfit-btn" onClick={handleClick}>
-        <button>Add this to your Outfit!</button>
+        <button>+</button>
       </div>
       <div id="outfit-products">
         {displayProducts.map(productId => (
