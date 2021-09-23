@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
         <button onClick={(e) => {
           this.props.handleClick(e, this.state.searchProduct);
           this.state.searchProduct = ''
-        }}>{<FontAwesomeIcon icon={faSearchDollar} />}</button>
+        }}>{<FontAwesomeIcon icon={faSearchDollar} size="lg" />}</button>
       </form >
     );
   }
