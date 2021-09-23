@@ -37,6 +37,10 @@ class App extends React.Component {
     })
   }
 
+  handleOutfit(product_id, style_id) {
+    console.log('Line 41', product_id, style_id)
+  }
+
   componentDidMount() {
     axios.get('/sedna/products')
       .then((response) => {
@@ -63,7 +67,7 @@ class App extends React.Component {
           </header>
         </div>
         <div id="widgets">
-          <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} />
+          <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} handleOutfit={this.handleOutfit} />
           <RelatedItems handleCardClick={this.handleCardClick} currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
           <RatingsReviews currentProductId={this.state.currentProduct} />
         </div>

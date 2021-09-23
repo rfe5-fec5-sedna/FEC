@@ -57,7 +57,7 @@ const ModalWindow = ({ open, onClose, currentOverviewId, cardProductId }) => {
         })}
       </div>
       <div id="common-features">
-        {features.map((feature, index) =>
+        {features.map((feature, index) => {
           return (
           <h3 key={index}>{feature.feature}</h3>
         )
