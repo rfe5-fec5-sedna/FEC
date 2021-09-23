@@ -28,7 +28,6 @@ class Overview extends React.Component {
       currentStyleName: '',
       currentSkus: [],
       cart: {},
-      currentPhoto: '',
       currentPhotos: []
     }
 
@@ -71,7 +70,7 @@ class Overview extends React.Component {
             styles: result,
             currentStyleId: result[0].style_id,
             currentStyleName: result[0].name,
-            currentPhoto: result[0].photos[0].url,
+            // currentPhoto: result[0].photos[0].url,
             currentPhotos: result[0].photos,
             price: [result[0].original_price, result[0].sale_price],
             currentSkus: result[0].skus
@@ -103,11 +102,10 @@ class Overview extends React.Component {
   }
 
   handleClick(product, e) {
-    // e.preventDefault();
-    console.log('this is product', product);
+    // console.log('this is product', product);
     this.setState({
       currentStyleId: product.style_id,
-      currentPhoto: product.currentPhoto,
+      // currentPhoto: product.currentPhoto,
       currentPhotos: product.currentPhotos,
       price: product.price,
       currentSkus: product.currentSkus,
@@ -125,13 +123,13 @@ class Overview extends React.Component {
         </div>
         <div className="overview-container">
           <div className="imageBox">
-            <Image_Gallery currentPhotos={this.state.currentPhotos} currentPhoto={this.state.currentPhoto} />
+            <Image_Gallery currentPhotos={this.state.currentPhotos} />
           </div>
           <div className="styleCartBox">
             <Review rating={this.state.rating} count={this.state.count} />
             <Product_info1 category={this.state.category} title={this.state.title} price={this.state.price} />
             <Style stylesIn4={this.state.stylesIn4} styles={this.state.styles} styleName={this.state.currentStyleName} handleClick={this.handleClick} handleStyle={this.props.handleStyle} />
-            <Cart skus={this.state.currentSkus} />
+            <Cart skus={this.state.currentSkus} product_id={this.props.id} style_id={this.state.currentStyleId} handleOutfit={this.props.handleOutfit} />
           </div>
         </div>
         <div className="descriptionSlogan">

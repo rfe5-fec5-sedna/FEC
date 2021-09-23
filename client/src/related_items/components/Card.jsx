@@ -9,7 +9,7 @@ import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
 import '../styles.css';
 
-const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inOutfitCarousel, removeOutfit }) => {
+const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inOutfitCarousel, removeOutfit, handleCardClick }) => {
 
   const outlineStar = <FontAwesomeIcon icon={emptyStar} />
   const innerStar = <FontAwesomeIcon icon={solidStar} />
@@ -76,7 +76,7 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
   return (
     <div className="card-component">
       <div className="upper-part">
-        <img className="product-image" src={image} />
+        <img onClick={() => { handleCardClick(cardProductId) }} className="product-image" src={image} />
         {actionButton}
       </div>
       <div className="lower-part">
