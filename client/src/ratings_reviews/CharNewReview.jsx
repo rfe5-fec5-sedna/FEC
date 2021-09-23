@@ -6,6 +6,7 @@ class CharNewReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productMetaData: [],
       size: '',
       width: '',
       comfort: '',
@@ -13,8 +14,23 @@ class CharNewReview extends React.Component {
       length: '',
       fit: ''
     };
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  metaData() {
+    helperFunction.getAllMetaReviews(this.props.productId)
+        .then((response) => {
+          let charObject = response.data.characteristics;
+          this.setState({
+            // comfort: helperFunction.productValueRound(charObject.Comfort.value),
+            // fit: helperFunction.productValueRound(charObject.Fit.value),
+            // length: helperFunction.productValueRound(charObject.Length.value),
+            // quality: helperFunction.productValueRound(charObject.Quality.value),
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
   }
 
   characteristicRubric = {
@@ -70,7 +86,21 @@ class CharNewReview extends React.Component {
 
         </div>
         <div className="characteristics-new-review-selection">
+            {/* return (
+              <div>
+                {console.log(singleChar)}
+                <input
+                  type="radio"
+                  name="size"
+                  key={ Math.random() }
+                  value={singleChar["1"]}
+                  onChange={(e) => this.props.handleCharactersticsChange(e)}
+                />
 
+              </div>
+
+            );
+            */}
         </div>
 
       </div>
