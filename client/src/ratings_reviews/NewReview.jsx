@@ -1,4 +1,5 @@
 import React from "react";
+import CharNewReview from "./CharNewReview.jsx";
 import helperFunction from "./helperFunction.js";
 import "./styles/NewReview.css";
 
@@ -17,6 +18,7 @@ class NewReview extends React.Component {
       email: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCharactersticsChange = this.handleCharactersticsChange.bind(this);
     this.handleCurrentPhoto = this.handleCurrentPhoto.bind(this);
     this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +29,14 @@ class NewReview extends React.Component {
     const name = e.target.name;
     this.setState({
       [name]: value
+    })
+  }
+
+  handleCharactersticsChange(e) {
+    const charValue = e.target.value;
+    const charName = e.target.name;
+    this.setState({
+      [charName]: charValue
     })
   }
 
@@ -45,7 +55,6 @@ class NewReview extends React.Component {
   }
 
   handleSubmit(e) {
-    // console.log("Submit Review clicked");
     e.preventDefault();
     helperFunction.postNewReview(this.props.productId)
       .then((response) => {
@@ -104,6 +113,9 @@ class NewReview extends React.Component {
                   </label>
                 You selected: {this.state.productRecommend}
               </div>
+              <div id="new-review-characteristics">
+                <CharNewReview productId={this.props.productId} />
+              </div>
               Review Summary:
               <div id="new-review-summary">
                 <textarea
@@ -146,6 +158,17 @@ class NewReview extends React.Component {
                     Upload
                   </button>
                 )}
+              </div>
+              Nickname: <span style={{color: "red"}}>*</span>
+              <div id="new-review-nickname">
+                <input
+                  type="text"
+                  placeholder="Example: jackson11!"
+                  maxLength="60"
+                  className="new-review-nickname-input"
+                  required
+                />
+                For privacy reasons, do not use your full name or email address.
               </div>
               <button
                 type="submit"
