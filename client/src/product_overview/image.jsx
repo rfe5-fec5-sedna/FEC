@@ -1,8 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-// import { GlassMagnifier } from "react-image-magnifiers";
-import Magnifier from "react-magnifier";
 
 class Image_Gallery extends React.Component {
   constructor(props) {

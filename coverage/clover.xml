@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1632190713254" clover="3.2.0">
-  <project timestamp="1632190713254" name="All files">
-    <metrics statements="54" coveredstatements="21" conditionals="8" coveredconditionals="6" methods="27" coveredmethods="8" elements="89" coveredelements="35" complexity="0" loc="54" ncloc="54" packages="2" files="5" classes="5"/>
+<coverage generated="1632342082526" clover="3.2.0">
+  <project timestamp="1632342082527" name="All files">
+    <metrics statements="53" coveredstatements="21" conditionals="8" coveredconditionals="6" methods="27" coveredmethods="8" elements="88" coveredelements="35" complexity="0" loc="53" ncloc="53" packages="2" files="5" classes="5"/>
     <package name="product_overview">
-      <metrics statements="52" coveredstatements="19" conditionals="8" coveredconditionals="6" methods="27" coveredmethods="8"/>
+      <metrics statements="51" coveredstatements="19" conditionals="8" coveredconditionals="6" methods="27" coveredmethods="8"/>
       <file name="api.js" path="/Users/luna/Downloads/Desktop/HR SEI/FEC/FEC/client/src/product_overview/api.js">
-        <metrics statements="29" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="0"/>
+        <metrics statements="28" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -23,7 +23,6 @@
         <line num="36" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
@@ -65,8 +64,8 @@
         <line num="34" count="2" type="stmt"/>
         <line num="37" count="4" type="stmt"/>
         <line num="45" count="4" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
       </file>
     </package>
     <package name="product_overview.testing">

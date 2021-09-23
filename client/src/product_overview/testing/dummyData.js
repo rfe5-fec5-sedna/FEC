@@ -62,40 +62,133 @@ const dummyStyle = {
   ],
 };
 
-const dummyReview = {
-  product_id: "37715",
-  ratings: {
-    1: "7",
-    2: "4",
-    3: "5",
-    4: "9",
-    5: "1",
-  },
-  recommended: {
-    false: "7",
-    true: "19",
-  },
-  characteristics: {
-    Fit: {
-      id: 126377,
-      value: "2.4615384615384615",
+const dummyStone = {
+  product_id: "37320",
+  results: [
+    {
+      style_id: 221044,
+      name: "Reality",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": true,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Reality_Stone_VFX.png/revision/latest?cb=20190427012609",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Reality_Stone_VFX.png/revision/latest?cb=20190427012609",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
     },
-    Length: {
-      id: 126378,
-      value: "2.3076923076923077",
+    {
+      style_id: 221045,
+      name: "Space",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": false,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/0a/Space_Stone_VFX.png/revision/latest?cb=20190427012702",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/0a/Space_Stone_VFX.png/revision/latest?cb=20190427012702",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
     },
-    Comfort: {
-      id: 126379,
-      value: "2.9615384615384615",
+    {
+      style_id: 221046,
+      name: "Time",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": false,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/f/f0/Time_Stone_VFX.png/revision/latest?cb=20190427012724",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/f/f0/Time_Stone_VFX.png/revision/latest?cb=20190427012724",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
     },
-    Quality: {
-      id: 126380,
-      value: "2.6538461538461538",
+    {
+      style_id: 221047,
+      name: "Power",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": false,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/d/d7/Power_Stone_VFX.png/revision/latest?cb=20190427012543",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/d/d7/Power_Stone_VFX.png/revision/latest?cb=20190427012543",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
     },
-  },
+    {
+      style_id: 221048,
+      name: "Mind",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": false,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/e/e4/Mind_Stone_VFX.png/revision/latest?cb=20190427012504",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/e/e4/Mind_Stone_VFX.png/revision/latest?cb=20190427012504",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
+    },
+    {
+      style_id: 221049,
+      name: "Soul",
+      original_price: "500000000.00",
+      sale_price: null,
+      "default?": false,
+      photos: [
+        {
+          thumbnail_url:
+            "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/1/17/Soul_Stone_VFX.png/revision/latest?cb=20190427012633",
+          url: "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/1/17/Soul_Stone_VFX.png/revision/latest?cb=20190427012633",
+        },
+      ],
+      skus: {
+        null: {
+          quantity: null,
+          size: null,
+        },
+      },
+    },
+  ],
 };
 
 export {
   dummyStyle,
-  dummyReview
+  dummyStone
  };

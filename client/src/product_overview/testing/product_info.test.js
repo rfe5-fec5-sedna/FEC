@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
-import { Product_info1, Product_info2 } from '../product_info.jsx';
+import { Product_info1, Product_info2 } from '../Product_info.jsx';
 import "@testing-library/jest-dom";
 
 afterEach(cleanup);
