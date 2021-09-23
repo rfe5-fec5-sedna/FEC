@@ -22,8 +22,6 @@ const helperFunction = {
     return axios.post(`/sedna/reviews`, reviewObject);
   },
 
-  // Photo URL Get Request
-
   photoUploadLimit: (photosArrayLength) => {
     return photosArrayLength < 5 ? true : false;
   },
