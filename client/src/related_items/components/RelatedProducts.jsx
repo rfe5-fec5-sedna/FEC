@@ -36,7 +36,7 @@ const RelatedProducts = ({ currentProductId, handleCardClick }) => {
 
   return (
     <>
-      <h1 id="related-product-header">Related Products</h1>
+      <h1 id="related-product-header">RELATED PRODUCTS</h1>
       {firstDisplayed !== 0 && <a id="left-arrow" onClick={handleBackward}>&#10094;</a>}
       {lastDisplayed !== productsAmount && <a id="right-arrow" onClick={handleForward}>&#10095;</a>}
       <div id="related-cards">

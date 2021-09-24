@@ -3,7 +3,7 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
-import { faTimesCircle as closeX } from '@fortawesome/free-regular-svg-icons'
+import { faTimesCircle as closeX } from '@fortawesome/free-solid-svg-icons'
 
 import ModalWindow from './ModalWindow';
 import helpers from '../helpers';
@@ -34,7 +34,8 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
     useEffect(() => {
       helpers.getProductImage(cardProductId)
         .then(res => {
-          setImage(res.results[0].photos[0].thumbnail_url)
+          const cardImage = (res.results[0].photos[0].thumbnail_url === null) ? "https://images.unsplash.com/photo-1580265862291-4251b8c7e836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" : res.results[0].photos[0].thumbnail_url;
+          setImage(cardImage)
         })
     }, [cardProductId])
     useEffect(() => {
@@ -70,7 +71,7 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
 
   // If the card is in RP carousel, render star as action button, else, render X
   const actionButton = (inRelatedCarousel === true)
-    ? <div id="related-action-button" onClick={() => setIsOpen(true)}>{outlineStar}</div>
+    ? <div id="related-action-button" onClick={() => setIsOpen(true)}>{innerStar}</div>
     : <div id="outfit-action-button" onClick={() => removeOutfit(cardProductId)}>{closeIcon}</div>
 
   return (
@@ -82,7 +83,7 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
       <div className="lower-part">
         <h5 className="product-category">{category}</h5>
         <h5 className="product-name">{name}</h5>
-        <h5 className="product-price">{price}</h5>
+        <h5 className="product-price">${price}</h5>
         <div className="product-rating">
           <Rating
             initialRating={rating}
