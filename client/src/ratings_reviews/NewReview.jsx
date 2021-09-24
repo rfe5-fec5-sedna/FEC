@@ -15,7 +15,7 @@ class NewReview extends React.Component {
       reviewBody: "",
       photos: [],
       currentPhoto: null,
-      nickname: "",
+      name: "",
       email: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,7 +44,9 @@ class NewReview extends React.Component {
     const characteristics = this.state.characteristics;
     characteristics[e.target.name] = e.target.value;
     this.setState({
-      characteristics: characteristics
+      characteristics: {
+        [e.target.name]: Number(e.target.value)
+      }
     })
   }
 
@@ -64,22 +66,28 @@ class NewReview extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let newReviewData = {
-      overallRating: this.state.overallRating,
-      productRecommend: Boolean(this.state.productRecommend),
+      product_id: this.props.productId,
+      rating: Number(this.state.overallRating),
+      recommend: Boolean(this.state.productRecommend),
       characteristics: this.state.characteristics,
-      reviewSummary: this.state.reviewSummary,
-      reviewBody: this.state.reviewBody,
+      summary: this.state.reviewSummary,
+      body: this.state.reviewBody,
       photos: this.state.photos,
-      currentPhoto: this.state.currentPhoto,
-      nickname: this.state.nickname,
+      name: this.state.name,
       email: this.state.email
-    }
-    // console.log('my data', newReviewData);
+    };
+
     helperFunction.postNewReview(newReviewData)
       .then((response) => {
-        // console.log('it works!', response);
-        // this.props.closeNewReview;
-        // helperFunction.getAllReviews(this.props.productId);
+        helperFunction.getAllReviews(this.props.productId)
+          .then((response) => {
+            console.log(response.data.results);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        // this.props.handleMoreReviewsClick();
+        // this.props.closeNewReview();
       })
       .catch((err) => {
         console.log(err);
@@ -186,14 +194,14 @@ class NewReview extends React.Component {
                   </button>
                 )}
               </div>
-              Nickname:<span style={{color: "red"}}>*</span>
-              <div id="new-review-nickname">
+              Name:<span style={{color: "red"}}>*</span>
+              <div id="new-review-name">
                 <input
                   type="text"
-                  name="nickname"
+                  name="name"
                   placeholder="Example: jackson11!"
                   maxLength="60"
-                  className="new-review-nickname-input"
+                  className="new-review-name-input"
                   onChange={this.handleInputChange}
                   required
                 />
