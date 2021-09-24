@@ -61,31 +61,23 @@ body{
   margin-right: 200px;
   background-color: #ede0d4;;
 }
-
 #footer{
   background-color: #faf9f8;
   height: 75px;
-  /* border-top: 2px solid black; */
   display: grid;
   grid-template-columns: repeat(3, 30%)10%;
   justify-content: center;
   background-color: #ede0d4;
 
 }
-
 #footer span {
   margin-left: auto;
   margin-right: auto;
   padding-top: 25px;
-
 }
-
 #jordan {
   grid-column: 3;
 }
-
-
-
 #title{
   position: absolute;
   margin-top: 40px;
@@ -110,7 +102,7 @@ body{
 }
 #product-overview{
   margin-bottom: 25px;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid #ede0d4;
 }
 #related-items{
   display: grid;
@@ -118,6 +110,7 @@ body{
   margin-bottom: 25px;
   grid-template-rows: 50% 50%;
   height: 800px;
+  border-bottom: 4px solid #ede0d4;
 }
 #ratings-reviews{
   margin-top: 25px;

@@ -78,7 +78,7 @@ class Overview extends React.Component {
       });
 
       api.getReview(this.props.id, (error, result) => {
-        if(error) {
+        if (error) {
           console.log(error);
         } else {
           this.setState({
@@ -88,7 +88,7 @@ class Overview extends React.Component {
       });
 
       api.getCount(this.props.id, (error, result) => {
-        if(error) {
+        if (error) {
           console.log(error);
         } else {
           this.setState({
@@ -116,7 +116,7 @@ class Overview extends React.Component {
     return (
       <div id="product-overview">
         <div className="policy">Free shipping and free return on all orders, all the time.
-        <span className="details">Details.</span>
+          <span className="details">Details.</span>
         </div>
         <div className="overview-container">
           <div className="imageBox">
@@ -133,7 +133,6 @@ class Overview extends React.Component {
           <Product_info2 slogan={this.state.slogan} description={this.state.description} features={this.state.features} />
         </div>
       </div>
-
     )
   }
 };
