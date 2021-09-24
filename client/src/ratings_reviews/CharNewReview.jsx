@@ -7,105 +7,122 @@ class CharNewReview extends React.Component {
     super(props);
     this.state = {
       productMetaData: [],
-      size: '',
-      width: '',
-      comfort: '',
-      quality: '',
-      length: '',
-      fit: ''
+      didMount: false,
+      size: false,
+      width: false,
+      comfort: false,
+      quality: false,
+      length: false,
+      fit: false
     };
+    this.charRadioButtons = this.charRadioButtons.bind(this);
   }
 
-  metaData() {
+  componentDidMount() {
     helperFunction.getAllMetaReviews(this.props.productId)
-        .then((response) => {
-          let charObject = response.data.characteristics;
-          this.setState({
-            // comfort: helperFunction.productValueRound(charObject.Comfort.value),
-            // fit: helperFunction.productValueRound(charObject.Fit.value),
-            // length: helperFunction.productValueRound(charObject.Length.value),
-            // quality: helperFunction.productValueRound(charObject.Quality.value),
-          })
+      .then((response) => {
+        let charObject = response.data.characteristics;
+        this.setState({
+          productMetaData: [charObject],
+          didMount: true
         })
-        .catch(err => {
-          console.log(err)
-        })
-
+        this.charRadioButtons();
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
-  characteristicRubric = {
-    Size: {
-      1: 'A Size Too Small',
-      2: '1/2 A Size Too Small',
-      3: 'Perfect',
-      4: '1/2 A Size Too Big',
-      5: 'A Size Too Wide',
-    },
-    Width: {
-      1: 'Too Narrow',
-      2: 'Slightly Narrow',
-      3: 'Perfect',
-      4: 'Slightly Wide',
-      5: 'Too Wide',
-    },
-    Comfort: {
-      1: 'Uncomfortable',
-      2: 'Slightly Uncomfortable',
-      3: 'Ok',
-      4: 'Comfortable',
-      5: 'Perfect',
-    },
-    Quality: {
-      1: 'Poor',
-      2: 'Below Average',
-      3: 'What I Expected',
-      4: 'Pretty Great',
-      5: 'Perfect',
-    },
-    Length: {
-      1: 'Runs Short',
-      2: 'Runs Slightly Short',
-      3: 'Perfect',
-      4: 'Runs Slightly Long',
-      5: 'Runs Long',
-    },
-    Fit: {
-      1: 'Runs Tight',
-      2: 'Runs Slightly Tight',
-      3: 'Perfect',
-      4: 'Runs Slightly Long',
-      5: 'Runs Long',
+  charRadioButtons() {
+    if (this.state.didMount) {
+      let metaData = this.state.productMetaData;
+      let productChars = Object.keys(metaData[0]);
+      productChars.forEach((singleChar) => {
+        if (singleChar === 'Comfort') {
+          this.setState({
+            comfort: true
+          })
+        }
+        if (singleChar === 'Fit') {
+          this.setState({
+            fit: true
+          })
+        }
+        if (singleChar === 'Quality') {
+          this.setState({
+            quality: true
+          })
+        }
+        if (singleChar === 'Size') {
+          this.setState({
+            size: true
+          })
+        }
+        if (singleChar === 'Length') {
+          this.setState({
+            length: true
+          })
+        }
+      })
     }
   }
 
-
   render() {
     return (
-      <div id="characteristics-new-review">
-        <div id="characteristics-new-review-title">
-
-        </div>
-        <div className="characteristics-new-review-selection">
-            {/* return (
-              <div>
-                {console.log(singleChar)}
-                <input
-                  type="radio"
-                  name="size"
-                  key={ Math.random() }
-                  value={singleChar["1"]}
-                  onChange={(e) => this.props.handleCharactersticsChange(e)}
-                />
-
-              </div>
-
-            );
-            */}
-        </div>
-
+      <div id="characteristics-new-review" onChange={this.props.handleCharChange}>
+        {(this.state.comfort && this.state.didMount) && (
+          <div className="characteristics-new-review-selection">
+            <div className="characteristics-new-review-title">Comfort</div><br></br>
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="1" /> Uncomfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="2"/> Slightly Uncomfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="3"/> What I Expected
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="4"/> Comfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="5"/> Perfect
+          </div>
+        )}
+        {(this.state.fit && this.state.didMount) && (
+          <div className="characteristics-new-review-selection">
+            <div className="characteristics-new-review-title">Fit</div><br></br>
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="1" /> Runs Tight
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="2" /> Runs Slightly Tight
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="4" /> Runs Slightly Long
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="5" /> Runs Long
+          </div>
+        )}
+        {(this.state.quality && this.state.didMount) && (
+          <div className="characteristics-new-review-selection">
+            <div className="characteristics-new-review-title">Quality</div><br></br>
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="1" /> Poor
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="2"/> Below Average
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="3"/> What I Expected
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="4"/> Pretty Great
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="5"/> Perfect
+          </div>
+        )}
+        {(this.state.size && this.state.didMount) && (
+          <div className="characteristics-new-review-selection">
+             <div className="characteristics-new-review-title">Size</div><br></br>
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="1" /> A Size Too Small
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="2" /> 1/2 A Size Too Small
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="4" /> 1/2 A Size Too Big
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="5" /> A Size Too Wide
+          </div>
+        )}
+        {(this.state.length && this.state.didMount) && (
+          <div className="characteristics-new-review-selection">
+             <div className="characteristics-new-review-title">Length</div><br></br>
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="1" /> Runs Short
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="2" /> Runs Slightly Short
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="4" /> Runs Slightly Long
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="5" /> Runs Long
+          </div>
+        )}
       </div>
     );
   }
 }
 
-  export default CharNewReview;
+export default CharNewReview;

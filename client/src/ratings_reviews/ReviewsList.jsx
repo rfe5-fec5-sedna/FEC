@@ -142,6 +142,7 @@ class ReviewsList extends React.Component {
                 <NewReview
                   productId={this.props.currentProductId}
                   openModal={this.state.openModal}
+                  handleMoreReviewsClick={this.handleMoreReviewsClick}
                   closeNewReview={this.closeNewReviewClick}
                 />
               </div>
