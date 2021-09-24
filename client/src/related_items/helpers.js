@@ -4,8 +4,8 @@ const calculateRatings = (ratingsObj) => {
   let ratingAverage = 0;
   let totalReviews = 0;
   for (let num in ratingsObj) {
-    ratingAverage += num * ratingsObj[num];
-    totalReviews += ratingsObj[num]
+    ratingAverage += Number(num) * ratingsObj[num];
+    totalReviews += Number(ratingsObj[num]);
   }
   return ratingAverage / totalReviews;
 }

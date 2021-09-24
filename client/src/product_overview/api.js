@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = {
-  getReview: function(id, callback) {
+  getReview: function (id, callback) {
     const url = `/sedna/reviews/meta/?product_id=${id}`;
     axios.get(url)
       .then((res) => {
@@ -12,19 +12,19 @@ const api = {
       })
   },
 
-  starCalc: function(ratings) {
+  starCalc: function (ratings) {
     var total = 0;
     var count = 0;
 
-    for(var key in ratings) {
+    for (var key in ratings) {
       total += Number(key) * ratings[key];
       count += Number(ratings[key]);
     }
 
-    return total/count;
+    return total / count;
   },
 
-  getCount: function(id, callback) {
+  getCount: function (id, callback) {
     const url = `/sedna/reviews/?product_id=${id}`;
     axios.get(url)
       .then((res) => {
@@ -35,7 +35,7 @@ const api = {
       })
   },
 
-  getProduct: function(id, callback) {
+  getProduct: function (id, callback) {
     const url = `/sedna/products/${id}`;
     axios.get(url)
       .then((res) => {
@@ -47,7 +47,7 @@ const api = {
 
   },
 
-  getStyles: function(id, callback) {
+  getStyles: function (id, callback) {
     const url = `/sedna/products/${id}/styles`;
     axios.get(url)
       .then((res) => {
@@ -59,7 +59,7 @@ const api = {
 
   },
 
-  addCart: function(id, callback) {
+  addCart: function (id, callback) {
     const url = '/sedna/cart';
     const product = {
       sku_id: Number(id)

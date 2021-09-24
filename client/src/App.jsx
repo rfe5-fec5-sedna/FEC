@@ -6,24 +6,22 @@ import RelatedItems from './related_items/components/RelatedItem';
 import RatingsReviews from './ratings_reviews/App.jsx';
 import SearchBar from './SearchBar.jsx';
 
+import helpers from './related_items/helpers.js';
 import '../dist/App.css';
-
-// hold outfits state
-// declare function
-// pass it to the cart
-// on click change outfits state
-// pass down state to the outfit component
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentProduct: '',
-      currentStyleId: ''
+      currentStyleId: '',
+      outfits: []
     }
     this.handleCardClick = this.handleCardClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleStyle = this.handleStyle.bind(this);
+    this.handleOutfit = this.handleOutfit.bind(this);
+    this.removeOutfit = this.removeOutfit.bind(this);
   }
 
   handleClick(e, id) {
@@ -38,7 +36,21 @@ class App extends React.Component {
   }
 
   handleOutfit(product_id, style_id) {
-    console.log('Line 41', product_id, style_id)
+    helpers.getOutfitData(product_id, style_id)
+      .then(res => {
+        for (let outfit of this.state.outfits) {
+          if (JSON.stringify(outfit) === JSON.stringify(res)) return;
+        }
+        this.setState({ outfits: [res, ...this.state.outfits] })
+      })
+  }
+
+  // FIX BUG, DELETING FROM LAST INSTEAD OF CARD CLICKED
+  removeOutfit(id) {
+    const temp = this.state.outfits.slice()
+    const index = temp.indexOf(id);
+    temp.splice(index, 1);
+    this.setState({ outfits: temp })
   }
 
   componentDidMount() {
@@ -68,7 +80,7 @@ class App extends React.Component {
         </div>
         <div id="widgets">
           <Overview id={this.state.currentProduct} handleStyle={this.handleStyle} handleOutfit={this.handleOutfit} />
-          <RelatedItems handleCardClick={this.handleCardClick} currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
+          <RelatedItems removeOutfit={this.removeOutfit} outfits={this.state.outfits} handleOutfit={this.handleOutfit} handleCardClick={this.handleCardClick} currentProductId={this.state.currentProduct} currentStyleId={this.state.currentStyleId} />
           <RatingsReviews currentProductId={this.state.currentProduct} />
         </div>
         <footer id="footer">
