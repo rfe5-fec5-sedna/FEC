@@ -76,7 +76,7 @@ class CharNewReview extends React.Component {
 
   render() {
     return (
-      <div id="characteristics-new-review">
+      <div id="characteristics-new-review" onChange={this.props.handleCharChange}>
         {this.state.comfort && (
           <div className="characteristics-new-review-selection">
             <div className="characteristics-new-review-title">Comfort</div><br></br>
