@@ -16,6 +16,7 @@ class Cart extends React.Component {
       maxQuantity: "",
       quantity: "Select Quantity",
       sizeSelected: true,
+      added: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +38,6 @@ class Cart extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    // console.log('this is quantity target', e.target)
     const target = e.target;
     const value = target.value;
     const name = target.name;
@@ -80,7 +80,11 @@ class Cart extends React.Component {
             if (error) {
               console.log(error);
             } else {
-              console.log("Item Sucessfully Added", result);
+             this.setState({
+               added: true
+             })
+
+             setTimeout(() => this.setState({ added: false}), 5000)
             }
           });
         }
@@ -114,9 +118,14 @@ class Cart extends React.Component {
     return (
       <div>
         <div className="cart-container">
+          <div className="notificationHolder">
           {this.state.sizeSelected === false && (
             <div className="notification">Please Select Size</div>
           )}
+          {this.state.added === true && (
+            <div className="notification">Product Sucessfully Added</div>
+          )}
+          </div>
           <select
             className="selectSize"
             type="text"
