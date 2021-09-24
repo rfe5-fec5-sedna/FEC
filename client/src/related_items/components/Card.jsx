@@ -30,6 +30,9 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
           setCategory(res.category);
           setPrice(res.default_price);
         })
+        .catch(error => {
+          console.error(error);
+        })
     }, [currentProductId])
     useEffect(() => {
       helpers.getProductImage(cardProductId)
@@ -37,11 +40,17 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
           const cardImage = (res.results[0].photos[0].thumbnail_url === null) ? "https://images.unsplash.com/photo-1580265862291-4251b8c7e836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" : res.results[0].photos[0].thumbnail_url;
           setImage(cardImage)
         })
+        .catch(error => {
+          console.error(error);
+        })
     }, [cardProductId])
     useEffect(() => {
       helpers.getProductReview(cardProductId)
         .then(res => {
           setRating(res)
+        })
+        .catch(error => {
+          console.error(error);
         })
     }, [cardProductId])
   } else {
@@ -55,11 +64,17 @@ const Card = ({ currentProductId, cardProductId, styleId, inRelatedCarousel, inO
           setPrice(price)
           setImage(styleId.photos[0].thumbnail_url);
         })
+        .catch(error => {
+          console.error(error);
+        })
     }, [styleId])
     useEffect(() => {
       helpers.getProductReview(cardProductId)
         .then(res => {
           setRating(res)
+        })
+        .catch(error => {
+          console.error(error);
         })
     }, [cardProductId])
   }

@@ -30,6 +30,9 @@ const RelatedProducts = ({ currentProductId, handleCardClick }) => {
       .then((res) => {
         setRelatedProducts(res);
       })
+      .catch(error => {
+        console.error(error);
+      })
   }, [currentProductId])
 
   const displayProducts = (productsAmount > 4) ? relatedProducts.slice(firstDisplayed, lastDisplayed) : relatedProducts;
