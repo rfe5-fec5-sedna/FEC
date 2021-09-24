@@ -143,8 +143,6 @@ class Image_Gallery extends React.Component {
   }
 
 
-
-
   render() {
     return (
       <div className="currentImage-container">
@@ -157,6 +155,7 @@ class Image_Gallery extends React.Component {
               return (
                 <img
                   className="image-thumbnail"
+                  alt="thumbnail-image"
                   id={
                     index === this.state.mainIndex
                       ? "selectedPic"
@@ -181,6 +180,7 @@ class Image_Gallery extends React.Component {
           {this.state.currentPhotos[0] !== undefined && (
             <img
               className="mainImage"
+              alt="mainImage"
               src={this.state.mainUrl}
               onClick={() => this.setState({ expanded: !this.state.expanded })}
             ></img>
@@ -206,6 +206,7 @@ class Image_Gallery extends React.Component {
                   {this.state.zoom && (
                     <img
                       id="afterZoom"
+                      alt="styleImage"
                       src={this.state.currentPhotos[this.state.mainIndex].url}
                       style={this.state.style}
                     />
@@ -224,6 +225,7 @@ class Image_Gallery extends React.Component {
                           }
                           key={index}
                           src={currentPhoto.thumbnail_url}
+                          alt="styleImage"
                           onClick={(e) => this.handleClick(e, index)}
                         />
                       );
@@ -235,6 +237,7 @@ class Image_Gallery extends React.Component {
                 >
                   <img id={this.state.zoom ? "minus" : ""}
                     src={this.state.currentPhotos[this.state.mainIndex].url}
+                    alt="styleImage"
                     onClick={this.handleZoom}
                   />
                 </div>
