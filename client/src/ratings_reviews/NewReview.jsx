@@ -74,12 +74,12 @@ class NewReview extends React.Component {
       nickname: this.state.nickname,
       email: this.state.email
     }
-    console.log('my data', newReviewData);
+    // console.log('my data', newReviewData);
     helperFunction.postNewReview(newReviewData)
       .then((response) => {
-        console.log('it works!', response);
+        // console.log('it works!', response);
         // this.props.closeNewReview;
-        helperFunction.getAllReviews(this.props.productId);
+        // helperFunction.getAllReviews(this.props.productId);
       })
       .catch((err) => {
         console.log(err);
