@@ -4,11 +4,10 @@ import helpers from '../helpers';
 import Card from './Card';
 import '../styles.css'
 
-const OutfitProducts = ({ currentProductId, currentStyleId }) => {
+const OutfitProducts = ({ currentProductId, currentStyleId, outfits, removeOutfit }) => {
 
   const inOutfitCarousel = true;
 
-  const [outfits, setOutfits] = useState([])
   const [styleId, setStyleId] = useState(currentStyleId);
   const [firstDisplayed, setFirstDisplayed] = useState(0);
   const [lastDisplayed, setLastDisplayed] = useState(4);
@@ -31,39 +30,19 @@ const OutfitProducts = ({ currentProductId, currentStyleId }) => {
     setFirstDisplayed(firstDisplayed + 1);
   }
 
-  const removeOutfit = (id) => {
-    const temp = outfits.slice()
-    const index = temp.indexOf(id);
-    temp.splice(index, 1);
-    setOutfits(temp);
-    if (firstDisplayed > 0) {
-      setFirstDisplayed(firstDisplayed - 1);
-      setLastDisplayed(lastDisplayed - 1);
-    }
-  }
-
-  const handleClick = () => {
-    helpers.getOutfitData(currentProductId, currentStyleId)
-      .then(res => {
-        for (let outfit of outfits) {
-          if (JSON.stringify(outfit) === JSON.stringify(res)) return;
-        }
-        setOutfits(outfits => [res, ...outfits])
-      })
-  }
-
   const displayProducts = (outfits.length > 4) ? outfits.slice(firstDisplayed, lastDisplayed) : outfits;
   const lastDisplayedIndex = outfits.length - 1;
   const carouselDisplay = (lastDisplayedIndex !== lastDisplayed - 1) && outfits.length > 4;
+  const image = <img id="desert-tree" src="https://images.unsplash.com/photo-1543964198-d54e4f0e44e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80" />
+
+  const emptyCarousel = (outfits.length === 0) ? image : null;
 
   return (
     <>
+      {emptyCarousel}
       {firstDisplayed !== 0 && <a id="left-arrow-outfit" onClick={handleBackward}>&#10094;</a>}
       {carouselDisplay && <a id="right-arrow-outfit" onClick={handleForward}>&#10095;</a>}
-      <h1 id="your-outfit-header">Your Outfit</h1>
-      <div id="empty-outfit-btn" onClick={handleClick}>
-        <button>+</button>
-      </div>
+      <h1 id="your-outfit-header">YOUR OUTFIT</h1>
       <div id="outfit-products">
         {displayProducts.map(productId => (
           < Card
