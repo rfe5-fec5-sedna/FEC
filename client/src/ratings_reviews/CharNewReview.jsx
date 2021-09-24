@@ -70,54 +70,54 @@ class CharNewReview extends React.Component {
   render() {
     return (
       <div id="characteristics-new-review" onChange={this.props.handleCharChange}>
-        {this.state.comfort && (
+        {(this.state.comfort && this.state.didMount) && (
           <div className="characteristics-new-review-selection">
             <div className="characteristics-new-review-title">Comfort</div><br></br>
-              <input type="radio" name='comfort'/> Uncomfortable
-              <input type="radio" name='comfort'/> Slightly Uncomfortable
-              <input type="radio" name='comfort'/> What I Expected
-              <input type="radio" name='comfort'/> Comfortable
-              <input type="radio" name='comfort'/> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="1" /> Uncomfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="2"/> Slightly Uncomfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="3"/> What I Expected
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="4"/> Comfortable
+              <input type="radio" name={this.state.productMetaData[0].Comfort.id} value="5"/> Perfect
           </div>
         )}
-        {this.state.fit && (
+        {(this.state.fit && this.state.didMount) && (
           <div className="characteristics-new-review-selection">
             <div className="characteristics-new-review-title">Fit</div><br></br>
-              <input type="radio" name='fit'/> Runs Tight
-              <input type="radio" name='fit'/> Runs Slightly Tight
-              <input type="radio" name='fit'/> Perfect
-              <input type="radio" name='fit'/> Runs Slightly Long
-              <input type="radio" name='fit'/> Runs Long
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="1" /> Runs Tight
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="2" /> Runs Slightly Tight
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="4" /> Runs Slightly Long
+              <input type="radio" name={this.state.productMetaData[0].Fit.id} value="5" /> Runs Long
           </div>
         )}
-        {this.state.quality && (
+        {(this.state.quality && this.state.didMount) && (
           <div className="characteristics-new-review-selection">
             <div className="characteristics-new-review-title">Quality</div><br></br>
-              <input type="radio" name='quality'/> Poor
-              <input type="radio" name='quality'/> Below Average
-              <input type="radio" name='quality'/> What I Expected
-              <input type="radio" name='quality'/> Pretty Great
-              <input type="radio" name='quality'/> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="1" /> Poor
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="2"/> Below Average
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="3"/> What I Expected
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="4"/> Pretty Great
+              <input type="radio" name={this.state.productMetaData[0].Quality.id} value="5"/> Perfect
           </div>
         )}
-        {this.state.size && (
+        {(this.state.size && this.state.didMount) && (
           <div className="characteristics-new-review-selection">
              <div className="characteristics-new-review-title">Size</div><br></br>
-              <input type="radio" name='size'/> A Size Too Small
-              <input type="radio" name='size'/> 1/2 A Size Too Small
-              <input type="radio" name='size'/> Perfect
-              <input type="radio" name='size'/> 1/2 A Size Too Big
-              <input type="radio" name='size'/> A Size Too Wide
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="1" /> A Size Too Small
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="2" /> 1/2 A Size Too Small
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="4" /> 1/2 A Size Too Big
+              <input type="radio" name={this.state.productMetaData[0].Size.id} value="5" /> A Size Too Wide
           </div>
         )}
-        {this.state.length && (
+        {(this.state.length && this.state.didMount) && (
           <div className="characteristics-new-review-selection">
              <div className="characteristics-new-review-title">Length</div><br></br>
-              <input type="radio" name='length'/> Runs Short
-              <input type="radio" name='length'/> Runs Slightly Short
-              <input type="radio" name='length'/> Perfect
-              <input type="radio" name='length'/> Runs Slightly Long
-              <input type="radio" name='length'/> Runs Long
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="1" /> Runs Short
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="2" /> Runs Slightly Short
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="3" /> Perfect
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="4" /> Runs Slightly Long
+              <input type="radio" name={this.state.productMetaData[0].Length.id} value="5" /> Runs Long
           </div>
         )}
       </div>
