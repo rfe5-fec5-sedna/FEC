@@ -45,7 +45,7 @@ const helperFunction = {
     let falseRecommend = recommendObject.false;
     let total = Number(trueRecommend) + Number(falseRecommend);
     let percentage = Math.round((trueRecommend / total) * 100) + '%';
-    return isNaN(percentage) ? 0 : `${percentage} of reviews recommend this product`;
+    return Number.isNaN(percentage) ? 0 : `${percentage} of reviews recommend this product`;
   },
 
   ratingDistCount: (ratingsObject, starCount) => {

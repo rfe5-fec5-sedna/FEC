@@ -19,7 +19,8 @@ class NewReview extends React.Component {
       email: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCharactersticsChange = this.handleCharactersticsChange.bind(this);
+    this.handleStarClick = this.handleStarClick.bind(this);
+    this.handleCharacteristicsChange = this.handleCharacteristicsChange.bind(this);
     this.handleCurrentPhoto = this.handleCurrentPhoto.bind(this);
     this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,11 +34,17 @@ class NewReview extends React.Component {
     })
   }
 
-  handleCharactersticsChange(e) {
-    const charValue = e.target.value;
-    const charName = e.target.name;
+  handleStarClick(value) {
     this.setState({
-      [charName]: charValue
+      overallRating: value,
+    });
+  }
+
+  handleCharacteristicsChange(e) {
+    const characteristics = this.state.characteristics;
+    characteristics[e.target.name] = e.target.value;
+    this.setState({
+      characteristics: characteristics
     })
   }
 
@@ -48,7 +55,6 @@ class NewReview extends React.Component {
   }
 
   handleFileUpload(e) {
-    console.log(e.target.value)
     e.preventDefault();
     this.setState({
       photos: this.state.photos.concat(this.state.currentPhoto)
@@ -57,12 +63,23 @@ class NewReview extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    helperFunction.postNewReview(this.props.productId)
+    let newReviewData = {
+      overallRating: this.state.overallRating,
+      productRecommend: Boolean(this.state.productRecommend),
+      characteristics: this.state.characteristics,
+      reviewSummary: this.state.reviewSummary,
+      reviewBody: this.state.reviewBody,
+      photos: this.state.photos,
+      currentPhoto: this.state.currentPhoto,
+      nickname: this.state.nickname,
+      email: this.state.email
+    }
+    console.log('my data', newReviewData);
+    helperFunction.postNewReview(newReviewData)
       .then((response) => {
-        // console.log(response);
-        // this.setState({
-
-        // })
+        console.log('it works!', response);
+        // this.props.closeNewReview;
+        helperFunction.getAllReviews(this.props.productId);
       })
       .catch((err) => {
         console.log(err);
@@ -79,43 +96,51 @@ class NewReview extends React.Component {
           </button>
         </div>
         <div id="new-review-modal-body">
-          <h3>About the {this.props.productId}</h3>
+          <h3 className="new-review-title">About the Product</h3>
           <div id="new-review-modal-form">
             <form>
-              Overall Rating:
+              Overall Rating:<span style={{color: "red"}}>*</span>
               <div id="new-review-overall-rating">
-                <OverallRating starRating={this.state.overallRating} onChange={this.handleInputChange} />
+                <OverallRating
+                  starRating={this.state.overallRating}
+                  onChange={this.handleStarClick}
+                  required
+                />
               </div>
               <div className="radio-product-recommend">
-                  Do you recommend this product?<span style={{color: "red"}}>*</span>
-                  <label>
-                    <input
-                      type="radio"
-                      name="productRecommend"
-                      value="Yes"
-                      checked={this.state.productRecommend === "Yes"}
-                      onChange={this.handleInputChange}
-                      className="radio-product-recommend-input"
-                      required
-                    />
-                    Yes
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="productRecommend"
-                      value="No"
-                      checked={this.state.productRecommend === "No"}
-                      onChange={this.handleInputChange}
-                      className="radio-product-recommend-input"
-                      required
-                    />
-                    No
-                  </label>
-                You selected: {this.state.productRecommend}
+                Do you recommend this product?<span style={{color: "red"}}>*</span>
+                <label>
+                  <input
+                    type="radio"
+                    name="productRecommend"
+                    value="true"
+                    checked={this.state.productRecommend === "true"}
+                    onChange={this.handleInputChange}
+                    className="radio-product-recommend-input"
+                    required
+                  />
+                  Yes
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="productRecommend"
+                    value="false"
+                    checked={this.state.productRecommend === "false"}
+                    onChange={this.handleInputChange}
+                    className="radio-product-recommend-input"
+                    required
+                  />
+                  No
+                </label>
               </div>
+              Characteristics:<span style={{color: "red"}}>*</span>
               <div id="new-review-characteristics">
-                <CharNewReview productId={this.props.productId} />
+                <CharNewReview
+                  productId={this.props.productId}
+                  handleCharChange={this.handleCharacteristicsChange}
+                  required
+                />
               </div>
               Review Summary:
               <div id="new-review-summary">

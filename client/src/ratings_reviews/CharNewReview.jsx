@@ -22,7 +22,6 @@ class CharNewReview extends React.Component {
     helperFunction.getAllMetaReviews(this.props.productId)
       .then((response) => {
         let charObject = response.data.characteristics;
-        console.log([charObject]);
         this.setState({
           productMetaData: [charObject],
           didMount: true
@@ -38,7 +37,6 @@ class CharNewReview extends React.Component {
     if (this.state.didMount) {
       let metaData = this.state.productMetaData;
       let productChars = Object.keys(metaData[0]);
-      console.log(productChars);
       productChars.forEach((singleChar) => {
         if (singleChar === 'Comfort') {
           this.setState({
@@ -67,11 +65,6 @@ class CharNewReview extends React.Component {
         }
       })
     }
-
-    const handleTextChange = (e) => {
-      console.log(e);
-    }
-
   }
 
   render() {
