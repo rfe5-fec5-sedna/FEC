@@ -5,7 +5,6 @@ const api = {
     const url = `/sedna/reviews/meta/?product_id=${id}`;
     axios.get(url)
       .then((res) => {
-        // console.log('this is res', res)
         callback(null, res.data.ratings);
       })
       .catch((error) => {
@@ -29,7 +28,6 @@ const api = {
     const url = `/sedna/reviews/?product_id=${id}`;
     axios.get(url)
       .then((res) => {
-        // console.log('this is res', res)
         callback(null, res.data.count);
       })
       .catch((error) => {
@@ -41,7 +39,6 @@ const api = {
     const url = `/sedna/products/${id}`;
     axios.get(url)
       .then((res) => {
-        // console.log('this is product res', res)
         callback(null, res.data);
       })
       .catch((error) => {
@@ -54,7 +51,6 @@ const api = {
     const url = `/sedna/products/${id}/styles`;
     axios.get(url)
       .then((res) => {
-        // console.log('this is style res', res)
         callback(null, res.data.results);
       })
       .catch((error) => {

@@ -37,7 +37,6 @@ class Style extends React.Component {
                   const product = {
                     style_id: style.style_id,
                     name: style.name,
-                    // currentPhoto: style.photos[0].url,
                     currentPhotos: style.photos,
                     price: [style.original_price, style.sale_price],
                     currentSkus: style.skus,
@@ -56,6 +55,7 @@ class Style extends React.Component {
                       />
                       <label
                         htmlFor={style.style_id}
+                        data-testid="styleSelectors"
                         onClick={(e) => {
                           this.props.handleClick(product, e);
                           this.props.handleStyle(style.style_id)

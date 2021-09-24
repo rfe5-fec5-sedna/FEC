@@ -70,7 +70,6 @@ class Overview extends React.Component {
             styles: result,
             currentStyleId: result[0].style_id,
             currentStyleName: result[0].name,
-            // currentPhoto: result[0].photos[0].url,
             currentPhotos: result[0].photos,
             price: [result[0].original_price, result[0].sale_price],
             currentSkus: result[0].skus
@@ -102,10 +101,8 @@ class Overview extends React.Component {
   }
 
   handleClick(product, e) {
-    // console.log('this is product', product);
     this.setState({
       currentStyleId: product.style_id,
-      // currentPhoto: product.currentPhoto,
       currentPhotos: product.currentPhotos,
       price: product.price,
       currentSkus: product.currentSkus,
