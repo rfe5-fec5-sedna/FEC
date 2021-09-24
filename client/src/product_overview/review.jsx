@@ -24,7 +24,7 @@ const Review = (props) => {
   } else {
     return (
       <div className="noRatings" data-testid="noRatings">
-       Make a purchase to be the first to review
+        Make a purchase to be the first to review
       </div>
     );
   }
