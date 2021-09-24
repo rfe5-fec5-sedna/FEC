@@ -166,6 +166,7 @@ class NewReview extends React.Component {
                   value={this.state.reviewBody}
                   required
                 />
+                <br></br>
                 {helperFunction.minCharacters(50 - this.state.reviewBody.length)}
               </div>
               Photo Upload:
