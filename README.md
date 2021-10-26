@@ -3,6 +3,9 @@
 ---
 This repo is the first senior project in Hack Reactor's Bootcamp, consists of building a client side application that resembles a really basic clothing e-commerce website. The project was developed by 3 students, focusing mainly in the project overview, the related products, outfits for the user and finally, a ratings and reviews section.
 
+## Demonstration
+Video link: https://drive.google.com/file/d/1SLomuDIoj-IUarFiAjAkOK27ChiMe199/view?usp=sharing
+
 ### To check out this project:
 1. Start by cloning the repo into your computer in the terminal. We recommend doing it in a new folder. <br> `git clone https://github.com/rfe5-fec5-sedna/FEC.git`
 2. Install all of the npm modules and dependencies used in the project. <br> `npm i` or `npm install`
